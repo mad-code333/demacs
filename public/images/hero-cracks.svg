@@ -1,0 +1,19 @@
+<svg width="1920" height="161" viewBox="0 0 1920 161" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_102_312)">
+<mask id="mask0_102_312" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="512">
+<path d="M1920 0H0V512H1920V0Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_102_312)">
+<path d="M-23.1379 31.9805L-62 25.5V565H1982.12L1982.01 0L1961.12 52.8632L1923.74 25.1889L1859.42 48.8274L1821.47 29.8013L1779.71 71.8893L1737.38 79.3844L1684.65 91.4919L1612.79 71.8893L1548.26 91.4919L1508.13 109.365L1488.89 124.355H1482.29L1460.85 108.788L1376.74 118.59L1312.01 105L1275.81 147.993L1216.18 133.58L1171.46 143.958L1140.35 138.769L1097.47 151.453L1047.43 143.958L1035.89 147.993L968.105 157.218L939.358 147.993L873.719 157.218L845.682 143.958L827.564 157.218L786.309 138.769L684.36 133.58L628.463 109.365L579.053 126.085L551.804 91.4919L444.364 111.094H385.541L358.028 75.9251L297.872 80.5375L255.251 95.5277L194.228 71.3127L163.992 89.7622L118.913 80.5375L78.2312 71.3127L63.1035 80.5375L41.277 67L18.8582 35.5L-23.1379 31.9805Z" fill="#111115" stroke="url(#paint0_radial_102_312)"/>
+</g>
+</g>
+<defs>
+<radialGradient id="paint0_radial_102_312" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(960.059 282.5) rotate(90) scale(436.275 1578.4)">
+<stop stop-color="#FF8F6B" stop-opacity="0.38"/>
+<stop offset="1" stop-opacity="0"/>
+</radialGradient>
+<clipPath id="clip0_102_312">
+<rect width="1920" height="161" fill="white"/>
+</clipPath>
+</defs>
+</svg>

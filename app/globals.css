@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Sports World";
+  src: url("/fonts/Sports%20World-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #050508;
+  --foreground: #fafafa;
+  --primary: #78ff00;
+  --secondary: #a1a1aa;
+  --bright: #fafafa;
+  --font-golos-stack: "Golos Text", ui-sans-serif, system-ui, sans-serif;
+  --font-sports-stack: "Sports World", ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-bright: var(--bright);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-golos: var(--font-golos-stack);
+  --font-sports: var(--font-sports-stack);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #050508;
+    --foreground: #fafafa;
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes float-y-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes glimmer {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes particle-drift {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  100% {
+    transform: translateY(-12px) translateX(4px);
+  }
+}
+
+.animate-float {
+  animation: float-y 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-y-slow 4s ease-in-out infinite;
+}
+
+.animate-glimmer {
+  animation: glimmer 4.5s ease-in-out infinite;
+}
+
+.hero-particles {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(100, 180, 255, 0.35) 0, transparent 40%),
+    radial-gradient(circle at 78% 22%, rgba(43, 127, 255, 0.22) 0, transparent 35%),
+    radial-gradient(circle at 50% 80%, rgba(56, 140, 255, 0.18) 0, transparent 45%),
+    radial-gradient(1px 1px at 12% 20%, rgba(200, 230, 255, 0.95), transparent),
+    radial-gradient(1px 1px at 28% 55%, rgba(160, 210, 255, 0.75), transparent),
+    radial-gradient(1px 1px at 44% 18%, rgba(220, 240, 255, 0.85), transparent),
+    radial-gradient(1px 1px at 61% 72%, rgba(140, 200, 255, 0.65), transparent),
+    radial-gradient(1px 1px at 76% 40%, rgba(190, 225, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 88% 65%, rgba(170, 215, 255, 0.7), transparent);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    180px 220px,
+    200px 240px,
+    160px 200px,
+    220px 260px,
+    190px 230px,
+    170px 210px;
+  animation: particle-drift 18s ease-in-out infinite alternate;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+button {
+  cursor: pointer;
+}
+
+.shadow-btn-primary {
+  --tw-shadow: 0px 4px 0px 0px #2f6b00;
+  --tw-shadow-colored: 0px 4px 0px 0px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+}
+
+.shadow-btn-hover {
+  --tw-shadow: 0px 4px 0px 0px #3f8c00;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+}
+
+.shadow-btn-active {
+  --tw-shadow: 0px 1px 0px 0px #245200;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+}
+
+@keyframes button-shine {
+  0% {
+    transform: translate(-75%);
+    opacity: 0;
+  }
+
+  25% {
+    transform: translate(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(50%);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.animate-button-shine {
+  animation: button-shine 6s linear normal forwards infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-slow,
+  .animate-glimmer,
+  .animate-button-shine,
+  .hero-particles {
+    animation: none !important;
+  }
+}
