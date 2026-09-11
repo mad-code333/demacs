@@ -34,12 +34,19 @@ export function getNextPeriodEnd() {
 }
 
 export function useCountdown(target: Date) {
-  const [now, setNow] = useState<number>(() => Date.now());
+  // Defer live clock until after mount so SSR and first client paint match.
+  const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
+    setNow(Date.now());
     const id = window.setInterval(() => setNow(Date.now()), 1000);
     return () => window.clearInterval(id);
   }, []);
+
+  const pad = (n: number) => n.toString().padStart(2, "0");
+  if (now === null) {
+    return { days: "0", hours: "00", minutes: "00", seconds: "00" };
+  }
 
   const diff = Math.max(0, target.getTime() - now);
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -47,7 +54,6 @@ export function useCountdown(target: Date) {
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
   const seconds = Math.floor((diff / 1000) % 60);
 
-  const pad = (n: number) => n.toString().padStart(2, "0");
   return {
     days: String(days),
     hours: pad(hours),
@@ -144,7 +150,7 @@ export function PodiumCard({ player }: { player: Player }) {
           alt=""
           width={80}
           height={80}
-          className="absolute -bottom-12 left-1/2 -translate-x-1/2"
+          className="absolute -bottom-12 left-1/2 h-auto w-20 -translate-x-1/2"
         />
       </div>
 

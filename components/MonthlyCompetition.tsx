@@ -32,7 +32,7 @@ export function MonthlyCompetition() {
   return (
     <section
       id="monthly-competition"
-      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 bg-[#05070a] px-4 py-20 sm:px-6 lg:py-28"
+      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 px-4 py-20 sm:px-6 lg:py-28"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(120,255,0,0.11),transparent_40%)]"
@@ -54,7 +54,7 @@ export function MonthlyCompetition() {
           </p>
 
           <div className="mt-8 grid w-full max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3">
-            <div className="rounded-xl border border-white/8 bg-[#101218]/90 px-4 py-4">
+            <div className="demacs-card rounded-xl px-4 py-4">
               <p className="font-golos text-[0.6rem] uppercase tracking-[0.2em] text-secondary/55">
                 Prize pool
               </p>
@@ -62,7 +62,7 @@ export function MonthlyCompetition() {
                 ${formatCurrency(MONTHLY_PRIZE_POOL)}
               </p>
             </div>
-            <div className="rounded-xl border border-white/8 bg-[#101218]/90 px-4 py-4">
+            <div className="demacs-card rounded-xl px-4 py-4">
               <p className="font-golos text-[0.6rem] uppercase tracking-[0.2em] text-secondary/55">
                 Current leader
               </p>
@@ -70,7 +70,7 @@ export function MonthlyCompetition() {
                 {phase === "loading" ? "…" : leaderName ?? "—"}
               </p>
             </div>
-            <div className="rounded-xl border border-white/8 bg-[#101218]/90 px-4 py-4">
+            <div className="demacs-card rounded-xl px-4 py-4">
               <p className="font-golos text-[0.6rem] uppercase tracking-[0.2em] text-secondary/55">
                 Status
               </p>

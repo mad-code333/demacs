@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SiteAtmosphere } from "../components/SiteAtmosphere";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import "./globals.css";
@@ -46,8 +47,8 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/images/logo.png",
-        alt: "Gambanator",
+        url: "/logo.png",
+        alt: "DEMACS",
       },
     ],
   },
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gambanator",
     description: siteDescription,
-    images: ["/images/logo.png"],
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
@@ -71,12 +72,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="relative h-full antialiased font-sports"
+      className="relative h-full overflow-x-hidden antialiased font-sports"
     >
-      <body className="relative flex min-h-full flex-col font-sans">
-        <SiteHeader />
-        <div className="flex min-h-0 flex-1 flex-col">{children}</div>
-        <SiteFooter />
+      <body className="relative flex min-h-full flex-col bg-transparent font-sans">
+        <SiteAtmosphere />
+        <div className="relative z-10 flex min-h-full flex-1 flex-col">
+          <SiteHeader />
+          <div className="flex min-h-0 flex-1 flex-col">{children}</div>
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );

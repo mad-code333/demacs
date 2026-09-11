@@ -11,7 +11,7 @@ export function LiveStream() {
   return (
     <section
       id="live-stream"
-      className="relative isolate scroll-mt-24 overflow-hidden bg-[#04060a] px-4 pb-16 pt-4 sm:px-6 lg:pb-20 lg:pt-6"
+      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 px-4 pb-16 pt-4 sm:px-6 lg:pb-20 lg:pt-6"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(120,255,0,0.05),transparent_50%)]"
@@ -29,7 +29,7 @@ export function LiveStream() {
                 Join the <span className="text-primary">action</span>
               </h2>
               <p className="mt-4 max-w-sm font-golos text-sm leading-relaxed text-secondary/75">
-                Watch Gambanator live on Kick — sessions, hunts, and community energy in the official player.
+                Watch DEMACS live on Kick — sessions, hunts, and community energy in the official player.
               </p>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <PrimaryButton href="https://kick.com/gambanator" nativeAnchor className="rounded-full">
@@ -46,7 +46,7 @@ export function LiveStream() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/50 shadow-[0_28px_80px_-24px_rgba(0,0,0,0.9)]">
+            <div className="demacs-card overflow-hidden rounded-2xl">
               <div className="flex items-center justify-between border-b border-white/8 bg-[#0a0b10]/95 px-4 py-3">
                 <div className="flex items-center gap-2 font-golos text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white">
                   <span className="relative flex size-2.5">
@@ -71,13 +71,13 @@ export function LiveStream() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-white/8 bg-black/35 p-5 backdrop-blur-md">
+            <div className="demacs-card rounded-2xl p-5">
               <div className="flex items-center gap-3">
                 <div className="flex size-10 items-center justify-center rounded-full border border-primary/25 bg-primary/10 text-primary">
                   <SiKick className="size-4" aria-hidden />
                 </div>
                 <div>
-                  <p className="font-golos text-sm font-semibold text-white">Gambanator Live</p>
+                  <p className="font-golos text-sm font-semibold text-white">DEMACS Live</p>
                   <p className="font-golos text-[0.65rem] uppercase tracking-[0.16em] text-secondary/55">
                     kick.com/gambanator
                   </p>

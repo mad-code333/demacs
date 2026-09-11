@@ -64,7 +64,7 @@ export function HomeLeaderboardPreview() {
   return (
     <section
       id="leaderboard"
-      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 bg-[#05070a] px-4 py-20 sm:px-6 lg:py-24"
+      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 px-4 py-20 sm:px-6 lg:py-24"
     >
       <div className="relative mx-auto w-full max-w-6xl">
         <ScrollReveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
@@ -84,7 +84,7 @@ export function HomeLeaderboardPreview() {
         </ScrollReveal>
 
         <ScrollReveal className="mt-10" delay={0.06}>
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0c0d12]/95 shadow-[0_24px_60px_-28px_rgba(0,0,0,0.85)]">
+          <div className="demacs-card overflow-hidden rounded-2xl">
             <div className="hidden grid-cols-[3rem_1fr_7rem_5.5rem] gap-4 border-b border-white/8 bg-white/[0.03] px-5 py-3 font-golos text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-secondary/55 sm:grid">
               <span>Rank</span>
               <span>Player</span>

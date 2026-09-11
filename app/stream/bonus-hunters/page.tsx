@@ -9,7 +9,7 @@ export default function BonusHuntersPage() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div className="min-h-[80vh] bg-[#050508] px-6 py-16 font-golos text-bright flex flex-col items-center justify-center">
+    <div className="min-h-[80vh] bg-transparent px-6 py-16 font-golos text-bright flex flex-col items-center justify-center">
       <motion.div
         className="mx-auto max-w-lg text-center"
         initial={

@@ -151,7 +151,7 @@ export default function AffiliatesLeaderboardPage() {
   const showEmpty = phase === "ok" && players && players.length === 0;
 
   return (
-    <div className="min-h-screen bg-[#111115] px-4 py-12 font-golos text-bright sm:px-6 sm:py-16">
+    <div className="min-h-screen bg-transparent px-4 py-12 font-golos text-bright sm:px-6 sm:py-16">
       <motion.div
         className="mx-auto w-full max-w-6xl"
         initial={

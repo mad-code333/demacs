@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function RegisterCompletePage() {
   return (
-    <div className="flex min-h-full flex-1 flex-col bg-[#050508]">
+    <div className="flex min-h-full flex-1 flex-col bg-transparent">
       <SiteHeader />
       <main className="flex flex-1 flex-col items-center px-4 py-12 sm:px-6 sm:py-16">
         <RegisterCompleteForm />

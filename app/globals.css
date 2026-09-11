@@ -10,10 +10,10 @@
 }
 
 :root {
-  --background: #050508;
+  --background: #030504;
   --foreground: #fafafa;
   --primary: #78ff00;
-  --secondary: #a1a1aa;
+  --secondary: #8e978e;
   --bright: #fafafa;
   --font-golos-stack: "Golos Text", ui-sans-serif, system-ui, sans-serif;
   --font-sports-stack: "Sports World", ui-sans-serif, system-ui, sans-serif;
@@ -33,89 +33,104 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #050508;
+    --background: #030504;
     --foreground: #fafafa;
   }
 }
 
-@keyframes float-y {
+@keyframes demacs-float {
   0%,
   100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(8px);
+    transform: translateY(-6px);
   }
 }
 
-@keyframes float-y-slow {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(4px);
-  }
-}
-
-@keyframes glimmer {
-  0%,
-  100% {
-    opacity: 0.35;
-  }
-  50% {
-    opacity: 0.85;
-  }
-}
-
-@keyframes particle-drift {
+@keyframes demacs-dot {
   0% {
-    transform: translateY(0) translateX(0);
+    left: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
   }
   100% {
-    transform: translateY(-12px) translateX(4px);
+    left: 100%;
+    opacity: 0;
   }
 }
 
-.animate-float {
-  animation: float-y 3s ease-in-out infinite;
+.demacs-hero-title {
+  display: block;
+  text-align: center;
+  font-family: var(--font-golos-stack);
+  font-size: clamp(3.2rem, 13vw, 8.6rem);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.animate-float-slow {
-  animation: float-y-slow 4s ease-in-out infinite;
+.demacs-hero-d {
+  background: linear-gradient(180deg, #e7ffb0 0%, #9cff38 28%, #78ff00 58%, #3daa00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 28px rgba(120, 255, 0, 0.32));
 }
 
-.animate-glimmer {
-  animation: glimmer 4.5s ease-in-out infinite;
+.demacs-hero-emacs {
+  background: linear-gradient(180deg, #ffffff 0%, #f2f4f2 42%, #c5cdc5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
 }
 
-.hero-particles {
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(100, 180, 255, 0.35) 0, transparent 40%),
-    radial-gradient(circle at 78% 22%, rgba(43, 127, 255, 0.22) 0, transparent 35%),
-    radial-gradient(circle at 50% 80%, rgba(56, 140, 255, 0.18) 0, transparent 45%),
-    radial-gradient(1px 1px at 12% 20%, rgba(200, 230, 255, 0.95), transparent),
-    radial-gradient(1px 1px at 28% 55%, rgba(160, 210, 255, 0.75), transparent),
-    radial-gradient(1px 1px at 44% 18%, rgba(220, 240, 255, 0.85), transparent),
-    radial-gradient(1px 1px at 61% 72%, rgba(140, 200, 255, 0.65), transparent),
-    radial-gradient(1px 1px at 76% 40%, rgba(190, 225, 255, 0.8), transparent),
-    radial-gradient(1px 1px at 88% 65%, rgba(170, 215, 255, 0.7), transparent);
-  background-size:
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    180px 220px,
-    200px 240px,
-    160px 200px,
-    220px 260px,
-    190px 230px,
-    170px 210px;
-  animation: particle-drift 18s ease-in-out infinite alternate;
+.demacs-hero-float {
+  animation: demacs-float 7s ease-in-out infinite;
+}
+
+.demacs-pulse-dot {
+  animation: demacs-dot 3.8s ease-in-out infinite;
+}
+
+.demacs-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 28%),
+    linear-gradient(180deg, rgba(10, 16, 12, 0.92) 0%, rgba(5, 8, 6, 0.94) 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 12px 32px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.demacs-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(120, 255, 0, 0.28);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 18px 40px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(120, 255, 0, 0.06);
 }
 
 body {
-  background: var(--background);
+  background: transparent;
   color: var(--foreground);
+}
+
+html {
+  background: #02040a;
 }
 
 button {
@@ -166,62 +181,14 @@ button {
   animation: button-shine 6s linear normal forwards infinite;
 }
 
-@keyframes emblem-breathe {
-  0%,
-  100% {
-    opacity: 0.42;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.82;
-    transform: scale(1.12);
-  }
-}
-
-@keyframes hero-kenburns {
-  0% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1.12);
-  }
-}
-
-.animate-emblem-breathe {
-  animation: emblem-breathe 7s ease-in-out infinite;
-  transform-origin: center;
-}
-
-.hero-kenburns {
-  animation: hero-kenburns 38s ease-in-out infinite alternate;
-  transform-origin: 78% 42%;
-}
-
-.hero-world-mask {
-  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.35) 22%, #000 48%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.35) 22%, #000 48%);
-}
-
-.hero-core-mask {
-  mask-image: radial-gradient(ellipse 68% 72% at 52% 46%, #000 38%, transparent 78%);
-  -webkit-mask-image: radial-gradient(ellipse 68% 72% at 52% 46%, #000 38%, transparent 78%);
-}
-
-@media (max-width: 1023px) {
-  .hero-world-mask {
-    mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 70%, transparent 100%);
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 70%, transparent 100%);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .hero-kenburns,
-  .animate-emblem-breathe,
-  .animate-float,
-  .animate-float-slow,
-  .animate-glimmer,
-  .animate-button-shine,
-  .hero-particles {
+  .demacs-hero-float,
+  .demacs-pulse-dot,
+  .animate-button-shine {
     animation: none !important;
+  }
+
+  .demacs-card:hover {
+    transform: none;
   }
 }

@@ -2,48 +2,9 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { VIP_TIERS, vipTierBadgeSrc } from "@/lib/vip-tiers";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-
-/** Wager thresholds (USD) from VIP tier reference */
-const VIP_TIERS = [
-  { name: "Beginner", wagerUsd: 0, family: "beginner" },
-  { name: "Silver I", wagerUsd: 1_000, family: "silver" },
-  { name: "Silver II", wagerUsd: 2_700, family: "silver" },
-  { name: "Silver III", wagerUsd: 5_500, family: "silver" },
-  { name: "Silver IV", wagerUsd: 10_000, family: "silver" },
-  { name: "Gold I", wagerUsd: 18_500, family: "gold" },
-  { name: "Gold II", wagerUsd: 32_000, family: "gold" },
-  { name: "Gold III", wagerUsd: 56_000, family: "gold" },
-  { name: "Gold IV", wagerUsd: 95_000, family: "gold" },
-  { name: "Emerald I", wagerUsd: 160_000, family: "emerald" },
-  { name: "Emerald II", wagerUsd: 275_000, family: "emerald" },
-  { name: "Emerald III", wagerUsd: 460_000, family: "emerald" },
-  { name: "Ruby I", wagerUsd: 785_000, family: "ruby" },
-  { name: "Ruby II", wagerUsd: 1_300_000, family: "ruby" },
-  { name: "Ruby III", wagerUsd: 2_250_000, family: "ruby" },
-  { name: "Diamond I", wagerUsd: 3_800_000, family: "diamond" },
-  { name: "Diamond II", wagerUsd: 6_500_000, family: "diamond" },
-  { name: "Diamond III", wagerUsd: 10_000_000, family: "diamond" },
-  { name: "Champion I", wagerUsd: 18_000_000, family: "champion" },
-  { name: "Champion II", wagerUsd: 30_000_000, family: "champion" },
-  { name: "Champion III", wagerUsd: 50_000_000, family: "champion" },
-  { name: "Legend I", wagerUsd: 88_000_000, family: "legend" },
-  { name: "Legend II", wagerUsd: 150_000_000, family: "legend" },
-  { name: "Legend III", wagerUsd: 250_000_000, family: "legend" },
-  { name: "Master I", wagerUsd: 425_000_000, family: "master" },
-  { name: "Master II", wagerUsd: 720_000_000, family: "master" },
-  { name: "Master III", wagerUsd: 1_200_000_000, family: "master" },
-  { name: "Grandmaster I", wagerUsd: 2_000_000_000, family: "grandmaster" },
-  { name: "Grandmaster II", wagerUsd: 3_500_000_000, family: "grandmaster" },
-  { name: "Grandmaster III", wagerUsd: 6_000_000_000, family: "grandmaster" },
-  { name: "Immortal", wagerUsd: 10_000_000_000, family: "immortal" },
-] as const;
-
-/** Public path to tier badge PNG (`public/vip/{Tier-Name}.png`) — assets are 256×160 */
-function vipTierBadgeSrc(tierName: string) {
-  return `/vip/${tierName.replace(/ /g, "-")}.png`;
-}
 
 const VIP_BADGE_INTRINSIC_W = 256;
 const VIP_BADGE_INTRINSIC_H = 160;
@@ -78,7 +39,7 @@ export default function VipRewardsPage() {
       };
 
   return (
-    <div className="min-h-screen bg-[#111115] px-4 py-16 font-golos text-bright sm:px-6 sm:py-20">
+    <div className="min-h-screen bg-transparent px-4 py-16 font-golos text-bright sm:px-6 sm:py-20">
       <motion.div
         className="mx-auto max-w-2xl"
         initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}

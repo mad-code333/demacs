@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FaDiscord } from "react-icons/fa";
 import { FaKickstarterK } from "react-icons/fa6";
 import { IoHome, IoMail } from "react-icons/io5";
+import { DemacsWordmark } from "./DemacsLogo";
 
 const footerGroups = [
   {
@@ -27,7 +28,7 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-[#030305] font-golos text-secondary/70">
+    <footer className="relative overflow-hidden border-t border-white/5 bg-[#030305]/55 backdrop-blur-md font-golos text-secondary/70">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"
         aria-hidden
@@ -38,11 +39,9 @@ export function SiteFooter() {
             <Link
               href="/"
               className="inline-flex items-center gap-2 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030305]"
-              aria-label="Gambanator home"
+              aria-label="DEMACS home"
             >
-              <span className="font-sports text-[1.35rem] leading-none tracking-tight text-white">
-                GAMBA<span className="text-primary">NATOR</span>
-              </span>
+              <DemacsWordmark logoClassName="h-9 w-9" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary/65">
               Rewards, leaderboard, and VIP perks when you play with code{" "}
@@ -106,7 +105,7 @@ export function SiteFooter() {
 
         <div className="mt-12 border-t border-white/5 pt-8">
           <p className="text-center text-xs text-secondary/55 sm:text-left">
-            © {year} Gambanator. 18+ only. Play responsibly. Third-party offers may change without notice.
+            © {year} DEMACS. 18+ only. Play responsibly. Third-party offers may change without notice.
           </p>
         </div>
       </div>
