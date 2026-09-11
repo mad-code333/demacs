@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { GiCrown, GiTrophyCup } from "react-icons/gi";
 import { IoArrowForward, IoGameController, IoWallet } from "react-icons/io5";
+import { DimensionalCard } from "./DimensionalCard";
+import { ScrollReveal } from "./ScrollReveal";
 
 const features = [
   {
@@ -35,40 +39,46 @@ const features = [
 
 export function FeatureCards() {
   return (
-    <ul id="play-earn" className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4" role="list">
-      {features.map(({ title, description, href, native, Icon }) => {
-        const className =
-          "demacs-card group flex h-full items-center gap-4 rounded-2xl px-4 py-4";
+    <ul
+      id="play-earn"
+      className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4"
+      role="list"
+    >
+      {features.map(({ title, description, href, native, Icon }, index) => {
         const inner = (
-          <>
-            <div className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-primary/25 bg-primary/10 text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
-              <Icon className="size-5" aria-hidden />
-            </div>
-            <div className="min-w-0 flex-1">
-              <div className="flex items-center justify-between gap-2">
-                <h2 className="font-golos text-[0.95rem] font-semibold text-white">{title}</h2>
-                <IoArrowForward
-                  className="size-4 shrink-0 text-white/25 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-primary"
-                  aria-hidden
-                />
+          <DimensionalCard className="group flex h-full min-h-[148px] flex-col gap-5 rounded-[24px] px-5 py-6 sm:min-h-[168px] sm:px-6 sm:py-7">
+            <div className="flex items-start justify-between gap-3">
+              <div className="demacs-icon-plate flex size-12 items-center justify-center rounded-2xl text-primary transition-transform duration-300 group-hover:scale-105 sm:size-[52px]">
+                <Icon className="size-6 sm:size-7" aria-hidden />
               </div>
-              <p className="mt-1 font-golos text-[0.8rem] leading-5 text-[#8E978E]">{description}</p>
+              <IoArrowForward
+                className="mt-1 size-5 shrink-0 text-white/25 transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary"
+                aria-hidden
+              />
             </div>
-          </>
+            <div className="min-w-0">
+              <h2 className="font-golos text-lg font-semibold tracking-tight text-white sm:text-xl">
+                {title}
+              </h2>
+              <p className="mt-2 font-golos text-[0.92rem] leading-6 text-[#8E978E]">{description}</p>
+            </div>
+          </DimensionalCard>
         );
 
         return (
-          <li key={title} className="h-full">
-            {native ? (
-              <a href={href} className={className}>
-                {inner}
-              </a>
-            ) : (
-              <Link href={href} className={className}>
-                {inner}
-              </Link>
-            )}
-          </li>
+          <ScrollReveal key={title} delay={index * 0.05} className="h-full">
+            <li className="h-full">
+              {native ? (
+                <a href={href} className="block h-full">
+                  {inner}
+                </a>
+              ) : (
+                <Link href={href} className="block h-full">
+                  {inner}
+                </Link>
+              )}
+            </li>
+          </ScrollReveal>
         );
       })}
     </ul>

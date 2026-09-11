@@ -1,4 +1,5 @@
 import { FinalCTA } from "../components/home/FinalCTA";
+import { CompetitionFlow } from "../components/home/CompetitionFlow";
 import { HowItWorksDiagram } from "../components/home/HowItWorksDiagram";
 import { VIPProgression } from "../components/home/VIPProgression";
 import { Hero } from "../components/Hero";
@@ -23,6 +24,7 @@ export default function Home() {
       </LeaderboardDataProvider>
 
       <HowItWorksDiagram />
+      <CompetitionFlow />
       <FinalCTA />
     </div>
   );

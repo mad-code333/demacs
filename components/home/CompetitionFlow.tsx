@@ -1,57 +1,71 @@
 "use client";
 
+import { useReducedMotion } from "framer-motion";
 import { GiMedal, GiTrophyCup } from "react-icons/gi";
-import { IoGameController, IoPeople, IoWallet } from "react-icons/io5";
+import { IoGameController, IoPeople } from "react-icons/io5";
 import { TOP_MONTHLY_PRIZES } from "@/lib/leaderboard-prizes";
+import { DimensionalCard } from "../DimensionalCard";
 import { ScrollReveal } from "../ScrollReveal";
 import { SectionLabel } from "../SectionLabel";
 
 const flow = [
   { title: "Play", desc: "Join with Kick and wager under the affiliate code.", Icon: IoGameController },
-  { title: "Earn", desc: "Track volume, bonuses, and VIP progress.", Icon: IoWallet },
-  { title: "Climb leaderboard", desc: "Compete in the live monthly rankings.", Icon: IoPeople },
+  { title: "Leaderboard", desc: "Compete in the live monthly rankings.", Icon: IoPeople },
   { title: `Top ${TOP_MONTHLY_PRIZES.length}`, desc: "Finish inside the paid prize bracket.", Icon: GiMedal },
   { title: "Rewards", desc: "Split the monthly pool and unlock VIP perks.", Icon: GiTrophyCup },
 ] as const;
 
 export function CompetitionFlow() {
+  const reduce = useReducedMotion();
+
   return (
-    <section id="competition-flow" className="relative isolate border-t border-white/5 px-4 py-20 sm:px-6 lg:py-24">
+    <section
+      id="competition-flow"
+      className="relative isolate border-t border-white/5 px-4 py-24 sm:px-6 lg:py-32"
+    >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(245,197,66,0.06),transparent_45%)]" aria-hidden />
-      <div className="relative mx-auto w-full max-w-6xl">
+      <div className="relative mx-auto w-full max-w-7xl">
         <ScrollReveal className="mx-auto max-w-2xl text-center">
           <SectionLabel>Competition flow</SectionLabel>
-          <h2 className="mt-6 font-sports text-[clamp(2.1rem,5vw,3.5rem)] uppercase leading-none tracking-tight text-white">
-            From session to <span className="text-primary">payout</span>
+          <h2 className="mt-6 font-sports text-[clamp(2.2rem,5vw,3.6rem)] uppercase leading-none tracking-tight text-white">
+            Play → Leaderboard → Top {TOP_MONTHLY_PRIZES.length} → <span className="text-primary">Rewards</span>
           </h2>
-          <p className="mt-4 font-golos text-sm text-[#8E978E] sm:text-base">
+          <p className="mt-5 font-golos text-base leading-7 text-[#8E978E]">
             How DEMACS turns play into ranking, VIP progress, and rewards.
           </p>
         </ScrollReveal>
 
-        <ol className="mt-12 space-y-3" role="list">
+        <ol className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-6" role="list">
           {flow.map(({ title, desc, Icon }, index) => (
-            <ScrollReveal key={title} delay={index * 0.04}>
-              <li className="demacs-card relative flex items-start gap-4 rounded-2xl p-4 sm:items-center sm:p-5">
-                <div className="flex size-11 shrink-0 items-center justify-center rounded-xl border border-primary/25 bg-primary/10 text-primary">
-                  <Icon className="size-5" aria-hidden />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-wrap items-baseline gap-2">
-                    <span className="font-golos text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-primary">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="font-golos text-lg font-semibold text-white">{title}</h3>
-                  </div>
-                  <p className="mt-1 text-sm leading-6 text-[#8E978E]">{desc}</p>
-                </div>
-                {index < flow.length - 1 ? (
-                  <span
-                    className="pointer-events-none absolute -bottom-3 left-[2.05rem] hidden h-3 w-px bg-gradient-to-b from-primary/50 to-transparent sm:block"
-                    aria-hidden
+            <ScrollReveal key={title} delay={index * 0.06} className="relative h-full">
+              {index < flow.length - 1 ? (
+                <div
+                  className="pointer-events-none absolute left-[calc(50%+2.25rem)] top-12 z-0 hidden h-px w-[calc(100%-0.5rem)] lg:block"
+                  aria-hidden
+                >
+                  <div
+                    className={[
+                      "h-px w-full bg-gradient-to-r from-primary/55 via-primary/20 to-transparent",
+                      !reduce ? "demacs-line-draw" : "",
+                    ].join(" ")}
+                    style={!reduce ? { animationDelay: `${0.12 + index * 0.1}s` } : undefined}
                   />
-                ) : null}
-              </li>
+                </div>
+              ) : null}
+              <DimensionalCard className="relative z-10 flex h-full min-h-[210px] flex-col rounded-[24px] p-6 sm:p-7">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="font-golos text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <div className="demacs-icon-plate flex size-12 items-center justify-center rounded-2xl text-primary sm:size-[52px]">
+                    <Icon className="size-6 sm:size-7" aria-hidden />
+                  </div>
+                </div>
+                <h3 className="mt-7 font-golos text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                  {title}
+                </h3>
+                <p className="mt-3 text-[0.95rem] leading-7 text-[#8E978E]">{desc}</p>
+              </DimensionalCard>
             </ScrollReveal>
           ))}
         </ol>

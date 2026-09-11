@@ -11,6 +11,7 @@ import {
   vipTierBadgeSrc,
 } from "@/lib/vip-tiers";
 import { formatCurrency } from "./Leaderboard";
+import { DimensionalCard } from "./DimensionalCard";
 import { ScrollReveal } from "./ScrollReveal";
 import { SectionLabel } from "./SectionLabel";
 
@@ -47,37 +48,37 @@ export function RewardsPerks() {
   return (
     <section
       id="rewards"
-      className="relative isolate overflow-hidden border-t border-white/5 px-4 py-20 sm:px-6 lg:py-24"
+      className="relative isolate overflow-hidden border-t border-white/5 px-4 py-24 sm:px-6 lg:py-32"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(120,255,0,0.09),transparent_36%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(120,255,0,0.1),transparent_38%)]"
         aria-hidden
       />
 
-      <div className="relative mx-auto w-full max-w-6xl">
+      <div className="relative mx-auto w-full max-w-7xl">
         <ScrollReveal className="mx-auto max-w-2xl text-center">
           <SectionLabel icon={GiSparkles}>Rewards & VIP</SectionLabel>
-          <h2 className="mt-6 font-sports text-[clamp(2.3rem,5vw,4rem)] uppercase leading-none tracking-tight text-white">
+          <h2 className="mt-6 font-sports text-[clamp(2.3rem,5vw,3.8rem)] uppercase leading-none tracking-tight text-white">
             Perks that <span className="text-primary">scale</span> with you
           </h2>
-          <p className="mt-4 font-golos text-sm text-secondary/75 sm:text-base">
+          <p className="mt-5 font-golos text-base leading-7 text-secondary/75">
             Bonuses, VIP progression, and monthly competition — all tied to the same DEMACS ecosystem.
           </p>
         </ScrollReveal>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-14 grid gap-5 md:grid-cols-3 md:gap-6">
           {perkCards.map(({ title, description, icon: Icon, href, cta, native }, index) => (
             <ScrollReveal key={title} delay={index * 0.06} className="h-full">
-              <article className="demacs-card group flex h-full flex-col rounded-2xl p-6">
-                <div className="flex size-12 items-center justify-center rounded-xl border border-primary/25 bg-primary/10 text-primary">
-                  <Icon className="size-5" aria-hidden />
+              <DimensionalCard className="group flex h-full min-h-[280px] flex-col rounded-[24px] p-7 sm:p-8">
+                <div className="demacs-icon-plate flex size-12 items-center justify-center rounded-2xl text-primary transition-transform duration-300 group-hover:scale-105 sm:size-[52px]">
+                  <Icon className="size-6 sm:size-7" aria-hidden />
                 </div>
-                <h3 className="mt-6 font-golos text-xl font-semibold text-white">{title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-6 text-secondary/70">{description}</p>
+                <h3 className="mt-7 font-golos text-2xl font-semibold tracking-tight text-white">{title}</h3>
+                <p className="mt-3 flex-1 text-[0.98rem] leading-7 text-secondary/70">{description}</p>
                 {native ? (
                   <a
                     href={href}
-                    className="mt-6 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.18em] text-primary transition-colors group-hover:text-[#9dff4a]"
+                    className="mt-7 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-all group-hover:gap-2.5 group-hover:text-[#9dff4a]"
                   >
                     {cta}
                     <IoArrowForward className="size-3.5" aria-hidden />
@@ -85,56 +86,58 @@ export function RewardsPerks() {
                 ) : (
                   <Link
                     href={href}
-                    className="mt-6 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.18em] text-primary transition-colors group-hover:text-[#9dff4a]"
+                    className="mt-7 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-all group-hover:gap-2.5 group-hover:text-[#9dff4a]"
                   >
                     {cta}
                     <IoArrowForward className="size-3.5" aria-hidden />
                   </Link>
                 )}
-              </article>
+              </DimensionalCard>
             </ScrollReveal>
           ))}
         </div>
 
-        <ScrollReveal className="demacs-card mt-10 overflow-hidden rounded-2xl p-5 sm:p-7" delay={0.08}>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="font-golos text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-primary">
-                VIP snapshot
-              </p>
-              <h3 className="mt-2 font-sports text-2xl uppercase tracking-tight text-white sm:text-3xl">
-                Climb the published ladder
-              </h3>
-            </div>
-            <Link
-              href="/affiliates/vip-rewards"
-              className="inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.18em] text-secondary/75 transition-colors hover:text-white"
-            >
-              Full VIP list
-              <IoArrowForward className="size-3.5" aria-hidden />
-            </Link>
-          </div>
-
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" role="list">
-            {VIP_PROGRESSION_MILESTONES.map((tier) => (
-              <li
-                key={tier.name}
-                className="flex items-center gap-3 rounded-xl border border-white/8 bg-white/[0.02] px-3 py-3"
+        <ScrollReveal className="mt-12" delay={0.08}>
+          <DimensionalCard className="overflow-hidden rounded-[28px] p-6 sm:p-8" interactive={false}>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="font-golos text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-primary">
+                  VIP snapshot
+                </p>
+                <h3 className="mt-2 font-sports text-2xl uppercase tracking-tight text-white sm:text-3xl">
+                  Climb the published ladder
+                </h3>
+              </div>
+              <Link
+                href="/affiliates/vip-rewards"
+                className="inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-secondary/75 transition-colors hover:text-white"
               >
-                <Image
-                  src={vipTierBadgeSrc(tier.name)}
-                  alt={`${tier.name} badge`}
-                  width={256}
-                  height={160}
-                  className="h-10 w-auto max-w-[88px] shrink-0 object-contain"
-                />
-                <div className="min-w-0">
-                  <p className="truncate font-golos text-sm font-semibold text-white">{tier.name}</p>
-                  <p className="font-golos text-xs text-secondary/65">{formatVipWager(tier.wagerUsd)}+</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+                Full VIP list
+                <IoArrowForward className="size-3.5" aria-hidden />
+              </Link>
+            </div>
+
+            <ul className="mt-7 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4" role="list">
+              {VIP_PROGRESSION_MILESTONES.map((tier) => (
+                <li
+                  key={tier.name}
+                  className="flex items-center gap-3.5 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3.5"
+                >
+                  <Image
+                    src={vipTierBadgeSrc(tier.name)}
+                    alt={`${tier.name} badge`}
+                    width={256}
+                    height={160}
+                    className="h-11 w-auto max-w-[96px] shrink-0 object-contain"
+                  />
+                  <div className="min-w-0">
+                    <p className="truncate font-golos text-sm font-semibold text-white">{tier.name}</p>
+                    <p className="font-golos text-xs text-secondary/65">{formatVipWager(tier.wagerUsd)}+</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </DimensionalCard>
         </ScrollReveal>
       </div>
     </section>

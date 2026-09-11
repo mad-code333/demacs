@@ -93,7 +93,10 @@ export function SiteHeader() {
           className="group shrink-0 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504]"
           aria-label="DEMACS home"
         >
-          <DemacsWordmark logoClassName="h-8 w-8" priority />
+          <DemacsWordmark
+            logoClassName="h-8 w-auto max-w-[150px] drop-shadow-[0_0_14px_rgba(120,255,0,0.2)] sm:h-9 sm:max-w-[170px]"
+            priority
+          />
         </Link>
 
         <nav className="hidden items-center lg:flex" aria-label="Main">

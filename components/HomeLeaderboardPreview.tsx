@@ -17,13 +17,13 @@ function RankRow({ player }: { player: Player }) {
   return (
     <li
       className={[
-        "grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 border-b border-white/5 px-3 py-3.5 transition-colors last:border-0 sm:grid-cols-[3rem_1fr_7rem_5.5rem] sm:gap-4 sm:px-5",
-        topThree ? "bg-primary/[0.04]" : "hover:bg-white/[0.03]",
+        "grid grid-cols-[2.5rem_1fr_auto] items-center gap-3 border-b border-white/5 px-4 py-4 transition-colors last:border-0 sm:grid-cols-[3rem_1fr_7rem_5.5rem] sm:gap-4 sm:px-6 sm:py-[1.15rem]",
+        topThree ? "bg-primary/[0.05]" : "hover:bg-white/[0.03]",
       ].join(" ")}
     >
       <span
         className={[
-          "font-golos text-sm font-semibold tabular-nums",
+          "font-golos text-base font-semibold tabular-nums",
           topThree ? "text-primary" : "text-white/85",
         ].join(" ")}
       >
@@ -64,28 +64,28 @@ export function HomeLeaderboardPreview() {
   return (
     <section
       id="leaderboard"
-      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 px-4 py-20 sm:px-6 lg:py-24"
+      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 px-4 py-24 sm:px-6 lg:py-32"
     >
-      <div className="relative mx-auto w-full max-w-6xl">
+      <div className="relative mx-auto w-full max-w-7xl">
         <ScrollReveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
             <SectionLabel icon={IoTrendingUp}>Live leaderboard</SectionLabel>
             <h2 className="mt-6 font-sports text-[clamp(2.2rem,5vw,3.8rem)] uppercase leading-none tracking-tight text-white">
               Current <span className="text-primary">standings</span>
             </h2>
-            <p className="mt-4 font-golos text-sm text-secondary/75 sm:text-base">
+            <p className="mt-5 font-golos text-base leading-7 text-secondary/75">
               Top ranks from the live affiliate feed. Same data powering the full leaderboard page.
             </p>
           </div>
-          <PrimaryButton href="/affiliates/leaderboard">
+          <PrimaryButton href="/affiliates/leaderboard" size="lg">
             <GiTrophyCup className="size-5 shrink-0" aria-hidden />
             View full leaderboard
           </PrimaryButton>
         </ScrollReveal>
 
-        <ScrollReveal className="mt-10" delay={0.06}>
-          <div className="demacs-card overflow-hidden rounded-2xl">
-            <div className="hidden grid-cols-[3rem_1fr_7rem_5.5rem] gap-4 border-b border-white/8 bg-white/[0.03] px-5 py-3 font-golos text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-secondary/55 sm:grid">
+        <ScrollReveal className="mt-12" delay={0.06}>
+          <div className="demacs-card demacs-card-light overflow-hidden rounded-[28px]">
+            <div className="hidden grid-cols-[3rem_1fr_7rem_5.5rem] gap-4 border-b border-white/8 bg-white/[0.03] px-6 py-4 font-golos text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-secondary/55 sm:grid">
               <span>Rank</span>
               <span>Player</span>
               <span className="text-right">Wagered</span>

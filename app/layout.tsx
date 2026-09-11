@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/logo.png",
+        url: "/images/username.png",
         alt: "DEMACS",
       },
     ],
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gambanator",
     description: siteDescription,
-    images: ["/logo.png"],
+    images: ["/images/username.png"],
   },
   robots: {
     index: true,

@@ -132,8 +132,8 @@ export function HeroCanvas() {
     let orbit = { rx: 0, ry: 0, rot: -0.3 };
 
     const inClearZone = (x: number, y: number) => {
-      const dx = (x - width * 0.5) / (width * 0.26);
-      const dy = (y - height * 0.36) / (height * 0.2);
+      const dx = (x - width * 0.5) / (width * 0.4);
+      const dy = (y - height * 0.3) / (height * 0.15);
       return dx * dx + dy * dy < 1;
     };
 
@@ -296,7 +296,7 @@ export function HeroCanvas() {
       const px = mx * (mobile ? 4 : 12);
       const py = my * (mobile ? 3 : 9);
       const cx = width * 0.5 + px * 0.22;
-      const cy = height * 0.36 + py * 0.22;
+      const cy = height * 0.3 + py * 0.18;
 
       ctx.clearRect(0, 0, width, height);
       drawParticles(px, py, animate, dt);
