@@ -38,7 +38,7 @@ export function PrimaryButton({
   nativeAnchor = false,
 }: PrimaryButtonProps) {
   const base =
-    "relative isolate flex h-fit cursor-pointer select-none items-center justify-center gap-2 overflow-hidden rounded-md border border-[#9dff4a] bg-primary text-center font-golos font-semibold uppercase tracking-[0.04em] text-[#061000] antialiased shadow-btn-primary transition-[border-color,background-color,box-shadow,transform,color] duration-300 hover:border-[#c8ff8a] hover:bg-[#9dff4a] hover:shadow-btn-hover active:translate-y-[2px] active:border-[#5fd000] active:shadow-btn-active focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050508]";
+    "relative isolate flex h-fit cursor-pointer select-none items-center justify-center gap-2 overflow-hidden rounded-full border border-[#9dff4a] bg-primary text-center font-golos font-semibold uppercase tracking-[0.04em] text-[#061000] antialiased shadow-btn-primary transition-[border-color,background-color,box-shadow,transform,color] duration-300 hover:border-[#c8ff8a] hover:bg-[#9dff4a] hover:shadow-btn-hover active:translate-y-[2px] active:border-[#5fd000] active:shadow-btn-active focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050508]";
 
   const cls = [base, sizeClasses[size], className].filter(Boolean).join(" ");
 
@@ -46,7 +46,7 @@ export function PrimaryButton({
     <>
       {animated ? (
         <span
-          className="pointer-events-none absolute inset-0 overflow-hidden rounded-[5px]"
+          className="pointer-events-none absolute inset-0 overflow-hidden rounded-full"
           aria-hidden
         >
           <span

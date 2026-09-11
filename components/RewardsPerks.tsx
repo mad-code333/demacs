@@ -53,7 +53,7 @@ export function RewardsPerks() {
   return (
     <section
       id="rewards"
-      className="relative isolate overflow-hidden border-t border-white/5 bg-[#0b0c11] px-4 py-20 sm:px-6 lg:py-24"
+      className="relative isolate overflow-hidden border-t border-white/5 bg-[#05070a] px-4 py-20 sm:px-6 lg:py-24"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(120,255,0,0.09),transparent_36%)]"

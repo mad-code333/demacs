@@ -32,7 +32,7 @@ const steps = [
 
 export default function Home() {
   return (
-    <div className="flex min-h-full flex-1 flex-col overflow-x-hidden bg-[#050508] text-white">
+    <div className="flex min-h-full flex-1 flex-col overflow-x-hidden bg-[#04060a] text-white">
       <Hero />
       <LiveStream />
 
@@ -42,7 +42,7 @@ export default function Home() {
         <HomeLeaderboardPreview />
       </LeaderboardDataProvider>
 
-      <section id="how-it-works" className="border-t border-white/5 bg-[#090b11] px-4 py-20 sm:px-6 lg:py-24">
+      <section id="how-it-works" className="border-t border-white/5 bg-[#04060a] px-4 py-20 sm:px-6 lg:py-24">
         <div className="mx-auto w-full max-w-6xl">
           <ScrollReveal className="mx-auto max-w-2xl text-center">
             <SectionLabel>
@@ -54,15 +54,15 @@ export default function Home() {
             </h2>
           </ScrollReveal>
 
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
             {steps.map(({ number, title, description }, index) => (
               <ScrollReveal key={number} delay={index * 0.05} className="h-full">
-                <div className="relative h-full overflow-hidden rounded-2xl border border-white/8 bg-[#101218] p-6">
+                <div className="relative h-full overflow-hidden rounded-2xl border border-white/8 bg-black/35 p-6 backdrop-blur-md">
                   <div className="flex items-center gap-3">
                     <span className="font-golos text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-primary">
                       {number}
                     </span>
-                    <div className="h-px flex-1 bg-gradient-to-r from-primary/60 to-transparent" aria-hidden />
+                    <div className="h-px flex-1 bg-gradient-to-r from-primary/50 to-transparent" aria-hidden />
                   </div>
                   <h3 className="mt-6 font-golos text-2xl font-semibold text-white">{title}</h3>
                   <p className="mt-3 text-sm leading-6 text-secondary/70">{description}</p>
@@ -73,7 +73,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="final-cta" className="border-t border-white/5 bg-[#050508] px-4 py-20 sm:px-6 lg:py-24">
+      <section id="final-cta" className="border-t border-white/5 bg-[#04060a] px-4 py-20 sm:px-6 lg:py-24">
         <div className="mx-auto w-full max-w-6xl">
           <ScrollReveal className="overflow-hidden rounded-[28px] border border-primary/25 bg-[radial-gradient(circle_at_top,_rgba(120,255,0,0.14),transparent_34%),linear-gradient(180deg,#0c1016_0%,#08090d_100%)] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_28px_60px_rgba(0,0,0,0.4)] sm:p-10 lg:p-12">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">

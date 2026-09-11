@@ -137,6 +137,14 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [mobileOpenMenu, setMobileOpenMenu] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -161,7 +169,12 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b border-white/5 bg-[#050508]/80 backdrop-blur-xl backdrop-saturate-150 ${HEADER_H}`}
+      className={[
+        `sticky top-0 z-50 w-full backdrop-blur-xl backdrop-saturate-150 transition-[background-color,border-color,box-shadow] duration-300 ${HEADER_H}`,
+        pathname === "/" && !scrolled
+          ? "border-b border-transparent bg-transparent"
+          : "border-b border-white/5 bg-[#04060a]/86 shadow-[0_10px_40px_rgba(0,0,0,0.35)]",
+      ].join(" ")}
     >
       <div className={`mx-auto flex ${HEADER_H} w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6`}>
         <Link

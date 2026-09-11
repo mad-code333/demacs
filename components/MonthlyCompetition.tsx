@@ -32,7 +32,7 @@ export function MonthlyCompetition() {
   return (
     <section
       id="monthly-competition"
-      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 bg-[#0a0b10] px-4 py-20 sm:px-6 lg:py-28"
+      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 bg-[#05070a] px-4 py-20 sm:px-6 lg:py-28"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(120,255,0,0.11),transparent_40%)]"

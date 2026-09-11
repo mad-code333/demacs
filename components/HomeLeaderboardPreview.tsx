@@ -64,7 +64,7 @@ export function HomeLeaderboardPreview() {
   return (
     <section
       id="leaderboard"
-      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 bg-[#08090e] px-4 py-20 sm:px-6 lg:py-24"
+      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 bg-[#05070a] px-4 py-20 sm:px-6 lg:py-24"
     >
       <div className="relative mx-auto w-full max-w-6xl">
         <ScrollReveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
