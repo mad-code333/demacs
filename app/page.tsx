@@ -8,10 +8,19 @@ import { LeaderboardDataProvider } from "../components/LeaderboardDataProvider";
 import { LiveStream } from "../components/LiveStream";
 import { MonthlyCompetition } from "../components/MonthlyCompetition";
 import { RewardsPerks } from "../components/RewardsPerks";
+import { HERO_WORDMARK_SRC } from "../components/DemacsLogo";
 
 export default function Home() {
   return (
     <div className="relative flex min-h-full flex-1 flex-col overflow-x-hidden text-white">
+      <link
+        rel="preload"
+        as="image"
+        href={HERO_WORDMARK_SRC}
+        type="image/webp"
+        {...{ fetchPriority: "high" as const }}
+      />
+
       <Hero />
 
       <LiveStream />

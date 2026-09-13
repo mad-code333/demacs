@@ -1,3 +1,6 @@
+"use client";
+
+import { useCallback, useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
 import { FeatureCards } from "./FeatureCards";
 import { HeroActions } from "./HeroActions";
@@ -6,7 +9,19 @@ import { HeroContent } from "./HeroContent";
 import { HeroStats } from "./HeroStats";
 import { FloatingOrbitJewels } from "./hero/FloatingOrbitJewels";
 
+/**
+ * Hero media orchestrator:
+ * 1) Paint atmosphere + LCP wordmark first
+ * 2) Mount jewels only after the logo is ready (or a short fallback)
+ * so treasure assets never starve the brand image.
+ */
 export function Hero() {
+  const [showJewels, setShowJewels] = useState(false);
+
+  const revealJewels = useCallback(() => {
+    setShowJewels(true);
+  }, []);
+
   return (
     <section className="relative isolate overflow-hidden text-white">
       <div
@@ -14,7 +29,7 @@ export function Hero() {
         aria-hidden
       />
       <HeroCanvas />
-      <FloatingOrbitJewels />
+      {showJewels ? <FloatingOrbitJewels /> : null}
 
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 bg-gradient-to-t from-[#02040a]/90 to-transparent"
@@ -23,7 +38,7 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-7xl flex-col px-4 pb-10 pt-8 sm:px-6 sm:pb-12 lg:px-8 lg:pt-10">
         <div className="flex flex-1 flex-col items-center justify-center">
-          <HeroContent />
+          <HeroContent onLogoReady={revealJewels} />
           <HeroActions />
           <HeroStats />
         </div>

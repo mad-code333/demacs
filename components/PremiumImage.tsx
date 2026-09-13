@@ -36,6 +36,9 @@ export function PremiumImage({
   alt,
   priority,
   loading,
+  decoding = "async",
+  quality,
+  fetchPriority,
   style,
   src,
   ...rest
@@ -99,7 +102,9 @@ export function PremiumImage({
         alt={alt}
         priority={priority}
         loading={resolvedLoading}
-        decoding="async"
+        decoding={decoding}
+        quality={quality}
+        fetchPriority={fetchPriority ?? (priority ? "high" : undefined)}
         onLoad={handleLoad}
         className={[
           "demacs-img__media",

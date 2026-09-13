@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import type { OrbitJewelConfig } from "./orbitConfig";
 import { JEWEL_SRC, ORBIT_GEOMETRY } from "./orbitConfig";
@@ -129,13 +128,16 @@ export function OrbitJewel({ config, parallaxX, parallaxY, reduceMotion }: Orbit
             reduceMotion ? "" : "orbit-jewel__body--live",
           ].join(" ")}
         >
-          <Image
+          {/* Native img — already-optimized WebP, no /_next/image */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={src}
             alt=""
-            width={Math.round(config.size * 2)}
-            height={Math.round(config.size * 2)}
+            width={Math.min(256, Math.round(config.size * 2))}
+            height={Math.min(256, Math.round(config.size * 2))}
             loading="lazy"
             decoding="async"
+            fetchPriority="low"
             onLoad={(event) => {
               void tryReveal(event.currentTarget);
             }}
@@ -146,7 +148,6 @@ export function OrbitJewel({ config, parallaxX, parallaxY, reduceMotion }: Orbit
             ]
               .filter(Boolean)
               .join(" ")}
-            sizes={`${Math.ceil(config.size * 1.5)}px`}
           />
           {ready && (config.kind === "gem" || config.kind === "crystal") ? (
             <span className="orbit-jewel__sparkle" aria-hidden />

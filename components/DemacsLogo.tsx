@@ -1,51 +1,56 @@
 "use client";
 
-import { PremiumImage } from "./PremiumImage";
+import { InstantImage } from "./InstantImage";
 
-/** Intrinsic aspect of `/public/images/username.png` (2170×725). */
+/** Intrinsic aspect of the DEMACS wordmark. */
 export const USERNAME_LOGO_W = 2170;
 export const USERNAME_LOGO_H = 725;
 
-/** Intrinsic size of `/public/images/logo.png` (square D mark). */
-export const LOGO_MARK_SIZE = 1254;
+/** Optimized static WebPs — served directly, never through /_next/image. */
+export const HERO_WORDMARK_SRC = "/images/hero/username.webp";
+export const HERO_LOGO_MARK_SRC = "/images/hero/logo.webp";
 
 type DemacsLogoProps = {
   className?: string;
   frameClassName?: string;
-  /** Display width hint for Next Image (height follows aspect ratio). */
   width?: number;
   height?: number;
   priority?: boolean;
   sizes?: string;
+  quality?: number;
+  fetchPriority?: "high" | "low" | "auto";
+  onReady?: () => void;
 };
 
-/** Full brand wordmark from `/public/images/username.png` — never stretch or crop. */
+/** Full brand wordmark — direct WebP (bypasses Next image optimizer). */
 export function DemacsLogo({
   className,
   frameClassName,
-  width = 480,
+  width = 860,
   height,
   priority = false,
-  sizes,
+  fetchPriority,
+  onReady,
 }: DemacsLogoProps) {
   const h = height ?? Math.round((width * USERNAME_LOGO_H) / USERNAME_LOGO_W);
 
   return (
-    <PremiumImage
-      src="/images/username.png"
+    <InstantImage
+      src={HERO_WORDMARK_SRC}
       alt="DEMACS"
       width={width}
       height={h}
-      priority={priority}
-      sizes={sizes}
+      loading={priority ? "eager" : "lazy"}
+      fetchPriority={fetchPriority ?? (priority ? "high" : "auto")}
       frameClassName={["block max-w-full", frameClassName].filter(Boolean).join(" ")}
       className={["h-auto w-auto max-w-full object-contain", className].filter(Boolean).join(" ")}
       showPlaceholder
+      onReady={onReady}
     />
   );
 }
 
-/** Nav/footer brand: `logo.png` D mark beside EMACS text. */
+/** Nav/footer brand: compact logo mark beside EMACS text. */
 export function DemacsWordmark({
   className,
   logoClassName,
@@ -64,13 +69,13 @@ export function DemacsWordmark({
         .filter(Boolean)
         .join(" ")}
     >
-      <PremiumImage
-        src="/images/logo.png"
+      <InstantImage
+        src={HERO_LOGO_MARK_SRC}
         alt=""
         width={72}
         height={72}
-        priority={priority}
-        sizes="40px"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "low"}
         aria-hidden
         frameClassName="inline-flex size-8 shrink-0 sm:size-9"
         className={

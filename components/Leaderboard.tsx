@@ -152,7 +152,8 @@ export function PodiumCard({ player }: { player: Player }) {
           alt=""
           width={80}
           height={80}
-          className="absolute -bottom-12 left-1/2 h-auto w-20 -translate-x-1/2"
+          className="absolute -bottom-12 left-1/2 w-20 -translate-x-1/2"
+          style={{ height: "auto" }}
         />
       </div>
 

@@ -21,14 +21,14 @@ export type OrbitJewelConfig = {
   blend?: JewelBlend;
 };
 
-/** public/images/1.png–6.png */
+/** Optimized hero jewels — 256px WebP (see /public/images/hero/jewels). */
 export const JEWEL_SRC: Record<JewelKind, string> = {
-  coin: "/images/1.png",
-  gem: "/images/2.png",
-  crown: "/images/3.png",
-  ring: "/images/4.png",
-  crystal: "/images/5.png",
-  trophy: "/images/6.png",
+  coin: "/images/hero/jewels/1.webp",
+  gem: "/images/hero/jewels/2.webp",
+  crown: "/images/hero/jewels/3.webp",
+  ring: "/images/hero/jewels/4.webp",
+  crystal: "/images/hero/jewels/5.webp",
+  trophy: "/images/hero/jewels/6.webp",
 };
 
 /**
