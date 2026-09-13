@@ -23,7 +23,7 @@ type SessionUser = {
 };
 
 const dropdownPanelClass =
-  "rounded-xl border border-white/10 bg-[#08080c]/95 py-2 shadow-[0_16px_48px_rgba(0,0,0,0.55)] backdrop-blur-xl";
+  "demacs-glass-panel rounded-xl py-2";
 
 const menuItemClass =
   "flex w-full items-center gap-2 border-0 bg-transparent px-4 py-2.5 text-left font-golos text-[0.7rem] font-semibold uppercase tracking-wider text-white transition-colors hover:bg-white/5";
@@ -75,7 +75,7 @@ function ProfileModal({ user, open, onClose }: { user: SessionUser; open: boolea
         role="dialog"
         aria-modal="true"
         aria-labelledby="profile-modal-title"
-        className="relative z-10 w-full max-w-md rounded-xl border border-white/10 bg-[#08080c] p-6 shadow-[0_24px_64px_rgba(0,0,0,0.65)]"
+        className="demacs-glass-panel relative z-10 w-full max-w-md rounded-xl p-6"
       >
         <div className="flex items-start justify-between gap-3">
           <h2 id="profile-modal-title" className="type-card-title font-sans text-xl text-white sm:font-bold">

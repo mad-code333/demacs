@@ -92,7 +92,7 @@ export function RegisterCompleteForm() {
 
   if (!sessionUser) {
     return (
-      <div className="mx-auto max-w-md rounded-lg border border-white/10 bg-[#08080c]/80 p-8 text-center font-golos">
+      <div className="demacs-glass-panel mx-auto max-w-md rounded-lg p-8 text-center font-golos">
         <p className="text-sm text-secondary/80">Sign in with Kick first to finish registration.</p>
         <a
           href="/api/auth/kick?next=/register/complete"
@@ -107,7 +107,7 @@ export function RegisterCompleteForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="mx-auto w-full max-w-md rounded-xl border border-white/10 bg-[#08080c]/90 p-6 shadow-[0_16px_48px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8"
+      className="demacs-glass-panel mx-auto w-full max-w-md rounded-xl p-6 sm:p-8"
     >
       <h1 className="type-card-title font-sans text-xl text-white sm:text-2xl sm:font-bold">Complete registration</h1>
       <p className="mt-2 font-golos text-sm text-secondary/75">
@@ -158,7 +158,7 @@ export function RegisterCompleteForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="mt-6 w-full rounded-md border border-[#9dff4a] bg-primary py-3 font-golos text-sm font-semibold uppercase tracking-wide text-[#061000] shadow-btn-primary transition-[border-color,background-color,transform] hover:border-[#c8ff8a] hover:bg-[#9dff4a] disabled:cursor-not-allowed disabled:opacity-60"
+        className="type-btn demacs-btn-primary mt-6 w-full rounded-md py-3 font-sans text-sm uppercase disabled:cursor-not-allowed disabled:opacity-60"
       >
         {submitting ? "Saving…" : "Save & continue"}
       </button>

@@ -152,22 +152,60 @@
 .demacs-card {
   --mouse-x: 50%;
   --mouse-y: 40%;
+  --card-rx: 0deg;
+  --card-ry: 0deg;
+  --card-bg: rgba(5, 12, 8, 0.52);
+  --card-border: rgba(120, 255, 0, 0.22);
+  --card-glow: rgba(120, 255, 0, 0.06);
+  --card-blur: 16px;
   position: relative;
   isolation: isolate;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  border: 1px solid var(--card-border);
   background:
-    linear-gradient(165deg, rgba(255, 255, 255, 0.08) 0%, transparent 36%),
-    linear-gradient(180deg, rgba(12, 18, 14, 0.96) 0%, rgba(4, 8, 6, 0.97) 100%);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 35%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 42%),
+    var(--card-bg);
+  -webkit-backdrop-filter: blur(var(--card-blur)) saturate(1.15);
+  backdrop-filter: blur(var(--card-blur)) saturate(1.15);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.1) inset,
-    0 -1px 0 rgba(0, 0, 0, 0.35) inset,
-    0 5px 0 rgba(0, 0, 0, 0.28),
-    0 20px 44px rgba(0, 0, 0, 0.4);
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.28) inset,
+    0 12px 32px rgba(0, 0, 0, 0.38),
+    0 0 28px var(--card-glow);
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.3s ease,
-    box-shadow 0.35s ease;
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease;
   will-change: transform;
+}
+
+.demacs-card--secondary {
+  --card-bg: rgba(5, 12, 8, 0.42);
+  --card-border: rgba(120, 255, 0, 0.18);
+  --card-glow: rgba(120, 255, 0, 0.04);
+  --card-blur: 14px;
+}
+
+.demacs-card--featured {
+  --card-bg: rgba(30, 60, 15, 0.48);
+  --card-border: rgba(120, 255, 0, 0.34);
+  --card-glow: rgba(120, 255, 0, 0.12);
+}
+
+.demacs-card--static:hover {
+  transform: none;
+  border-color: var(--card-border);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.28) inset,
+    0 12px 32px rgba(0, 0, 0, 0.38),
+    0 0 28px var(--card-glow);
+}
+
+.demacs-card--static.demacs-card-light:hover::before {
+  opacity: 0;
 }
 
 .demacs-card-light::before {
@@ -178,12 +216,27 @@
   border-radius: inherit;
   z-index: 0;
   background: radial-gradient(
-    520px circle at var(--mouse-x) var(--mouse-y),
-    rgba(120, 255, 0, 0.14),
-    transparent 42%
+    420px circle at var(--mouse-x) var(--mouse-y),
+    rgba(120, 255, 0, 0.12),
+    transparent 48%
   );
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.22s ease;
+}
+
+.demacs-card::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    transparent 28%
+  );
+  opacity: 0.85;
 }
 
 .demacs-card > * {
@@ -192,15 +245,13 @@
 }
 
 .demacs-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(120, 255, 0, 0.34);
+  transform: translateY(-4px) perspective(900px) rotateX(var(--card-rx)) rotateY(var(--card-ry));
+  border-color: rgba(120, 255, 0, 0.62);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.14) inset,
-    0 -1px 0 rgba(0, 0, 0, 0.28) inset,
-    0 9px 0 rgba(0, 0, 0, 0.22),
-    0 28px 56px rgba(0, 0, 0, 0.48),
-    0 0 0 1px rgba(120, 255, 0, 0.08),
-    0 0 36px rgba(120, 255, 0, 0.08);
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.24) inset,
+    0 18px 40px rgba(0, 0, 0, 0.42),
+    0 0 36px rgba(120, 255, 0, 0.14);
 }
 
 .demacs-card-light:hover::before {
@@ -208,13 +259,134 @@
 }
 
 .demacs-icon-plate {
-  border: 1px solid rgba(120, 255, 0, 0.26);
+  border: 1px solid rgba(120, 255, 0, 0.28);
   background:
-    linear-gradient(180deg, rgba(120, 255, 0, 0.16) 0%, rgba(120, 255, 0, 0.05) 100%);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 45%),
+    rgba(8, 22, 12, 0.35);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.1) inset,
-    0 8px 18px rgba(0, 0, 0, 0.28),
-    0 0 14px rgba(120, 255, 0, 0.06);
+    0 8px 18px rgba(0, 0, 0, 0.22),
+    0 0 16px rgba(120, 255, 0, 0.08);
+}
+
+/* Glass control surfaces (modals / forms / dropdowns) */
+.demacs-glass-panel {
+  border: 1px solid rgba(120, 255, 0, 0.2);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 35%),
+    rgba(5, 12, 8, 0.58);
+  -webkit-backdrop-filter: blur(18px) saturate(1.12);
+  backdrop-filter: blur(18px) saturate(1.12);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    0 0 28px rgba(120, 255, 0, 0.06);
+}
+
+/* Glass buttons */
+.demacs-btn-primary {
+  border: 1px solid rgba(184, 255, 106, 0.55);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 42%),
+    rgba(120, 255, 0, 0.82);
+  color: #061000;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.18) inset,
+    0 4px 0 rgba(42, 98, 0, 0.45),
+    0 14px 32px rgba(120, 255, 0, 0.22);
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.demacs-btn-primary:hover {
+  border-color: rgba(212, 255, 154, 0.85);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent 42%),
+    rgba(154, 255, 50, 0.9);
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.42) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.16) inset,
+    0 6px 0 rgba(52, 120, 0, 0.4),
+    0 18px 40px rgba(120, 255, 0, 0.3);
+}
+
+.demacs-btn-primary:active {
+  transform: translateY(0);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 42%),
+    rgba(100, 210, 0, 0.78);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 2px 0 rgba(36, 82, 0, 0.45),
+    0 8px 18px rgba(120, 255, 0, 0.14);
+}
+
+.demacs-btn-secondary {
+  border: 1px solid rgba(120, 255, 0, 0.3);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 40%),
+    rgba(8, 18, 10, 0.45);
+  color: #fafafa;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.3) inset,
+    0 4px 0 rgba(0, 0, 0, 0.35),
+    0 14px 32px rgba(0, 0, 0, 0.32),
+    0 0 20px rgba(120, 255, 0, 0.06);
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.demacs-btn-secondary:hover {
+  border-color: rgba(120, 255, 0, 0.65);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.09), transparent 40%),
+    rgba(12, 28, 16, 0.55);
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.28) inset,
+    0 6px 0 rgba(0, 0, 0, 0.35),
+    0 18px 40px rgba(0, 0, 0, 0.36),
+    0 0 28px rgba(120, 255, 0, 0.12);
+}
+
+.demacs-btn-secondary:active {
+  transform: translateY(0);
+  background: rgba(6, 14, 8, 0.55);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 2px 0 rgba(0, 0, 0, 0.4),
+    0 8px 18px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 768px) {
+  .demacs-card {
+    --card-blur: 12px;
+  }
+
+  .demacs-card--secondary {
+    --card-blur: 10px;
+  }
+
+  .demacs-glass-panel {
+    -webkit-backdrop-filter: blur(12px) saturate(1.08);
+    backdrop-filter: blur(12px) saturate(1.08);
+  }
 }
 
 body {
@@ -231,22 +403,24 @@ button {
 }
 
 .shadow-btn-primary {
-  --tw-shadow: 0px 5px 0px 0px #2f6b00;
-  --tw-shadow-colored: 0px 5px 0px 0px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-    var(--tw-shadow);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 4px 0 rgba(42, 98, 0, 0.45),
+    0 14px 32px rgba(120, 255, 0, 0.22);
 }
 
 .shadow-btn-hover {
-  --tw-shadow: 0px 6px 0px 0px #3f8c00;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-    var(--tw-shadow);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.42) inset,
+    0 6px 0 rgba(52, 120, 0, 0.4),
+    0 18px 40px rgba(120, 255, 0, 0.3);
 }
 
 .shadow-btn-active {
-  --tw-shadow: 0px 1px 0px 0px #245200;
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-    var(--tw-shadow);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 2px 0 rgba(36, 82, 0, 0.45),
+    0 8px 18px rgba(120, 255, 0, 0.14);
 }
 
 @keyframes button-shine {
@@ -505,5 +679,12 @@ button {
 
   .demacs-card-light:hover::before {
     opacity: 0.35;
+  }
+
+  .demacs-btn-primary:hover,
+  .demacs-btn-primary:active,
+  .demacs-btn-secondary:hover,
+  .demacs-btn-secondary:active {
+    transform: none;
   }
 }

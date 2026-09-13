@@ -35,19 +35,38 @@ export function DimensionalCard({
     const y = ((event.clientY - rect.top) / rect.height) * 100;
     ref.current.style.setProperty("--mouse-x", `${x}%`);
     ref.current.style.setProperty("--mouse-y", `${y}%`);
+    const rx = ((y - 50) / 50) * -1.6;
+    const ry = ((x - 50) / 50) * 1.8;
+    ref.current.style.setProperty("--card-rx", `${rx.toFixed(2)}deg`);
+    ref.current.style.setProperty("--card-ry", `${ry.toFixed(2)}deg`);
   };
 
   const onPointerLeave = () => {
     if (!ref.current) return;
     ref.current.style.setProperty("--mouse-x", "50%");
     ref.current.style.setProperty("--mouse-y", "40%");
+    ref.current.style.setProperty("--card-rx", "0deg");
+    ref.current.style.setProperty("--card-ry", "0deg");
   };
 
   return (
     <Tag
       ref={ref}
-      className={["demacs-card demacs-card-light", className].filter(Boolean).join(" ")}
-      style={{ "--mouse-x": "50%", "--mouse-y": "40%" } as CSSProperties}
+      className={[
+        "demacs-card demacs-card-light",
+        interactive ? "" : "demacs-card--static",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      style={
+        {
+          "--mouse-x": "50%",
+          "--mouse-y": "40%",
+          "--card-rx": "0deg",
+          "--card-ry": "0deg",
+        } as CSSProperties
+      }
       onPointerMove={interactive ? onPointerMove : undefined}
       onPointerLeave={interactive ? onPointerLeave : undefined}
     >

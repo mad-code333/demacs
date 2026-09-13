@@ -36,7 +36,7 @@ export default function ContactPage() {
                 href="https://discord.gg/gambanator"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-xl border border-white/10 bg-[#08080c]/60 p-5 transition-colors hover:border-primary/35 hover:bg-white/4"
+                className="demacs-glass-panel group flex items-center gap-4 rounded-xl p-5 transition-[border-color,box-shadow,transform] duration-200 hover:border-primary/55 hover:-translate-y-0.5"
               >
                 <span className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-[#5865F2]/15 text-[#5865F2] transition-colors group-hover:bg-[#5865F2]/25">
                   <FaDiscord className="size-7" aria-hidden />
@@ -52,7 +52,7 @@ export default function ContactPage() {
                 href="https://kick.com/gambanator"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-xl border border-white/10 bg-[#08080c]/60 p-5 transition-colors hover:border-primary/35 hover:bg-white/4"
+                className="demacs-glass-panel group flex items-center gap-4 rounded-xl p-5 transition-[border-color,box-shadow,transform] duration-200 hover:border-primary/55 hover:-translate-y-0.5"
               >
                 <span className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
                   <FaKickstarterK className="size-6" aria-hidden />

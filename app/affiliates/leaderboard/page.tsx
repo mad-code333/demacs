@@ -232,7 +232,7 @@ export default function AffiliatesLeaderboardPage() {
 
         <ScrollReveal className="mt-16 w-full" delay={0.06}>
           {phase === "loading" ? (
-            <div className="mx-auto flex min-h-[200px] max-w-2xl flex-col items-center justify-center rounded-xl border border-secondary/10 bg-[#0c0c10]/80 px-6 py-16 text-center">
+            <div className="demacs-glass-panel mx-auto flex min-h-[200px] max-w-2xl flex-col items-center justify-center rounded-xl px-6 py-16 text-center">
               <div
                 className="size-10 animate-pulse rounded-full bg-primary/20"
                 aria-hidden
@@ -244,7 +244,7 @@ export default function AffiliatesLeaderboardPage() {
           ) : null}
 
           {showEmpty ? (
-            <div className="mx-auto max-w-xl rounded-xl border border-secondary/10 bg-[#0c0c10]/80 px-6 py-12 text-center">
+            <div className="demacs-glass-panel mx-auto max-w-xl rounded-xl px-6 py-12 text-center">
               <p className="font-golos text-sm text-secondary/80">
                 No wager activity for this period yet. Check back after players
                 start wagering under your code.

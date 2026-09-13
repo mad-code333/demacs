@@ -57,7 +57,7 @@ export function ContactForm() {
   if (sent) {
     return (
       <motion.div
-        className="rounded-xl border border-white/10 bg-[#08080c]/90 p-6 shadow-[0_16px_48px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8"
+        className="demacs-glass-panel rounded-xl p-6 sm:p-8"
         initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: reduceMotion ? 0 : 0.4, ease }}
@@ -81,7 +81,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-xl border border-white/10 bg-[#08080c]/90 p-6"
+      className="demacs-glass-panel rounded-xl p-6 sm:p-8"
     >
       <h2 className="type-card-title font-sans text-xl text-white sm:text-2xl sm:font-bold">Send a message</h2>
       <p className="mt-2 font-golos text-sm text-secondary/75">
@@ -147,7 +147,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="mt-6 w-full rounded-md border border-[#9dff4a] bg-primary py-3 font-golos text-sm font-semibold uppercase tracking-wide text-[#061000] shadow-btn-primary transition-[border-color,background-color,transform] hover:border-[#c8ff8a] hover:bg-[#9dff4a] disabled:cursor-not-allowed disabled:opacity-60"
+        className="type-btn demacs-btn-primary mt-6 w-full rounded-md py-3 font-sans text-sm uppercase disabled:cursor-not-allowed disabled:opacity-60"
       >
         {submitting ? "Sending…" : "Send message"}
       </button>

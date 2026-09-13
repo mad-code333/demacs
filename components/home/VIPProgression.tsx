@@ -56,7 +56,7 @@ export function VIPProgression() {
               <DimensionalCard
                 className={[
                   "relative z-10 flex h-full min-h-[240px] flex-col items-center rounded-[24px] p-6 text-center sm:p-7",
-                  index === VIP_PROGRESSION_MILESTONES.length - 1 ? "border-primary/30" : "",
+                  index === VIP_PROGRESSION_MILESTONES.length - 1 ? "demacs-card--featured" : "",
                 ].join(" ")}
               >
                 <Image

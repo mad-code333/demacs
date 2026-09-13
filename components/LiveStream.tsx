@@ -48,7 +48,7 @@ export function LiveStream() {
             </div>
 
             <DimensionalCard className="overflow-hidden rounded-[28px]" interactive={false}>
-              <div className="flex items-center justify-between border-b border-white/8 bg-[#0a0b10]/80 px-5 py-4 backdrop-blur-sm">
+              <div className="flex items-center justify-between border-b border-primary/15 bg-[rgba(5,12,8,0.35)] px-5 py-4 backdrop-blur-md">
                 <div className="flex items-center gap-2.5 font-golos text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-white">
                   <span className="relative flex size-2.5">
                     <span className="absolute inline-flex size-full animate-ping rounded-full bg-red-500 opacity-60 motion-reduce:animate-none" />

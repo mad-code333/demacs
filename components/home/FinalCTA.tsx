@@ -11,7 +11,7 @@ export function FinalCTA() {
     <section id="final-cta" className="relative isolate border-t border-white/5 px-4 py-24 sm:px-6 lg:py-32">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(120,255,0,0.14),transparent_42%)]" aria-hidden />
       <div className="relative mx-auto w-full max-w-7xl">
-        <ScrollReveal className="demacs-card demacs-card-light overflow-hidden rounded-[32px] border-primary/22 p-8 sm:p-12 lg:p-14">
+        <ScrollReveal className="demacs-card demacs-card-light demacs-card--featured overflow-hidden rounded-[32px] p-8 sm:p-12 lg:p-14">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
               <div className="mb-6 flex flex-wrap items-center gap-4">

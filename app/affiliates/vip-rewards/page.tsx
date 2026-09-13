@@ -65,7 +65,7 @@ export default function VipRewardsPage() {
         >
           {VIP_TIERS.map((tier) => (
             <motion.li key={tier.name} role="listitem" variants={listItemVariants}>
-              <div className="flex items-center justify-between gap-3 rounded-xl border border-white/8 bg-[#0c0c10]/90 px-3 py-3 sm:gap-4 sm:px-4">
+              <div className="demacs-glass-panel flex items-center justify-between gap-3 rounded-xl px-3 py-3 sm:gap-4 sm:px-4">
                 <Image
                   src={vipTierBadgeSrc(tier.name)}
                   alt={`${tier.name} badge`}

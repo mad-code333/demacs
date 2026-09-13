@@ -279,7 +279,7 @@ export function CountdownStrip({
 
 export function LeaderboardTable({ players }: { players: Player[] }) {
   return (
-    <div className="overflow-x-auto rounded-xl border border-secondary/10 bg-[#0c0c10]/80 shadow-[0_0_0_1px_rgba(255,255,255,0.03)_inset]">
+    <div className="demacs-glass-panel overflow-x-auto rounded-xl">
       <table className="w-full min-w-[520px] border-collapse text-left font-golos text-sm">
         <thead>
           <tr className="border-b border-secondary/10 bg-secondary/5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-secondary/60">
