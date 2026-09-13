@@ -29,17 +29,17 @@ const stats = [
 
 export function HeroStats() {
   return (
-    <ul className="mt-11 grid w-full max-w-3xl grid-cols-1 gap-3.5 sm:mt-12 sm:grid-cols-3 sm:gap-4" role="list">
+    <ul className="mt-9 grid w-full max-w-3xl grid-cols-1 gap-3.5 sm:mt-10 sm:grid-cols-3 sm:gap-4" role="list">
       {stats.map(({ value, label, Icon }) => (
         <li key={label} className="h-full">
           <DimensionalCard className="flex h-full flex-col items-center rounded-[22px] px-4 py-5 text-center sm:px-5 sm:py-6">
             <span className="demacs-icon-plate mb-3 flex size-10 items-center justify-center rounded-full text-primary">
               <Icon className="size-[18px]" aria-hidden />
             </span>
-            <p className="font-golos text-[1.35rem] font-extrabold tracking-tight text-primary sm:text-[1.65rem]">
+            <p className="font-body text-[1.35rem] font-extrabold tracking-tight text-primary sm:text-[1.65rem]">
               {value}
             </p>
-            <p className="mt-2 font-golos text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[#8E978E] sm:text-[0.7rem]">
+            <p className="mt-2 font-body text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[#8E978E] sm:text-[0.7rem]">
               {label}
             </p>
           </DimensionalCard>

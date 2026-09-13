@@ -26,10 +26,10 @@ export function HowItWorksDiagram() {
       <div className="relative mx-auto w-full max-w-7xl">
         <ScrollReveal className="mx-auto max-w-2xl text-center">
           <SectionLabel>How it works</SectionLabel>
-          <h2 className="mt-6 font-sports text-[clamp(2.2rem,5vw,3.8rem)] uppercase leading-none tracking-tight text-white">
+          <h2 className="mt-6 font-display text-[clamp(2rem,4.8vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-white">
             Play → Earn → Climb → <span className="text-primary">Reward</span>
           </h2>
-          <p className="mt-5 font-golos text-base leading-7 text-[#8E978E]">
+          <p className="mt-5 font-body text-base leading-7 text-[#8E978E]">
             A clear path from your first session to the monthly prize pool.
           </p>
         </ScrollReveal>
@@ -44,27 +44,27 @@ export function HowItWorksDiagram() {
                 >
                   <div
                     className={[
-                      "h-px w-full bg-gradient-to-r from-primary/60 via-primary/25 to-transparent",
+                      "h-px w-full bg-gradient-to-r from-primary/45 via-primary/18 to-transparent",
                       !reduce ? "demacs-line-draw" : "",
                     ].join(" ")}
                     style={!reduce ? { animationDelay: `${0.15 + index * 0.12}s` } : undefined}
                   />
                   {!reduce ? (
-                    <span className="absolute top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-primary shadow-[0_0_10px_rgba(120,255,0,0.8)] demacs-pulse-dot" />
+                    <span className="absolute top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-primary/80 shadow-[0_0_8px_rgba(120,255,0,0.45)] demacs-pulse-dot" />
                   ) : null}
                 </div>
               ) : null}
               <DimensionalCard className="relative z-10 flex h-full min-h-[220px] flex-col rounded-[24px] p-6 sm:p-7">
                 <div className="flex items-center justify-between gap-3">
-                  <span className="font-golos text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
+                  <span className="font-body text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
                     {n}
                   </span>
                   <div className="demacs-icon-plate flex size-12 items-center justify-center rounded-2xl text-primary sm:size-[52px]">
                     <Icon className="size-6 sm:size-7" aria-hidden />
                   </div>
                 </div>
-                <h3 className="mt-7 font-golos text-2xl font-semibold tracking-tight text-white">{title}</h3>
-                <p className="mt-3 text-[0.95rem] leading-7 text-[#8E978E]">{desc}</p>
+                <h3 className="mt-7 font-display text-2xl font-semibold tracking-tight text-white">{title}</h3>
+                <p className="mt-3 font-body text-[0.95rem] leading-7 text-[#8E978E]">{desc}</p>
               </DimensionalCard>
             </ScrollReveal>
           ))}

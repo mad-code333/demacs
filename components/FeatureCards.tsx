@@ -46,7 +46,7 @@ export function FeatureCards() {
     >
       {features.map(({ title, description, href, native, Icon }, index) => {
         const inner = (
-          <DimensionalCard className="group flex h-full min-h-[148px] flex-col gap-5 rounded-[24px] px-5 py-6 sm:min-h-[168px] sm:px-6 sm:py-7">
+          <DimensionalCard className="group flex h-full min-h-[148px] flex-col gap-5 rounded-[24px] px-5 py-6 sm:min-h-[160px] sm:px-6 sm:py-7">
             <div className="flex items-start justify-between gap-3">
               <div className="demacs-icon-plate flex size-12 items-center justify-center rounded-2xl text-primary transition-transform duration-300 group-hover:scale-105 sm:size-[52px]">
                 <Icon className="size-6 sm:size-7" aria-hidden />
@@ -57,10 +57,10 @@ export function FeatureCards() {
               />
             </div>
             <div className="min-w-0">
-              <h2 className="font-golos text-lg font-semibold tracking-tight text-white sm:text-xl">
+              <h2 className="font-display text-lg font-semibold tracking-tight text-white sm:text-xl">
                 {title}
               </h2>
-              <p className="mt-2 font-golos text-[0.92rem] leading-6 text-[#8E978E]">{description}</p>
+              <p className="mt-2 font-body text-[0.92rem] leading-6 text-[#8E978E]">{description}</p>
             </div>
           </DimensionalCard>
         );

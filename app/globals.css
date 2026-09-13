@@ -1,13 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
-
-@font-face {
-  font-family: "Sports World";
-  src: url("/fonts/Sports%20World-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 :root {
   --background: #030504;
@@ -15,8 +7,13 @@
   --primary: #78ff00;
   --secondary: #8e978e;
   --bright: #fafafa;
-  --font-golos-stack: "Golos Text", ui-sans-serif, system-ui, sans-serif;
-  --font-sports-stack: "Sports World", ui-sans-serif, system-ui, sans-serif;
+  /* Body / UI — Outfit */
+  --font-body-stack: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  /* Display / headings — Space Grotesk */
+  --font-display-stack: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  /* Legacy aliases → new stacks (updates font-golos / font-sports site-wide) */
+  --font-golos-stack: var(--font-body-stack);
+  --font-sports-stack: var(--font-display-stack);
 }
 
 @theme inline {
@@ -25,10 +22,12 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-bright: var(--bright);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-golos: var(--font-golos-stack);
-  --font-sports: var(--font-sports-stack);
+  --font-sans: var(--font-body-stack);
+  --font-body: var(--font-body-stack);
+  --font-display: var(--font-display-stack);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-golos: var(--font-body-stack);
+  --font-sports: var(--font-display-stack);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -163,13 +162,13 @@
 }
 
 .demacs-icon-plate {
-  border: 1px solid rgba(120, 255, 0, 0.3);
+  border: 1px solid rgba(120, 255, 0, 0.26);
   background:
-    linear-gradient(180deg, rgba(120, 255, 0, 0.2) 0%, rgba(120, 255, 0, 0.06) 100%);
+    linear-gradient(180deg, rgba(120, 255, 0, 0.16) 0%, rgba(120, 255, 0, 0.05) 100%);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.12) inset,
-    0 10px 24px rgba(0, 0, 0, 0.3),
-    0 0 22px rgba(120, 255, 0, 0.1);
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 8px 18px rgba(0, 0, 0, 0.28),
+    0 0 14px rgba(120, 255, 0, 0.06);
 }
 
 body {
@@ -229,13 +228,225 @@ button {
   animation: button-shine 6s linear normal forwards infinite;
 }
 
+/* —— Hero orbit jewels —— */
+@keyframes orbit-jewel-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(var(--oj-drift, 5px), calc(var(--oj-bob, 14px) * -1), 0)
+      scale(1.03);
+  }
+}
+
+@keyframes orbit-jewel-tilt {
+  0%,
+  100% {
+    transform: rotate(var(--oj-rot, 0deg));
+  }
+  50% {
+    transform: rotate(calc(var(--oj-rot, 0deg) + 8deg));
+  }
+}
+
+@keyframes orbit-sparkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.85);
+  }
+  45% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+  55% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes orbit-particle-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: var(--p-opacity, 0.3);
+  }
+  50% {
+    transform: translate3d(4px, -12px, 0);
+    opacity: calc(var(--p-opacity, 0.3) + 0.2);
+  }
+}
+
+.orbit-jewel {
+  will-change: transform;
+}
+
+.orbit-jewel__bloom {
+  position: absolute;
+  inset: -24%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(120, 255, 0, 0.16) 0%,
+    rgba(80, 255, 0, 0.05) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.orbit-jewel--coin .orbit-jewel__bloom,
+.orbit-jewel--trophy .orbit-jewel__bloom,
+.orbit-jewel--ring .orbit-jewel__bloom {
+  background: radial-gradient(
+    circle,
+    rgba(245, 197, 66, 0.14) 0%,
+    rgba(120, 255, 0, 0.03) 48%,
+    transparent 70%
+  );
+}
+
+.orbit-jewel--gem .orbit-jewel__bloom,
+.orbit-jewel--crystal .orbit-jewel__bloom,
+.orbit-jewel--crown .orbit-jewel__bloom {
+  background: radial-gradient(
+    circle,
+    rgba(120, 255, 0, 0.16) 0%,
+    rgba(80, 255, 0, 0.05) 50%,
+    transparent 70%
+  );
+}
+
+.orbit-jewel--bg .orbit-jewel__bloom {
+  opacity: 0.35;
+  inset: -14%;
+}
+
+.orbit-jewel--fg .orbit-jewel__bloom {
+  inset: -28%;
+  opacity: 0.75;
+}
+
+.orbit-jewel__spin {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: rotate(var(--oj-rot, 0deg));
+}
+
+.orbit-jewel__spin--live {
+  animation: orbit-jewel-tilt var(--oj-dur, 12s) ease-in-out var(--oj-delay, 0s)
+    infinite;
+}
+
+.orbit-jewel__body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.orbit-jewel__body--live {
+  animation: orbit-jewel-float var(--oj-dur, 12s) ease-in-out var(--oj-delay, 0s)
+    infinite;
+}
+
+.orbit-jewel__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(120, 255, 0, 0.16))
+    drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
+}
+
+.orbit-jewel__img--screen {
+  mix-blend-mode: screen;
+}
+
+.orbit-jewel--bg .orbit-jewel__img {
+  filter: blur(1.2px) drop-shadow(0 0 6px rgba(120, 255, 0, 0.1))
+    drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+}
+
+.orbit-jewel--mid .orbit-jewel__img {
+  filter: drop-shadow(0 0 14px rgba(120, 255, 0, 0.18))
+    drop-shadow(0 0 32px rgba(80, 255, 0, 0.06))
+    drop-shadow(0 10px 18px rgba(0, 0, 0, 0.42));
+}
+
+.orbit-jewel--fg .orbit-jewel__img {
+  filter: drop-shadow(0 0 16px rgba(120, 255, 0, 0.2))
+    drop-shadow(0 0 40px rgba(80, 255, 0, 0.07))
+    drop-shadow(0 12px 22px rgba(0, 0, 0, 0.48));
+}
+
+.orbit-jewel__sparkle {
+  position: absolute;
+  top: 18%;
+  left: 28%;
+  width: 18%;
+  height: 14%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.75) 0%, transparent 70%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: orbit-sparkle 5.5s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.orbit-jewel__shadow {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  bottom: -4%;
+  height: 14%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+  filter: blur(3px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.orbit-jewel--bg .orbit-jewel__shadow {
+  opacity: 0.22;
+}
+
+.orbit-particle {
+  will-change: transform, opacity;
+}
+
+.orbit-particle--live {
+  animation: orbit-particle-drift var(--p-dur, 12s) ease-in-out var(--p-delay, 0s)
+    infinite;
+}
+
+@media (max-width: 767px) {
+  .orbit-jewel--fg .orbit-jewel__bloom {
+    opacity: 0.65;
+  }
+
+  .orbit-jewel--mid .orbit-jewel__img,
+  .orbit-jewel--fg .orbit-jewel__img {
+    filter: drop-shadow(0 0 12px rgba(120, 255, 0, 0.22))
+      drop-shadow(0 8px 14px rgba(0, 0, 0, 0.45));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .demacs-hero-logo,
   .demacs-pulse-dot,
   .demacs-glow-pulse,
   .demacs-line-draw,
-  .animate-button-shine {
+  .animate-button-shine,
+  .orbit-jewel__spin--live,
+  .orbit-jewel__body--live,
+  .orbit-jewel__sparkle,
+  .orbit-particle--live {
     animation: none !important;
+  }
+
+  .orbit-jewel,
+  .orbit-particle {
+    will-change: auto;
   }
 
   .demacs-card {

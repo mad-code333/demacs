@@ -36,7 +36,7 @@ export function PrimaryButton({
     "border border-primary/35 bg-[linear-gradient(180deg,rgba(22,32,24,0.98)_0%,rgba(6,10,8,0.98)_100%)] text-white shadow-[0_5px_0_0_rgba(0,0,0,0.55),0_14px_32px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.1)] hover:border-primary/65 hover:-translate-y-[2px] hover:shadow-[0_8px_0_0_rgba(0,0,0,0.55),0_18px_40px_rgba(120,255,0,0.14),inset_0_1px_0_rgba(255,255,255,0.14)] active:translate-y-[1px] active:shadow-[0_2px_0_0_rgba(0,0,0,0.55)]";
 
   const base =
-    "relative isolate flex h-fit cursor-pointer select-none items-center justify-center gap-2.5 overflow-hidden rounded-full text-center font-golos font-bold uppercase antialiased transition-[border-color,background,box-shadow,transform,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504] motion-reduce:transition-colors motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0";
+    "relative isolate flex h-fit cursor-pointer select-none items-center justify-center gap-2.5 overflow-hidden rounded-full text-center font-sans font-bold uppercase antialiased transition-[border-color,background,box-shadow,transform,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504] motion-reduce:transition-colors motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0";
 
   const cls = [base, variant === "primary" ? primary : secondary, sizeClasses[size], className]
     .filter(Boolean)
