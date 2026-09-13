@@ -5,7 +5,7 @@ import { SiteFooter } from "../components/SiteFooter";
 import "./globals.css";
 
 const siteDescription =
-  "Rewards, leaderboards, and VIP perks when you play with Roobet code gambanatorkick. Sign in with Kick, track the leaderboard, and follow live tournaments and bonus hunts.";
+  "Rewards, leaderboards, and VIP perks when you play with Roobet code demacskick. Sign in with Kick, track the leaderboard, and follow live tournaments and bonus hunts.";
 
 function getMetadataBase(): URL {
   const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
@@ -21,29 +21,29 @@ function getMetadataBase(): URL {
 
 export const metadata: Metadata = {
   metadataBase: getMetadataBase(),
-  applicationName: "Gambanator",
+  applicationName: "demacs",
   title: {
-    default: "Gambanator",
-    template: "%s · Gambanator",
+    default: "demacs",
+    template: "%s · demacs",
   },
   description: siteDescription,
   keywords: [
-    "Gambanator",
+    "demacs",
     "Roobet",
     "Kick",
     "leaderboard",
     "VIP rewards",
     "casino affiliate",
-    "gambanatorkick",
+    "demacskick",
   ],
-  authors: [{ name: "Gambanator" }],
-  creator: "Gambanator",
+  authors: [{ name: "demacs" }],
+  creator: "demacs",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "/",
-    siteName: "Gambanator",
-    title: "Gambanator",
+    siteName: "demacs",
+    title: "demacs",
     description: siteDescription,
     images: [
       {
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gambanator",
+    title: "demacs",
     description: siteDescription,
     images: ["/images/username.png"],
   },
