@@ -32,6 +32,7 @@ export function DemacsLogo({
       width={width}
       height={h}
       priority={priority}
+      loading={priority ? "eager" : "lazy"}
       sizes={sizes}
       className={["h-auto w-auto max-w-full object-contain", className].filter(Boolean).join(" ")}
     />

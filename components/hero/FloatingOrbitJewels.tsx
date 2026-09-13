@@ -16,6 +16,11 @@ export function FloatingOrbitJewels() {
   const rafRef = useRef(0);
   const [offset, setOffset] = useState<Offset>({ x: 0, y: 0 });
   const [desktop, setDesktop] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
@@ -81,7 +86,7 @@ export function FloatingOrbitJewels() {
             config={jewel}
             parallaxX={offset.x * strength}
             parallaxY={offset.y * strength * 0.85}
-            reduceMotion={!!reduce}
+            reduceMotion={!mounted || !!reduce}
           />
         );
       })}

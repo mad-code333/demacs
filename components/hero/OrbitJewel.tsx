@@ -33,9 +33,10 @@ function positionOnOrbit(angleDeg: number, radius: number) {
   const s = Math.sin(rot);
   const x = x0 * c - y0 * s;
   const y = x0 * s + y0 * c;
+  // Fixed precision avoids SSR/client float serialization mismatches
   return {
-    left: `${cx + x}%`,
-    top: `${cy + y}%`,
+    left: `${(cx + x).toFixed(4)}%`,
+    top: `${(cy + y).toFixed(4)}%`,
   };
 }
 
@@ -43,6 +44,9 @@ export function OrbitJewel({ config, parallaxX, parallaxY, reduceMotion }: Orbit
   const { left, top } = positionOnOrbit(config.angle, config.radius);
   const src = JEWEL_SRC[config.kind];
   const blend = config.blend ?? "normal";
+  const half = config.size / 2;
+  const px = parallaxX.toFixed(2);
+  const py = parallaxY.toFixed(2);
 
   return (
     <div
@@ -62,12 +66,12 @@ export function OrbitJewel({ config, parallaxX, parallaxY, reduceMotion }: Orbit
       style={{
         left,
         top,
-        width: config.size,
-        height: config.size,
-        marginLeft: -config.size / 2,
-        marginTop: -config.size / 2,
+        width: `${config.size}px`,
+        height: `${config.size}px`,
+        marginLeft: `${-half}px`,
+        marginTop: `${-half}px`,
         opacity: config.opacity,
-        transform: `translate3d(${parallaxX}px, ${parallaxY}px, 0)`,
+        transform: `translate3d(${px}px, ${py}px, 0px)`,
         zIndex: config.depth === "fg" ? 3 : config.depth === "mid" ? 2 : 1,
         ["--oj-dur" as string]: `${config.duration}s`,
         ["--oj-delay" as string]: `${config.delay}s`,

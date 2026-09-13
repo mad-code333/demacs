@@ -63,8 +63,8 @@ export function HeroCanvas() {
     let orbit = { rx: 0, ry: 0, rot: -0.3 };
 
     const inClearZone = (x: number, y: number) => {
-      const dx = (x - width * 0.5) / (width * 0.38);
-      const dy = (y - height * 0.3) / (height * 0.18);
+      const dx = (x - width * 0.5) / (width * 0.32);
+      const dy = (y - height * 0.3) / (height * 0.15);
       return dx * dx + dy * dy < 1;
     };
 
@@ -83,8 +83,8 @@ export function HeroCanvas() {
       ctx.imageSmoothingQuality = "high";
       particles = seedParticles(width, height, mobile);
       orbit = {
-        rx: Math.min(width * 0.42, height * 0.58),
-        ry: Math.min(width, height) * (mobile ? 0.19 : 0.225),
+        rx: Math.min(width * 0.34, height * 0.48),
+        ry: Math.min(width, height) * (mobile ? 0.155 : 0.175),
         rot: -0.3,
       };
     };
