@@ -49,7 +49,7 @@ export function MonthlyCompetition() {
           </h2>
           <p className="mt-5 max-w-2xl font-golos text-base leading-7 text-secondary/75">
             Wager under{" "}
-            <span className="font-semibold text-primary">gambanatorkick</span>. Top{" "}
+            <span className="font-semibold text-primary">demacskick</span>. Top{" "}
             {TOP_MONTHLY_PRIZES.length} finishers split the monthly pool — 1st takes $
             {formatCurrency(TOP_MONTHLY_PRIZES[0] ?? 0)}.
           </p>

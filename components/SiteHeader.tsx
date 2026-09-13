@@ -33,7 +33,7 @@ function navLinkClass(active: boolean) {
 function LivePill({ className }: { className?: string }) {
   return (
     <a
-      href="https://kick.com/gambanator"
+      href="https://kick.com/demacs"
       className={[
         "type-label inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 font-sans text-[0.65rem] uppercase text-primary transition-colors hover:border-primary/45 hover:bg-primary/15",
         className,

@@ -33,7 +33,7 @@ export function LiveStream() {
                 Watch DEMACS live on Kick — sessions, hunts, and community energy in the official player.
               </p>
               <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
-                <PrimaryButton href="https://kick.com/gambanator" nativeAnchor size="lg">
+                <PrimaryButton href="https://kick.com/demacs" nativeAnchor size="lg">
                   <IoPlay className="size-5 shrink-0" aria-hidden />
                   Watch live
                 </PrimaryButton>
@@ -63,7 +63,7 @@ export function LiveStream() {
               <div className="relative aspect-video w-full bg-[#050508]">
                 <iframe
                   title="Kick live player"
-                  src="https://kick-player-public.pages.dev/gambanator"
+                  src="https://kick-player-public.pages.dev/demacs"
                   className="absolute inset-0 size-full border-0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
@@ -80,7 +80,7 @@ export function LiveStream() {
                 <div>
                   <p className="font-golos text-base font-semibold text-white">DEMACS Live</p>
                   <p className="font-golos text-[0.68rem] uppercase tracking-[0.16em] text-secondary/55">
-                    kick.com/gambanator
+                    kick.com/demacs
                   </p>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export function LiveStream() {
                 </Link>
               </div>
               <a
-                href="https://kick.com/gambanator"
+                href="https://kick.com/demacs"
                 className="mt-6 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-colors hover:text-[#9dff4a]"
               >
                 Open Kick

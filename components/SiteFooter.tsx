@@ -45,18 +45,18 @@ export function SiteFooter() {
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary/65">
               Rewards, leaderboard, and VIP perks when you play with code{" "}
-              <span className="font-semibold text-primary">gambanatorkick</span>.
+              <span className="font-semibold text-primary">demacskick</span>.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                href="https://discord.gg/gambanator"
+                href="https://discord.gg/demacs"
                 className="inline-flex size-10 items-center justify-center rounded-md border border-white/10 bg-white/[0.03] text-white/80 transition-colors hover:border-primary/35 hover:text-primary"
                 aria-label="Discord"
               >
                 <FaDiscord className="size-5 shrink-0" aria-hidden />
               </Link>
               <Link
-                href="https://kick.com/gambanator"
+                href="https://kick.com/demacs"
                 className="inline-flex size-10 items-center justify-center rounded-md border border-white/10 bg-white/[0.03] text-white/80 transition-colors hover:border-primary/35 hover:text-primary"
                 aria-label="Kick"
               >
