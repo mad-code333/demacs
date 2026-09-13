@@ -1,25 +1,49 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { IoChevronDown } from "react-icons/io5";
 import { FeatureCards } from "./FeatureCards";
 import { HeroActions } from "./HeroActions";
 import { HeroCanvas } from "./HeroCanvas";
-import { HeroContent } from "./HeroContent";
 import { HeroStats } from "./HeroStats";
 import { FloatingOrbitJewels } from "./hero/FloatingOrbitJewels";
 
-/**
- * Hero media orchestrator:
- * 1) Paint atmosphere + LCP wordmark first
- * 2) Mount jewels only after the logo is ready (or a short fallback)
- * so treasure assets never starve the brand image.
- */
-export function Hero() {
-  const [showJewels, setShowJewels] = useState(false);
+type HeroProps = {
+  /** Server-rendered LCP wordmark (must start in HTML, not after hydration). */
+  wordmark: ReactNode;
+};
 
-  const revealJewels = useCallback(() => {
-    setShowJewels(true);
+/**
+ * Hero shell: wordmark paints from SSR HTML first.
+ * Canvas + jewels mount only after the browser is idle / logo has had a head start.
+ */
+export function Hero({ wordmark }: HeroProps) {
+  const [showFx, setShowFx] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    let idleId = 0;
+    let timeoutId = 0;
+
+    const enable = () => {
+      if (!cancelled) setShowFx(true);
+    };
+
+    // Give the LCP wordmark network priority, then enable atmosphere.
+    timeoutId = window.setTimeout(() => {
+      const ric = window.requestIdleCallback ?? ((cb: IdleRequestCallback) => window.setTimeout(cb, 1) as unknown as number);
+      idleId = ric(() => enable(), { timeout: 400 }) as number;
+    }, 120);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+      if (typeof window.cancelIdleCallback === "function") {
+        window.cancelIdleCallback(idleId);
+      } else {
+        window.clearTimeout(idleId);
+      }
+    };
   }, []);
 
   return (
@@ -28,8 +52,8 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,rgba(120,255,0,0.09),transparent_52%)]"
         aria-hidden
       />
-      <HeroCanvas />
-      {showJewels ? <FloatingOrbitJewels /> : null}
+      {showFx ? <HeroCanvas /> : null}
+      {showFx ? <FloatingOrbitJewels /> : null}
 
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 bg-gradient-to-t from-[#02040a]/90 to-transparent"
@@ -38,7 +62,17 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-7xl flex-col px-4 pb-10 pt-8 sm:px-6 sm:pb-12 lg:px-8 lg:pt-10">
         <div className="flex flex-1 flex-col items-center justify-center">
-          <HeroContent onLogoReady={revealJewels} />
+          <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
+            <p className="type-label font-sans text-[0.72rem] uppercase text-[#8E978E]">Welcome to</p>
+            {wordmark}
+            <p className="type-hero-uppercase mt-6 font-sans text-[clamp(1.15rem,2.7vw,1.85rem)] uppercase text-white sm:mt-7">
+              Play. <span className="text-primary">Earn.</span> Climb.
+            </p>
+            <p className="type-body mt-4 max-w-xl font-sans text-[0.95rem] leading-7 text-[#D8DDD8]/78 sm:mt-5 sm:text-[1.05rem] sm:leading-8 sm:font-medium">
+              Compete, climb the rankings, unlock VIP rewards,
+              <br className="hidden sm:block" /> and chase the monthly prize pool.
+            </p>
+          </div>
           <HeroActions />
           <HeroStats />
         </div>

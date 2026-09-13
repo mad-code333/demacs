@@ -1,14 +1,23 @@
 "use client";
 
 import { InstantImage } from "./InstantImage";
+import {
+  HERO_LOGO_MARK_SRC,
+  HERO_WORDMARK_SRC,
+  HERO_WORDMARK_SRC_640,
+  HERO_WORDMARK_SRC_960,
+  USERNAME_LOGO_H,
+  USERNAME_LOGO_W,
+} from "../lib/hero-assets";
 
-/** Intrinsic aspect of the DEMACS wordmark. */
-export const USERNAME_LOGO_W = 2170;
-export const USERNAME_LOGO_H = 725;
-
-/** Optimized static WebPs — served directly, never through /_next/image. */
-export const HERO_WORDMARK_SRC = "/images/hero/username.webp";
-export const HERO_LOGO_MARK_SRC = "/images/hero/logo.webp";
+export {
+  HERO_LOGO_MARK_SRC,
+  HERO_WORDMARK_SRC,
+  HERO_WORDMARK_SRC_640,
+  HERO_WORDMARK_SRC_960,
+  USERNAME_LOGO_H,
+  USERNAME_LOGO_W,
+} from "../lib/hero-assets";
 
 type DemacsLogoProps = {
   className?: string;
@@ -22,26 +31,28 @@ type DemacsLogoProps = {
   onReady?: () => void;
 };
 
-/** Full brand wordmark — direct WebP (bypasses Next image optimizer). */
+/** Wordmark for below-fold / secondary surfaces (Final CTA, etc.). */
 export function DemacsLogo({
   className,
   frameClassName,
-  width = 860,
+  width = 420,
   height,
   priority = false,
   fetchPriority,
   onReady,
 }: DemacsLogoProps) {
   const h = height ?? Math.round((width * USERNAME_LOGO_H) / USERNAME_LOGO_W);
+  const src =
+    width <= 480 ? HERO_WORDMARK_SRC_640 : width <= 800 ? HERO_WORDMARK_SRC_960 : HERO_WORDMARK_SRC;
 
   return (
     <InstantImage
-      src={HERO_WORDMARK_SRC}
+      src={src}
       alt="DEMACS"
       width={width}
       height={h}
       loading={priority ? "eager" : "lazy"}
-      fetchPriority={fetchPriority ?? (priority ? "high" : "auto")}
+      fetchPriority={fetchPriority ?? (priority ? "high" : "low")}
       frameClassName={["block max-w-full", frameClassName].filter(Boolean).join(" ")}
       className={["h-auto w-auto max-w-full object-contain", className].filter(Boolean).join(" ")}
       showPlaceholder
@@ -75,14 +86,15 @@ export function DemacsWordmark({
         width={72}
         height={72}
         loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : "low"}
+        // Keep "auto" so the hero wordmark stays the true high-priority LCP fetch.
+        fetchPriority={priority ? "auto" : "low"}
         aria-hidden
         frameClassName="inline-flex size-8 shrink-0 sm:size-9"
         className={
           logoClassName ??
           "h-full w-full object-contain drop-shadow-[0_0_14px_rgba(120,255,0,0.35)]"
         }
-        showPlaceholder
+        showPlaceholder={false}
       />
       <span className="type-card-title font-sans text-[1.05rem] tracking-[0.04em] text-white sm:text-[1.15rem] sm:font-bold">
         <span className="sr-only">DEMACS</span>

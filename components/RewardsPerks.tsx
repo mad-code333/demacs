@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { GiCrown, GiSparkles, GiTrophyCup } from "react-icons/gi";
 import { IoArrowForward, IoFlash } from "react-icons/io5";
@@ -12,6 +11,7 @@ import {
 } from "@/lib/vip-tiers";
 import { formatCurrency } from "./Leaderboard";
 import { DimensionalCard } from "./DimensionalCard";
+import { InstantImage } from "./InstantImage";
 import { ScrollReveal } from "./ScrollReveal";
 import { SectionLabel } from "./SectionLabel";
 
@@ -123,12 +123,15 @@ export function RewardsPerks() {
                   key={tier.name}
                   className="flex items-center gap-3.5 rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3.5"
                 >
-                  <Image
+                  <InstantImage
                     src={vipTierBadgeSrc(tier.name)}
                     alt={`${tier.name} badge`}
-                    width={256}
-                    height={160}
-                    className="h-11 w-auto max-w-[96px] shrink-0 object-contain"
+                    width={96}
+                    height={60}
+                    loading="lazy"
+                    fetchPriority="low"
+                    frameClassName="inline-flex h-11 max-w-[96px] shrink-0 items-center justify-center"
+                    className="h-11 w-auto max-w-[96px] object-contain"
                   />
                   <div className="min-w-0">
                     <p className="truncate font-golos text-sm font-semibold text-white">{tier.name}</p>

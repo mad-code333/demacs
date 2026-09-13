@@ -74,6 +74,10 @@ export default function RootLayout({
       lang="en"
       className="relative h-full overflow-x-hidden antialiased font-sans"
     >
+      <head>
+        {/* Early brand mark for the sticky header (every page). */}
+        <link rel="preload" as="image" href="/images/hero/logo.webp" type="image/webp" />
+      </head>
       <body className="relative flex min-h-full flex-col bg-transparent font-sans font-normal antialiased">
         <SiteAtmosphere />
         <div className="relative z-10 flex min-h-full flex-1 flex-col">

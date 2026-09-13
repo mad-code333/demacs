@@ -8,7 +8,7 @@ import {
   vipTierBadgeSrc,
 } from "@/lib/vip-tiers";
 import { DimensionalCard } from "../DimensionalCard";
-import { PremiumImage } from "../PremiumImage";
+import { InstantImage } from "../InstantImage";
 import { ScrollReveal } from "../ScrollReveal";
 import { SectionLabel } from "../SectionLabel";
 
@@ -59,13 +59,13 @@ export function VIPProgression() {
                   index === VIP_PROGRESSION_MILESTONES.length - 1 ? "demacs-card--featured" : "",
                 ].join(" ")}
               >
-                <PremiumImage
+                <InstantImage
                   src={vipTierBadgeSrc(tier.name)}
                   alt={`${tier.name} badge`}
                   width={130}
                   height={81}
-                  sizes="130px"
                   loading="lazy"
+                  fetchPriority="low"
                   frameClassName="inline-flex h-14 max-w-[130px] items-center justify-center"
                   className="h-14 w-auto max-w-[130px] object-contain drop-shadow-[0_0_18px_rgba(120,255,0,0.18)]"
                 />
