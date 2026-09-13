@@ -33,7 +33,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               <a
-                href="https://discord.gg/gambanator"
+                href="https://discord.gg/demacs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="demacs-glass-panel group flex items-center gap-4 rounded-xl p-5 transition-[border-color,box-shadow,transform] duration-200 hover:border-primary/55 hover:-translate-y-0.5"
@@ -49,7 +49,7 @@ export default function ContactPage() {
                 </span>
               </a>
               <a
-                href="https://kick.com/gambanator"
+                href="https://kick.com/demacs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="demacs-glass-panel group flex items-center gap-4 rounded-xl p-5 transition-[border-color,box-shadow,transform] duration-200 hover:border-primary/55 hover:-translate-y-0.5"
