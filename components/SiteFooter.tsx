@@ -41,7 +41,7 @@ export function SiteFooter() {
               className="inline-flex items-center gap-2 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030305]"
               aria-label="DEMACS home"
             >
-              <DemacsWordmark logoClassName="h-9 w-auto max-w-[180px] drop-shadow-[0_0_14px_rgba(120,255,0,0.18)]" />
+              <DemacsWordmark logoClassName="h-full w-full object-contain drop-shadow-[0_0_14px_rgba(120,255,0,0.32)]" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary/65">
               Rewards, leaderboard, and VIP perks when you play with code{" "}

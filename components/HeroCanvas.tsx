@@ -15,7 +15,7 @@ type Particle = {
 };
 
 function seedParticles(width: number, height: number, mobile: boolean): Particle[] {
-  const count = mobile ? 16 : 32;
+  const count = mobile ? 10 : 22;
   const out: Particle[] = [];
   for (let i = 0; i < count; i += 1) {
     const z = 0.18 + Math.random() * 0.82;
@@ -23,11 +23,11 @@ function seedParticles(width: number, height: number, mobile: boolean): Particle
       x: Math.random() * width,
       y: Math.random() * height,
       z,
-      r: 0.4 + z * (Math.random() > 0.9 ? 1.4 : 0.75),
-      a: 0.05 + z * 0.13,
-      vx: (Math.random() - 0.5) * 0.012,
-      vy: -0.004 - Math.random() * 0.01,
-      gold: Math.random() > 0.9,
+      r: 0.4 + z * (Math.random() > 0.9 ? 1.2 : 0.65),
+      a: 0.035 + z * 0.09,
+      vx: (Math.random() - 0.5) * 0.01,
+      vy: -0.003 - Math.random() * 0.008,
+      gold: Math.random() > 0.92,
     });
   }
   return out;
@@ -101,28 +101,28 @@ export function HeroCanvas() {
       ctx.translate(cx, cy);
       ctx.rotate(orbit.rot);
 
-      ctx.shadowColor = "rgba(120,255,0,0.3)";
-      ctx.shadowBlur = mobile ? 8 : 18;
-      ctx.strokeStyle = "rgba(120,255,0,0.14)";
-      ctx.lineWidth = 1.2;
+      ctx.shadowColor = "rgba(120,255,0,0.18)";
+      ctx.shadowBlur = mobile ? 6 : 12;
+      ctx.strokeStyle = "rgba(120,255,0,0.1)";
+      ctx.lineWidth = 1.1;
       ctx.beginPath();
       ctx.ellipse(0, 0, orbit.rx, orbit.ry, 0, 0, Math.PI * 2);
       ctx.stroke();
 
       ctx.shadowBlur = 0;
-      ctx.strokeStyle = "rgba(156,255,56,0.07)";
-      ctx.lineWidth = 7;
+      ctx.strokeStyle = "rgba(156,255,56,0.05)";
+      ctx.lineWidth = 6;
       ctx.beginPath();
       ctx.ellipse(0, 0, orbit.rx, orbit.ry, 0, 0, Math.PI * 2);
       ctx.stroke();
 
-      ctx.strokeStyle = "rgba(120,255,0,0.05)";
+      ctx.strokeStyle = "rgba(120,255,0,0.035)";
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.ellipse(0, 0, orbit.rx * 0.74, orbit.ry * 0.74, 0, 0, Math.PI * 2);
       ctx.stroke();
 
-      const beads = mobile ? 26 : 42;
+      const beads = mobile ? 18 : 30;
       for (let i = 0; i < beads; i += 1) {
         const t = (i / beads) * Math.PI * 2 + time * 0.07;
         const x = Math.cos(t) * orbit.rx;
@@ -220,7 +220,19 @@ export function HeroCanvas() {
       if (cancelled) return;
       const dt = Math.min(32, now - last);
       last = now;
-      if (visible && !document.hidden && !reduceMotion) paint(true, dt);
+      const active = visible && !document.hidden && !reduceMotion;
+      if (active) {
+        paint(true, dt);
+        raf = requestAnimationFrame(tick);
+      } else {
+        raf = 0;
+      }
+    };
+
+    const resume = () => {
+      if (cancelled || reduceMotion || raf) return;
+      if (!visible || document.hidden) return;
+      last = performance.now();
       raf = requestAnimationFrame(tick);
     };
 
@@ -231,13 +243,19 @@ export function HeroCanvas() {
     const io = new IntersectionObserver(
       ([entry]) => {
         visible = entry?.isIntersecting ?? true;
+        if (visible) resume();
       },
       { threshold: 0.02 },
     );
     io.observe(canvas);
 
+    const onVisibility = () => {
+      if (!document.hidden) resume();
+    };
+
     if (!reduceMotion) {
       window.addEventListener("pointermove", onPointer, { passive: true });
+      document.addEventListener("visibilitychange", onVisibility);
     }
 
     paint(false, 0);
@@ -255,6 +273,7 @@ export function HeroCanvas() {
       ro.disconnect();
       io.disconnect();
       window.removeEventListener("pointermove", onPointer);
+      document.removeEventListener("visibilitychange", onVisibility);
       cancelAnimationFrame(raf);
     };
   }, [reduceMotion]);

@@ -178,7 +178,7 @@ export default function AffiliatesLeaderboardPage() {
           </h1>
           <p className="mt-4 max-w-xl font-golos text-sm text-secondary/75 sm:text-base">
             Wager under code{" "}
-            <span className="font-semibold text-primary">gambanatorkick</span>{" "}
+            <span className="font-semibold text-primary">demacskick</span>{" "}
             and climb the ranks. The top spots share a monthly prize pool.
           </p>
           {rangeLabel ? (

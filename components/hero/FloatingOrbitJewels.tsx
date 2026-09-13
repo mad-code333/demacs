@@ -11,10 +11,14 @@ type Offset = { x: number; y: number };
 export function FloatingOrbitJewels() {
   const reduce = useReducedMotion();
   const rootRef = useRef<HTMLDivElement>(null);
+  const layerRefs = useRef<Record<string, HTMLDivElement | null>>({
+    bg: null,
+    mid: null,
+    fg: null,
+  });
   const target = useRef<Offset>({ x: 0, y: 0 });
   const current = useRef<Offset>({ x: 0, y: 0 });
   const rafRef = useRef(0);
-  const [offset, setOffset] = useState<Offset>({ x: 0, y: 0 });
   const [desktop, setDesktop] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -34,7 +38,10 @@ export function FloatingOrbitJewels() {
     if (reduce || !desktop) {
       target.current = { x: 0, y: 0 };
       current.current = { x: 0, y: 0 };
-      setOffset({ x: 0, y: 0 });
+      (["bg", "mid", "fg"] as const).forEach((depth) => {
+        const el = layerRefs.current[depth];
+        if (el) el.style.transform = "translate3d(0px, 0px, 0px)";
+      });
       return;
     }
 
@@ -53,9 +60,12 @@ export function FloatingOrbitJewels() {
       const t = target.current;
       c.x += (t.x - c.x) * 0.055;
       c.y += (t.y - c.y) * 0.055;
-      if (Math.abs(c.x - t.x) > 0.0004 || Math.abs(c.y - t.y) > 0.0004) {
-        setOffset({ x: c.x, y: c.y });
-      }
+      (["bg", "mid", "fg"] as const).forEach((depth) => {
+        const el = layerRefs.current[depth];
+        if (!el) return;
+        const strength = PARALLAX_BY_DEPTH[depth];
+        el.style.transform = `translate3d(${(c.x * strength).toFixed(2)}px, ${(c.y * strength * 0.85).toFixed(2)}px, 0px)`;
+      });
       rafRef.current = requestAnimationFrame(tick);
     };
 
@@ -67,6 +77,12 @@ export function FloatingOrbitJewels() {
     };
   }, [reduce, desktop]);
 
+  const byDepth = {
+    bg: ORBIT_JEWELS.filter((j) => j.depth === "bg"),
+    mid: ORBIT_JEWELS.filter((j) => j.depth === "mid"),
+    fg: ORBIT_JEWELS.filter((j) => j.depth === "fg"),
+  } as const;
+
   return (
     <div
       ref={rootRef}
@@ -74,22 +90,29 @@ export function FloatingOrbitJewels() {
       aria-hidden
       style={{ perspective: "1200px", perspectiveOrigin: "50% 30%" }}
     >
-      <div className="absolute left-[10%] top-[18%] h-36 w-36 rounded-full bg-primary/[0.04] blur-3xl" />
-      <div className="absolute right-[8%] top-[24%] h-40 w-40 rounded-full bg-primary/[0.035] blur-3xl" />
-      <div className="absolute bottom-[12%] left-[20%] h-32 w-56 -translate-x-1/2 rounded-full bg-primary/[0.03] blur-3xl" />
+      <div className="absolute left-[10%] top-[18%] h-36 w-36 rounded-full bg-primary/[0.03] blur-3xl" />
+      <div className="absolute right-[8%] top-[24%] h-40 w-40 rounded-full bg-primary/[0.025] blur-3xl" />
+      <div className="absolute bottom-[12%] left-[20%] h-32 w-56 -translate-x-1/2 rounded-full bg-primary/[0.02] blur-3xl" />
 
-      {ORBIT_JEWELS.map((jewel) => {
-        const strength = PARALLAX_BY_DEPTH[jewel.depth];
-        return (
-          <OrbitJewel
-            key={jewel.id}
-            config={jewel}
-            parallaxX={offset.x * strength}
-            parallaxY={offset.y * strength * 0.85}
-            reduceMotion={!mounted || !!reduce}
-          />
-        );
-      })}
+      {(["bg", "mid", "fg"] as const).map((depth) => (
+        <div
+          key={depth}
+          ref={(el) => {
+            layerRefs.current[depth] = el;
+          }}
+          className="absolute inset-0 will-change-transform"
+        >
+          {byDepth[depth].map((jewel) => (
+            <OrbitJewel
+              key={jewel.id}
+              config={jewel}
+              parallaxX={0}
+              parallaxY={0}
+              reduceMotion={!mounted || !!reduce}
+            />
+          ))}
+        </div>
+      ))}
     </div>
   );
 }

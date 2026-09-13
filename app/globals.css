@@ -83,6 +83,92 @@
   letter-spacing: 0.14em;
 }
 
+/* Premium image reveal — reserve space, fade when ready */
+.demacs-img {
+  isolation: isolate;
+}
+
+.demacs-img__placeholder {
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 42%),
+    rgba(8, 16, 12, 0.55);
+  transition: opacity 0.35s ease;
+}
+
+.demacs-img__media {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.demacs-img__media--ready {
+  opacity: 1;
+  visibility: visible;
+}
+
+.demacs-img[data-ready="true"] .demacs-img__placeholder {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.orbit-jewel__img {
+  opacity: 0 !important;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.orbit-jewel__img.is-ready {
+  opacity: 1 !important;
+  visibility: visible;
+}
+
+.demacs-skeleton-row {
+  height: 4.25rem;
+  background:
+    linear-gradient(90deg, transparent, rgba(120, 255, 0, 0.04), transparent),
+    rgba(255, 255, 255, 0.03);
+  background-size: 200% 100%, 100% 100%;
+  animation: demacs-shimmer 1.6s ease-in-out infinite;
+}
+
+.demacs-skeleton-podium {
+  min-height: 360px;
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 40%),
+    rgba(5, 12, 8, 0.28);
+  border: 1px solid rgba(120, 255, 0, 0.14);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+@keyframes demacs-shimmer {
+  0% {
+    background-position: 100% 0, 0 0;
+  }
+  100% {
+    background-position: -100% 0, 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demacs-img__media,
+  .demacs-img__placeholder,
+  .orbit-jewel__img {
+    transition: none;
+  }
+
+  .demacs-skeleton-row {
+    animation: none;
+  }
+}
+
 @keyframes demacs-float {
   0%,
   100% {
@@ -154,10 +240,10 @@
   --mouse-y: 40%;
   --card-rx: 0deg;
   --card-ry: 0deg;
-  --card-bg: rgba(5, 12, 8, 0.32);
-  --card-border: rgba(120, 255, 0, 0.2);
-  --card-glow: rgba(120, 255, 0, 0.05);
-  --card-blur: 18px;
+  --card-bg: rgba(5, 12, 8, 0.28);
+  --card-border: rgba(120, 255, 0, 0.18);
+  --card-glow: rgba(120, 255, 0, 0.04);
+  --card-blur: 16px;
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -182,16 +268,16 @@
 }
 
 .demacs-card--secondary {
-  --card-bg: rgba(5, 12, 8, 0.24);
-  --card-border: rgba(120, 255, 0, 0.16);
-  --card-glow: rgba(120, 255, 0, 0.035);
-  --card-blur: 16px;
+  --card-bg: rgba(5, 12, 8, 0.2);
+  --card-border: rgba(120, 255, 0, 0.14);
+  --card-glow: rgba(120, 255, 0, 0.03);
+  --card-blur: 14px;
 }
 
 .demacs-card--featured {
-  --card-bg: rgba(30, 60, 15, 0.34);
-  --card-border: rgba(120, 255, 0, 0.3);
-  --card-glow: rgba(120, 255, 0, 0.1);
+  --card-bg: rgba(30, 60, 15, 0.3);
+  --card-border: rgba(120, 255, 0, 0.28);
+  --card-glow: rgba(120, 255, 0, 0.08);
 }
 
 .demacs-card--static:hover {
@@ -236,7 +322,7 @@
     rgba(255, 255, 255, 0.08) 0%,
     transparent 30%
   );
-  opacity: 0.75;
+  opacity: 0.55;
 }
 
 .demacs-card > * {
@@ -291,10 +377,10 @@
 
 /* Glass buttons */
 .demacs-btn-primary {
-  border: 1px solid rgba(184, 255, 106, 0.48);
+  border: 1px solid rgba(184, 255, 106, 0.45);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent 42%),
-    rgba(120, 255, 0, 0.62);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.26), transparent 42%),
+    rgba(120, 255, 0, 0.52);
   color: #061000;
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
@@ -338,7 +424,7 @@
   border: 1px solid rgba(120, 255, 0, 0.28);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 40%),
-    rgba(8, 18, 10, 0.28);
+    rgba(8, 18, 10, 0.22);
   color: #fafafa;
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);

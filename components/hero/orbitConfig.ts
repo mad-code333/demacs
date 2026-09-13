@@ -46,18 +46,18 @@ export const ORBIT_JEWELS: OrbitJewelConfig[] = [
 
   /* —— MIDGROUND — hug the wordmark —— */
   /* Upper-left of D */
-  { id: "mid-ul-coin", kind: "coin", angle: -138, radius: 0.88, size: 48, depth: "mid", rotate: -24, duration: 13, delay: 0, bob: 10, opacity: 0.9, visible: "always", blend: "screen" },
+  { id: "mid-ul-coin", kind: "coin", angle: -138, radius: 0.88, size: 48, depth: "mid", rotate: -24, duration: 13, delay: 0, bob: 10, opacity: 0.9, visible: "sm", blend: "screen" },
   { id: "mid-ul-gem", kind: "gem", angle: -112, radius: 0.84, size: 36, depth: "mid", rotate: 14, duration: 11.5, delay: 0.4, bob: 10, opacity: 0.84, visible: "sm", blend: "screen" },
   { id: "mid-top-crystal", kind: "crystal", angle: -92, radius: 0.9, size: 30, depth: "mid", rotate: -10, duration: 12, delay: 0.8, bob: 9, opacity: 0.76, visible: "md", blend: "screen" },
   { id: "mid-top-ring", kind: "ring", angle: -68, radius: 0.82, size: 32, depth: "mid", rotate: 8, duration: 14, delay: 1.2, bob: 8, opacity: 0.8, visible: "lg", blend: "screen" },
 
   /* Upper-right around S / end of mark */
-  { id: "mid-ur-gem", kind: "gem", angle: -42, radius: 0.86, size: 34, depth: "mid", rotate: 20, duration: 10.5, delay: 0.3, bob: 10, opacity: 0.86, visible: "always", blend: "screen" },
+  { id: "mid-ur-gem", kind: "gem", angle: -42, radius: 0.86, size: 34, depth: "mid", rotate: 20, duration: 10.5, delay: 0.3, bob: 10, opacity: 0.86, visible: "sm", blend: "screen" },
   { id: "mid-ur-crown", kind: "crown", angle: -14, radius: 0.9, size: 58, depth: "mid", rotate: 4, duration: 15, delay: 0.15, bob: 9, opacity: 0.94, visible: "always", blend: "screen" },
   { id: "mid-ur-coin", kind: "coin", angle: 10, radius: 0.86, size: 34, depth: "mid", rotate: 22, duration: 12.5, delay: 0.9, bob: 9, opacity: 0.86, visible: "sm", blend: "screen" },
 
   /* Right flank — trophy close to letters */
-  { id: "mid-r-trophy", kind: "trophy", angle: 28, radius: 0.92, size: 62, depth: "mid", rotate: 6, duration: 14, delay: 0.5, bob: 11, opacity: 0.92, visible: "always", blend: "screen" },
+  { id: "mid-r-trophy", kind: "trophy", angle: 28, radius: 0.92, size: 62, depth: "mid", rotate: 6, duration: 14, delay: 0.5, bob: 11, opacity: 0.92, visible: "sm", blend: "screen" },
   { id: "mid-r-gem", kind: "gem", angle: 48, radius: 0.84, size: 28, depth: "mid", rotate: -16, duration: 11, delay: 1.5, bob: 9, opacity: 0.8, visible: "md", blend: "screen" },
   { id: "mid-r-coin", kind: "coin", angle: 62, radius: 0.92, size: 30, depth: "mid", rotate: -30, duration: 13.5, delay: 1.0, bob: 8, opacity: 0.8, visible: "sm", blend: "screen" },
   { id: "mid-br-crystal", kind: "crystal", angle: 78, radius: 0.88, size: 26, depth: "mid", rotate: 6, duration: 12, delay: 2.0, bob: 7, opacity: 0.74, visible: "lg", blend: "screen" },

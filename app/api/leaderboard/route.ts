@@ -63,6 +63,7 @@ export async function GET(req: NextRequest) {
         username: row.username,
         wagered: row.wagered,
         prize: prizeForRank(rank),
+        avatar: row.rankLevelImage || undefined,
         uid: row.uid,
         rankLevel: row.rankLevel,
         rankLevelImage: row.rankLevelImage,

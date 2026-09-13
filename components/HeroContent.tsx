@@ -1,4 +1,4 @@
-import { DemacsLogo } from "./DemacsLogo";
+import { DemacsLogo, USERNAME_LOGO_H, USERNAME_LOGO_W } from "./DemacsLogo";
 
 export function HeroContent() {
   return (
@@ -7,13 +7,17 @@ export function HeroContent() {
         Welcome to
       </p>
 
-      <h1 className="demacs-hero-logo relative mt-5 w-full sm:mt-6">
+      <h1
+        className="demacs-hero-logo relative mt-5 w-full sm:mt-6"
+        style={{ aspectRatio: `${USERNAME_LOGO_W} / ${USERNAME_LOGO_H}` }}
+      >
         <span className="sr-only">DEMACS</span>
         <DemacsLogo
           priority
           width={1100}
           sizes="(max-width: 430px) 92vw, (max-width: 768px) 86vw, (max-width: 1280px) 720px, 860px"
-          className="relative z-[1] mx-auto h-auto w-[min(92vw,860px)] drop-shadow-[0_0_28px_rgba(120,255,0,0.28)]"
+          frameClassName="relative z-[1] mx-auto block w-[min(92vw,860px)]"
+          className="h-auto w-full drop-shadow-[0_0_28px_rgba(120,255,0,0.28)]"
         />
         <span
           className="pointer-events-none absolute inset-x-[18%] bottom-[8%] h-8 rounded-full bg-primary/18 blur-2xl"

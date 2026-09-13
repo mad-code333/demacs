@@ -94,8 +94,7 @@ export function SiteHeader() {
           aria-label="DEMACS home"
         >
           <DemacsWordmark
-            logoClassName="h-8 w-auto max-w-[150px] drop-shadow-[0_0_14px_rgba(120,255,0,0.2)] sm:h-9 sm:max-w-[170px]"
-            priority
+            logoClassName="h-full w-full object-contain drop-shadow-[0_0_16px_rgba(120,255,0,0.4)]"
           />
         </Link>
 

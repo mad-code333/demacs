@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import type { OrbitJewelConfig } from "./orbitConfig";
 import { JEWEL_SRC, ORBIT_GEOMETRY } from "./orbitConfig";
 
@@ -33,11 +34,20 @@ function positionOnOrbit(angleDeg: number, radius: number) {
   const s = Math.sin(rot);
   const x = x0 * c - y0 * s;
   const y = x0 * s + y0 * c;
-  // Fixed precision avoids SSR/client float serialization mismatches
   return {
     left: `${(cx + x).toFixed(4)}%`,
     top: `${(cy + y).toFixed(4)}%`,
   };
+}
+
+async function waitUntilFullyDecoded(img: HTMLImageElement) {
+  if (!img.complete || img.naturalWidth === 0) return false;
+  try {
+    if (typeof img.decode === "function") await img.decode();
+  } catch {
+    /* ignore */
+  }
+  return img.complete && img.naturalWidth > 0;
 }
 
 export function OrbitJewel({ config, parallaxX, parallaxY, reduceMotion }: OrbitJewelProps) {
@@ -47,6 +57,31 @@ export function OrbitJewel({ config, parallaxX, parallaxY, reduceMotion }: Orbit
   const half = config.size / 2;
   const px = parallaxX.toFixed(2);
   const py = parallaxY.toFixed(2);
+  const [ready, setReady] = useState(false);
+  const revealed = useRef(false);
+  const bodyRef = useRef<HTMLDivElement>(null);
+
+  const reveal = useCallback(() => {
+    if (revealed.current) return;
+    revealed.current = true;
+    setReady(true);
+  }, []);
+
+  const tryReveal = useCallback(
+    async (img: HTMLImageElement | null | undefined) => {
+      if (!img || revealed.current) return;
+      if (await waitUntilFullyDecoded(img)) reveal();
+    },
+    [reveal],
+  );
+
+  useLayoutEffect(() => {
+    revealed.current = false;
+    setReady(false);
+    const img = bodyRef.current?.querySelector("img");
+    void tryReveal(img);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- re-gate only when asset changes
+  }, [src]);
 
   return (
     <div
@@ -88,6 +123,7 @@ export function OrbitJewel({ config, parallaxX, parallaxY, reduceMotion }: Orbit
         ].join(" ")}
       >
         <div
+          ref={bodyRef}
           className={[
             "orbit-jewel__body",
             reduceMotion ? "" : "orbit-jewel__body--live",
@@ -98,15 +134,21 @@ export function OrbitJewel({ config, parallaxX, parallaxY, reduceMotion }: Orbit
             alt=""
             width={Math.round(config.size * 2)}
             height={Math.round(config.size * 2)}
+            loading="lazy"
+            decoding="async"
+            onLoad={(event) => {
+              void tryReveal(event.currentTarget);
+            }}
             className={[
               "orbit-jewel__img",
+              ready ? "is-ready" : "",
               blend === "screen" ? "orbit-jewel__img--screen" : "",
             ]
               .filter(Boolean)
               .join(" ")}
             sizes={`${Math.ceil(config.size * 1.5)}px`}
           />
-          {config.kind === "gem" || config.kind === "crystal" ? (
+          {ready && (config.kind === "gem" || config.kind === "crystal") ? (
             <span className="orbit-jewel__sparkle" aria-hidden />
           ) : null}
         </div>

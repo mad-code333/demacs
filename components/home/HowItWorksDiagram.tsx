@@ -8,7 +8,7 @@ import { ScrollReveal } from "../ScrollReveal";
 import { SectionLabel } from "../SectionLabel";
 
 const steps = [
-  { n: "01", title: "Play", desc: "Sign in and start under code gambanatorkick.", Icon: IoGameController },
+  { n: "01", title: "Play", desc: "Sign in and start under code demacskick.", Icon: IoGameController },
   { n: "02", title: "Earn", desc: "Build wagered volume and unlock progress.", Icon: IoWallet },
   { n: "03", title: "Climb", desc: "Push your rank on the live leaderboard.", Icon: GiMedal },
   { n: "04", title: "Reward", desc: "Claim VIP perks and monthly prizes.", Icon: GiTrophyCup },

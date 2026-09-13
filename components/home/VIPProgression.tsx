@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { IoArrowForward } from "react-icons/io5";
 import {
@@ -9,6 +8,7 @@ import {
   vipTierBadgeSrc,
 } from "@/lib/vip-tiers";
 import { DimensionalCard } from "../DimensionalCard";
+import { PremiumImage } from "../PremiumImage";
 import { ScrollReveal } from "../ScrollReveal";
 import { SectionLabel } from "../SectionLabel";
 
@@ -16,9 +16,9 @@ export function VIPProgression() {
   return (
     <section
       id="vip-progression"
-      className="relative isolate border-t border-white/5 px-4 py-24 sm:px-6 lg:py-32"
+      className="relative isolate border-t border-white/5 px-4 py-20 sm:px-6 lg:py-28"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(120,255,0,0.08),transparent_52%)]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(120,255,0,0.06),transparent_52%)]" aria-hidden />
       <div className="relative mx-auto w-full max-w-7xl">
         <ScrollReveal className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
@@ -26,13 +26,13 @@ export function VIPProgression() {
             <h2 className="type-section-uppercase mt-6 font-sans text-[clamp(2.2rem,5vw,3.6rem)] uppercase leading-none text-white">
               Climb the <span className="text-primary">published ladder</span>
             </h2>
-            <p className="mt-5 font-golos text-base leading-7 text-[#8E978E]">
+            <p className="mt-5 font-sans text-base leading-7 text-[#8E978E]">
               Real lifetime-wager thresholds. Higher tiers unlock stronger perks.
             </p>
           </div>
           <Link
             href="/affiliates/vip-rewards"
-            className="inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-secondary/75 transition-colors hover:text-white"
+            className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-secondary/75 transition-colors hover:text-white"
           >
             Full VIP list
             <IoArrowForward className="size-3.5" aria-hidden />
@@ -59,18 +59,21 @@ export function VIPProgression() {
                   index === VIP_PROGRESSION_MILESTONES.length - 1 ? "demacs-card--featured" : "",
                 ].join(" ")}
               >
-                <Image
+                <PremiumImage
                   src={vipTierBadgeSrc(tier.name)}
                   alt={`${tier.name} badge`}
-                  width={256}
-                  height={160}
+                  width={130}
+                  height={81}
+                  sizes="130px"
+                  loading="lazy"
+                  frameClassName="inline-flex h-14 max-w-[130px] items-center justify-center"
                   className="h-14 w-auto max-w-[130px] object-contain drop-shadow-[0_0_18px_rgba(120,255,0,0.18)]"
                 />
                 <p className="type-card-title mt-5 font-sans text-xl text-white sm:font-bold">{tier.name}</p>
-                <p className="mt-2 font-golos text-sm uppercase tracking-[0.14em] text-[#8E978E]">
+                <p className="type-label mt-2 font-sans text-sm uppercase text-[#8E978E]">
                   {formatVipWager(tier.wagerUsd)}+
                 </p>
-                <p className="mt-4 font-golos text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-primary">
+                <p className="mt-4 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-primary">
                   Step {index + 1}
                 </p>
               </DimensionalCard>

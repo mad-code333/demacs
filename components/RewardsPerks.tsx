@@ -19,7 +19,7 @@ const perkCards = [
   {
     title: "Daily bonuses",
     description:
-      "Play under code gambanatorkick and unlock rewards tied to your active affiliate progress.",
+      "Play under code demacskick and unlock rewards tied to your active affiliate progress.",
     icon: IoFlash,
     href: "/api/auth/kick?next=/",
     cta: "Claim with Kick",

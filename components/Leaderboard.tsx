@@ -73,7 +73,9 @@ function parsePlayers(raw: unknown[]): Player[] {
       avatar:
         typeof r.avatar === "string" && r.avatar.length > 0
           ? r.avatar
-          : undefined,
+          : typeof r.rankLevelImage === "string" && r.rankLevelImage.length > 0
+            ? r.rankLevelImage
+            : undefined,
     };
   });
 }
@@ -150,8 +152,7 @@ export function PodiumCard({ player }: { player: Player }) {
           alt=""
           width={80}
           height={80}
-          className="absolute -bottom-12 left-1/2 w-20 -translate-x-1/2"
-          style={{ width: "auto", height: "auto" }}
+          className="absolute -bottom-12 left-1/2 h-auto w-20 -translate-x-1/2"
         />
       </div>
 
