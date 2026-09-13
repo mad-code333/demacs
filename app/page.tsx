@@ -1,6 +1,6 @@
 import { FinalCTA } from "../components/home/FinalCTA";
 import { CompetitionFlow } from "../components/home/CompetitionFlow";
-import { HowItWorksDiagram } from "../components/home/HowItWorksDiagram";
+// import { HowItWorksDiagram } from "../components/home/HowItWorksDiagram";
 import { VIPProgression } from "../components/home/VIPProgression";
 import { Hero } from "../components/Hero";
 import { HeroWordmark } from "../components/HeroWordmark";
@@ -34,7 +34,7 @@ export default function Home() {
         <VIPProgression />
       </LeaderboardDataProvider>
 
-      <HowItWorksDiagram />
+      {/* <HowItWorksDiagram /> */}
       <CompetitionFlow />
       <FinalCTA />
     </div>

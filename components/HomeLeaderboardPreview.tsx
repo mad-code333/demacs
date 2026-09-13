@@ -81,10 +81,10 @@ export function HomeLeaderboardPreview() {
   return (
     <section
       id="leaderboard"
-      className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 px-4 py-20 sm:px-6 lg:py-28"
+      className="relative scroll-mt-24 overflow-hidden border-t border-white/5 bg-transparent px-4 py-20 sm:px-6 lg:py-28"
     >
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-[radial-gradient(ellipse_at_top,_rgba(120,255,0,0.07),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(120,255,0,0.06),transparent_55%)]"
         aria-hidden
       />
       <div className="relative mx-auto w-full max-w-7xl">

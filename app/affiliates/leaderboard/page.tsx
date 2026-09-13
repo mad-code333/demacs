@@ -9,15 +9,16 @@ import {
   emptyPodiumSlot,
   getNextPeriodEnd,
   LeaderboardTable,
-  PodiumCard,
   type Player,
   useCountdown,
 } from "@/components/Leaderboard";
+import { ChampionshipPodium } from "@/components/championship";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import {
   berlinYearMonthKey,
   LEADERBOARD_TIME_ZONE,
 } from "@/lib/leaderboard-berlin-period";
+import { prizeForRank } from "@/lib/leaderboard-prizes";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -44,8 +45,11 @@ function toPlayers(data: ApiSuccess): Player[] {
   return data.players.map((p) => ({
     rank: p.rank,
     username: p.username,
-    wagered: p.wagered,
-    prize: p.prize,
+    wagered: Number.isFinite(p.wagered) ? p.wagered : 0,
+    prize:
+      Number.isFinite(p.prize) && p.prize > 0
+        ? p.prize
+        : prizeForRank(p.rank),
     avatar: p.avatar,
   }));
 }
@@ -210,25 +214,16 @@ export default function AffiliatesLeaderboardPage() {
               {errorDetail}
             </p>
           </div>
-        ) : (
-          <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:items-start">
-            <ScrollReveal className="order-2 sm:order-1" delay={0.05}>
-              <div className="sm:pt-12">
-                <PodiumCard player={podiumSecond} />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal className="order-1 sm:order-2" delay={0}>
-              <div className="sm:pt-2">
-                <PodiumCard player={podiumFirst} />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal className="order-3" delay={0.1}>
-              <div className="sm:pt-12">
-                <PodiumCard player={podiumThird} />
-              </div>
-            </ScrollReveal>
-          </div>
-        )}
+        ) : null}
+
+        <div className="champ-arena relative mt-14 overflow-hidden rounded-[28px] px-3 py-10 sm:px-6 sm:py-12">
+          <ChampionshipPodium
+            first={phase === "loading" ? null : podiumFirst}
+            second={phase === "loading" ? null : podiumSecond}
+            third={phase === "loading" ? null : podiumThird}
+            loading={phase === "loading"}
+          />
+        </div>
 
         <ScrollReveal className="mt-16 w-full" delay={0.06}>
           {phase === "loading" ? (

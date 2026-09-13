@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { getNextBerlinPeriodEnd } from "@/lib/leaderboard-berlin-period";
+import { prizeForRank } from "@/lib/leaderboard-prizes";
+import { ChampionshipCountdown } from "./championship/ChampionshipCountdown";
+import { ChampionshipPlayer } from "./championship/ChampionshipPlayer";
 
 export type Player = {
   rank: number;
@@ -10,10 +13,34 @@ export type Player = {
   wagered: number;
   prize: number;
   avatar?: string;
+  /** True when this is a visual stand-in (no real qualifier yet). */
+  isPlaceholder?: boolean;
 };
 
+const PLACEHOLDER_NAMES: Record<1 | 2 | 3, string> = {
+  1: "DEMACS_Leader",
+  2: "CryptoKing",
+  3: "LuckyPlayer",
+};
+
+/** Fake podium occupant used when no real qualifier exists for that rank. */
 export function emptyPodiumSlot(rank: 1 | 2 | 3): Player {
-  return { rank, username: "—", wagered: 0, prize: 0 };
+  return {
+    rank,
+    username: PLACEHOLDER_NAMES[rank],
+    wagered: 0,
+    prize: 0,
+    isPlaceholder: true,
+  };
+}
+
+function toMoneyNumber(value: unknown): number {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string" && value.trim() !== "") {
+    const n = Number(value.replace(/,/g, ""));
+    if (Number.isFinite(n)) return n;
+  }
+  return 0;
 }
 
 export function formatCurrency(value: number) {
@@ -63,13 +90,18 @@ export function useCountdown(target: Date) {
 }
 
 function parsePlayers(raw: unknown[]): Player[] {
-  return raw.map((row) => {
+  return raw.map((row, index) => {
     const r = row as Record<string, unknown>;
+    const rank = toMoneyNumber(r.rank) || index + 1;
+    const wagered = toMoneyNumber(
+      r.wagered ?? r.weightedWagered ?? r.totalWagered ?? r.wager,
+    );
+    const prizeRaw = toMoneyNumber(r.prize);
     return {
-      rank: Number(r.rank),
-      username: String(r.username ?? "—"),
-      wagered: Number(r.wagered),
-      prize: Number(r.prize),
+      rank,
+      username: String(r.username ?? r.name ?? "—"),
+      wagered,
+      prize: prizeRaw > 0 ? prizeRaw : prizeForRank(rank),
       avatar:
         typeof r.avatar === "string" && r.avatar.length > 0
           ? r.avatar
@@ -127,116 +159,7 @@ export function useLeaderboardPlayers(): LeaderboardFetchState {
 }
 
 export function PodiumCard({ player }: { player: Player }) {
-  const rank = player.rank as 1 | 2 | 3;
-  const avatar = player.avatar ?? "/leaderboard/avatar-placeholder.svg";
-  const { whole, frac } = formatWageredParts(player.wagered);
-
-  return (
-    <div
-      className="relative flex min-h-[360px] w-full flex-col items-center bg-contain bg-center bg-no-repeat p-8 pb-28 transition-transform duration-300 hover:-translate-y-1"
-      style={{ backgroundImage: "url('/leaderboard/leadercard.svg')" }}
-    >
-      <div className="relative h-fit w-fit rounded-full border-2 border-secondary/10 p-2">
-        <div className="relative aspect-square w-[72px] overflow-hidden rounded-full bg-[#0d0d14]">
-          <Image
-            src={avatar}
-            alt=""
-            fill
-            sizes="72px"
-            className="rounded-full object-cover object-center"
-          />
-        </div>
-
-        <Image
-          src={`/leaderboard/rank${rank}-hex.svg`}
-          alt=""
-          width={80}
-          height={80}
-          className="absolute -bottom-12 left-1/2 w-20 -translate-x-1/2"
-          style={{ height: "auto" }}
-        />
-      </div>
-
-      <h2 className="mx-auto my-6 w-36 truncate text-center font-golos text-xl font-medium uppercase leading-[1.3] tracking-normal text-white">
-        {player.username}
-      </h2>
-
-      <h3 className="font-golos text-base uppercase leading-snug tracking-normal text-white">
-        Wagered
-      </h3>
-
-      <h3 className="font-golos text-base uppercase leading-snug tracking-normal text-secondary/75">
-        <span className="text-primary">$</span>
-        {whole}
-        <span className="opacity-75">.{frac}</span>
-      </h3>
-
-      <div className="absolute bottom-5 left-1/2 w-[210px] -translate-x-1/2">
-        <div className="relative flex h-14 items-center justify-center">
-          <Image
-            src={`/leaderboard/rank${rank}-ribbon.svg`}
-            alt=""
-            fill
-            sizes="210px"
-            className="object-cover object-center"
-          />
-          <span className="relative z-10 mb-3 font-golos text-2xl font-bold uppercase leading-tight text-[#0b0b12]">
-            ${formatCurrency(player.prize)}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function HexCountdownCell({
-  value,
-  label,
-  valueClassName,
-}: {
-  value: string;
-  label: string;
-  valueClassName: string;
-}) {
-  const clipId = useId();
-
-  return (
-    <div className="relative flex h-[60px] w-[60px] shrink-0 items-center justify-center">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="100%"
-        height="100%"
-        fill="currentColor"
-        viewBox="0 0 16 16"
-        className="absolute text-secondary/5"
-        aria-hidden
-      >
-        <g clipPath={`url(#${clipId})`}>
-          <path
-            fill="currentColor"
-            fillRule="evenodd"
-            d="M8.606.165a1.199 1.199 0 0 0-1.212 0L1.606 3.55C1.231 3.77 1 4.175 1 4.614v6.772c0 .439.231.844.606 1.064l5.788 3.385c.375.22.837.22 1.212 0l5.788-3.385c.375-.22.606-.625.606-1.064V4.614c0-.439-.231-.844-.606-1.064L8.606.165Z"
-            clipRule="evenodd"
-          />
-        </g>
-        <defs>
-          <clipPath id={clipId}>
-            <path fill="#fff" d="M0 0h16v16H0z" />
-          </clipPath>
-        </defs>
-      </svg>
-      <div className="relative z-10 -top-0.5 text-center">
-        <h3
-          className={`block font-golos text-base font-bold uppercase leading-snug tracking-normal ${valueClassName}`}
-        >
-          {value}
-        </h3>
-        <p className="block font-golos text-xs font-normal uppercase leading-none text-secondary/50">
-          {label}
-        </p>
-      </div>
-    </div>
-  );
+  return <ChampionshipPlayer player={player} />;
 }
 
 export function CountdownStrip({
@@ -251,31 +174,13 @@ export function CountdownStrip({
   seconds: string;
 }) {
   return (
-    <div className="flex w-full items-center py-6 pt-8 sm:py-8 sm:pt-10">
-      <hr className="h-px w-full origin-right scale-x-100 border-0 bg-current text-secondary/5 transition-transform duration-1000" />
-      <div className="flex shrink-0 px-4">
-        <HexCountdownCell
-          value={days}
-          label="days"
-          valueClassName="text-primary"
-        />
-        <HexCountdownCell
-          value={hours}
-          label="hrs"
-          valueClassName="text-primary"
-        />
-        <HexCountdownCell
-          value={minutes}
-          label="min"
-          valueClassName="text-primary"
-        />
-        <HexCountdownCell
-          value={seconds}
-          label="sec"
-          valueClassName="text-secondary/75"
-        />
-      </div>
-      <hr className="h-px w-full origin-left scale-x-100 border-0 bg-current text-secondary/5 transition-transform duration-1000" />
+    <div className="flex w-full justify-center py-2">
+      <ChampionshipCountdown
+        days={days}
+        hours={hours}
+        minutes={minutes}
+        seconds={seconds}
+      />
     </div>
   );
 }

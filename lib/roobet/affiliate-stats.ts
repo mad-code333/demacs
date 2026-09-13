@@ -75,5 +75,50 @@ export async function fetchAffiliateStats(
     throw new Error("affiliate_stats_invalid_shape");
   }
 
-  return data as AffiliateStatsRow[];
+  return data.map(normalizeAffiliateRow);
+}
+
+function toFiniteNumber(value: unknown): number {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string" && value.trim() !== "") {
+    const n = Number(value.replace(/,/g, ""));
+    if (Number.isFinite(n)) return n;
+  }
+  return 0;
+}
+
+function normalizeAffiliateRow(row: unknown): AffiliateStatsRow {
+  const r = (row ?? {}) as Record<string, unknown>;
+  const highest = r.highestMultiplier;
+  return {
+    uid: String(r.uid ?? ""),
+    username: String(r.username ?? r.name ?? "—"),
+    wagered: toFiniteNumber(r.wagered ?? r.weightedWagered ?? r.totalWagered),
+    favoriteGameId:
+      typeof r.favoriteGameId === "string" ? r.favoriteGameId : undefined,
+    favoriteGameTitle:
+      typeof r.favoriteGameTitle === "string" ? r.favoriteGameTitle : undefined,
+    weightedWagered:
+      r.weightedWagered !== undefined
+        ? toFiniteNumber(r.weightedWagered)
+        : undefined,
+    rankLevel:
+      r.rankLevel !== undefined ? toFiniteNumber(r.rankLevel) : undefined,
+    rankLevelImage:
+      typeof r.rankLevelImage === "string" ? r.rankLevelImage : undefined,
+    highestMultiplier:
+      highest && typeof highest === "object"
+        ? {
+            multiplier: toFiniteNumber(
+              (highest as Record<string, unknown>).multiplier,
+            ),
+            wagered: toFiniteNumber((highest as Record<string, unknown>).wagered),
+            payout: toFiniteNumber((highest as Record<string, unknown>).payout),
+            gameId: String((highest as Record<string, unknown>).gameId ?? ""),
+            gameTitle: String(
+              (highest as Record<string, unknown>).gameTitle ?? "",
+            ),
+          }
+        : undefined,
+  };
 }
