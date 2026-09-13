@@ -3,7 +3,7 @@ import { DemacsLogo } from "./DemacsLogo";
 export function HeroContent() {
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-      <p className="font-body text-[0.72rem] font-semibold uppercase tracking-[0.42em] text-[#8E978E]">
+      <p className="type-label font-sans text-[0.72rem] uppercase text-[#8E978E]">
         Welcome to
       </p>
 
@@ -21,10 +21,10 @@ export function HeroContent() {
         />
       </h1>
 
-      <p className="mt-6 font-display text-[clamp(1.15rem,2.7vw,1.85rem)] font-semibold uppercase tracking-[0.2em] text-white sm:mt-7 sm:tracking-[0.22em]">
+      <p className="type-hero-uppercase mt-6 font-sans text-[clamp(1.15rem,2.7vw,1.85rem)] uppercase text-white sm:mt-7">
         Play. <span className="text-primary">Earn.</span> Climb.
       </p>
-      <p className="mt-4 max-w-xl font-body text-[0.95rem] font-normal leading-7 tracking-[-0.01em] text-[#D8DDD8]/78 sm:mt-5 sm:text-[1.05rem] sm:leading-8">
+      <p className="type-body mt-4 max-w-xl font-sans text-[0.95rem] leading-7 text-[#D8DDD8]/78 sm:mt-5 sm:text-[1.05rem] sm:leading-8 sm:font-medium">
         Compete, climb the rankings, unlock VIP rewards,
         <br className="hidden sm:block" /> and chase the monthly prize pool.
       </p>

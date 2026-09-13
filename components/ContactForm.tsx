@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 
-const labelClass = "mb-1.5 block font-golos text-[0.65rem] font-semibold uppercase tracking-wider text-secondary/70";
+const labelClass = "type-label mb-1.5 block font-sans text-[0.65rem] uppercase text-secondary/70";
 const inputClass =
   "w-full rounded-md border border-white/10 bg-white/5 px-3 py-2.5 font-golos text-sm text-white outline-none transition-colors placeholder:text-secondary/40 focus:border-primary/50 focus:ring-1 focus:ring-primary/40";
 const textareaClass = `${inputClass} min-h-[140px] resize-y`;
@@ -63,7 +63,7 @@ export function ContactForm() {
         transition={{ duration: reduceMotion ? 0 : 0.4, ease }}
         role="status"
       >
-        <h2 className="font-sports text-xl tracking-tight text-white sm:text-2xl">Message received</h2>
+        <h2 className="type-card-title font-sans text-xl text-white sm:text-2xl sm:font-bold">Message received</h2>
         <p className="mt-3 font-golos text-sm leading-relaxed text-secondary/80">
           Thanks for reaching out. We will get back to you as soon as we can.
         </p>
@@ -83,7 +83,7 @@ export function ContactForm() {
       onSubmit={onSubmit}
       className="rounded-xl border border-white/10 bg-[#08080c]/90 p-6"
     >
-      <h2 className="font-sports text-xl tracking-tight text-white sm:text-2xl">Send a message</h2>
+      <h2 className="type-card-title font-sans text-xl text-white sm:text-2xl sm:font-bold">Send a message</h2>
       <p className="mt-2 font-golos text-sm text-secondary/75">
         Partnerships, support, or general questions — fill in the form and we will reply by email.
       </p>

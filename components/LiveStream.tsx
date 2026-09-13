@@ -26,7 +26,7 @@ export function LiveStream() {
               <SectionLabel icon={IoRadio} tone="live">
                 Live now
               </SectionLabel>
-              <h2 className="mt-6 font-sports text-[clamp(2.2rem,5vw,3.8rem)] uppercase leading-[0.92] tracking-tight text-white">
+              <h2 className="type-section-uppercase mt-6 font-sans text-[clamp(2.2rem,5vw,3.8rem)] uppercase leading-[0.92] text-white">
                 Join the <span className="text-primary">action</span>
               </h2>
               <p className="mt-5 max-w-md font-golos text-base leading-7 text-secondary/75">

@@ -11,7 +11,7 @@ type SessionUser = {
   registrationComplete: boolean;
 };
 
-const labelClass = "mb-1.5 block font-golos text-[0.65rem] font-semibold uppercase tracking-wider text-secondary/70";
+const labelClass = "type-label mb-1.5 block font-sans text-[0.65rem] uppercase text-secondary/70";
 const inputClass =
   "w-full rounded-md border border-white/10 bg-white/5 px-3 py-2.5 font-golos text-sm text-white outline-none transition-colors placeholder:text-secondary/40 focus:border-primary/50 focus:ring-1 focus:ring-primary/40";
 
@@ -109,7 +109,7 @@ export function RegisterCompleteForm() {
       onSubmit={onSubmit}
       className="mx-auto w-full max-w-md rounded-xl border border-white/10 bg-[#08080c]/90 p-6 shadow-[0_16px_48px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-8"
     >
-      <h1 className="font-sports text-xl tracking-tight text-white sm:text-2xl">Complete registration</h1>
+      <h1 className="type-card-title font-sans text-xl text-white sm:text-2xl sm:font-bold">Complete registration</h1>
       <p className="mt-2 font-golos text-sm text-secondary/75">
         Add your Kick.com name and Roobet username. Letters, numbers, dots, underscores, and hyphens only (max 64
         characters each).

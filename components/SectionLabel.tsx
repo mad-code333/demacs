@@ -19,7 +19,7 @@ export function SectionLabel({
   return (
     <span
       className={[
-        "inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-golos text-[0.65rem] font-semibold uppercase tracking-[0.22em]",
+        "type-label inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-sans text-[0.65rem] uppercase",
         toneClass,
       ].join(" ")}
     >

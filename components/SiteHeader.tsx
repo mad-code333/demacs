@@ -25,7 +25,7 @@ function linkActive(href: string, pathname: string) {
 
 function navLinkClass(active: boolean) {
   return [
-    "rounded-md px-2.5 py-2 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504]",
+    "type-nav rounded-md px-2.5 py-2 font-sans text-[0.72rem] uppercase transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504]",
     active ? "text-primary" : "text-[#D8DDD8]/80 hover:text-white",
   ].join(" ");
 }
@@ -35,7 +35,7 @@ function LivePill({ className }: { className?: string }) {
     <a
       href="https://kick.com/gambanator"
       className={[
-        "inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-primary transition-colors hover:border-primary/45 hover:bg-primary/15",
+        "type-label inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 font-sans text-[0.65rem] uppercase text-primary transition-colors hover:border-primary/45 hover:bg-primary/15",
         className,
       ]
         .filter(Boolean)
@@ -134,14 +134,14 @@ export function SiteHeader() {
         aria-hidden={!open}
       >
         <nav
-          className="flex max-h-[min(70vh,calc(100dvh-4rem))] flex-col gap-1 overflow-y-auto px-4 py-4 font-body"
+          className="flex max-h-[min(70vh,calc(100dvh-4rem))] flex-col gap-1 overflow-y-auto px-4 py-4 font-sans"
           aria-label="Main mobile"
         >
           {navLinks.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-lg px-4 py-3.5 text-sm font-semibold uppercase tracking-wide text-[#D8DDD8] transition-colors hover:bg-white/5 hover:text-white"
+              className="type-nav rounded-lg px-4 py-3.5 text-sm uppercase text-[#D8DDD8] transition-colors hover:bg-white/5 hover:text-white"
               onClick={() => setOpen(false)}
             >
               {item.label}

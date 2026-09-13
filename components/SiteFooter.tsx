@@ -67,7 +67,7 @@ export function SiteFooter() {
 
           {footerGroups.map((group) => (
             <div key={group.title}>
-              <h2 className="font-golos text-xs font-semibold uppercase tracking-[0.2em] text-white/90">
+              <h2 className="type-label font-sans text-xs uppercase text-white/90">
                 {group.title}
               </h2>
               <ul className="mt-4 space-y-0.5" role="list">
@@ -83,7 +83,7 @@ export function SiteFooter() {
           ))}
 
           <div>
-            <h2 className="font-golos text-xs font-semibold uppercase tracking-[0.2em] text-white/90">
+            <h2 className="type-label font-sans text-xs uppercase text-white/90">
               Site
             </h2>
             <ul className="mt-4 space-y-0.5" role="list">

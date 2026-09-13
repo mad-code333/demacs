@@ -23,7 +23,7 @@ export function VIPProgression() {
         <ScrollReveal className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
             <SectionLabel>VIP progression</SectionLabel>
-            <h2 className="mt-6 font-sports text-[clamp(2.2rem,5vw,3.6rem)] uppercase leading-none tracking-tight text-white">
+            <h2 className="type-section-uppercase mt-6 font-sans text-[clamp(2.2rem,5vw,3.6rem)] uppercase leading-none text-white">
               Climb the <span className="text-primary">published ladder</span>
             </h2>
             <p className="mt-5 font-golos text-base leading-7 text-[#8E978E]">
@@ -66,7 +66,7 @@ export function VIPProgression() {
                   height={160}
                   className="h-14 w-auto max-w-[130px] object-contain drop-shadow-[0_0_18px_rgba(120,255,0,0.18)]"
                 />
-                <p className="mt-5 font-golos text-xl font-semibold tracking-tight text-white">{tier.name}</p>
+                <p className="type-card-title mt-5 font-sans text-xl text-white sm:font-bold">{tier.name}</p>
                 <p className="mt-2 font-golos text-sm uppercase tracking-[0.14em] text-[#8E978E]">
                   {formatVipWager(tier.wagerUsd)}+
                 </p>

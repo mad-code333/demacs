@@ -26,7 +26,7 @@ export function HowItWorksDiagram() {
       <div className="relative mx-auto w-full max-w-7xl">
         <ScrollReveal className="mx-auto max-w-2xl text-center">
           <SectionLabel>How it works</SectionLabel>
-          <h2 className="mt-6 font-display text-[clamp(2rem,4.8vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-white">
+          <h2 className="type-section mt-6 font-sans text-[clamp(2rem,4.8vw,3.5rem)] leading-[1.05] text-white">
             Play → Earn → Climb → <span className="text-primary">Reward</span>
           </h2>
           <p className="mt-5 font-body text-base leading-7 text-[#8E978E]">
@@ -56,14 +56,14 @@ export function HowItWorksDiagram() {
               ) : null}
               <DimensionalCard className="relative z-10 flex h-full min-h-[220px] flex-col rounded-[24px] p-6 sm:p-7">
                 <div className="flex items-center justify-between gap-3">
-                  <span className="font-body text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-primary">
+                  <span className="type-label font-sans text-[0.7rem] uppercase text-primary">
                     {n}
                   </span>
                   <div className="demacs-icon-plate flex size-12 items-center justify-center rounded-2xl text-primary sm:size-[52px]">
                     <Icon className="size-6 sm:size-7" aria-hidden />
                   </div>
                 </div>
-                <h3 className="mt-7 font-display text-2xl font-semibold tracking-tight text-white">{title}</h3>
+                <h3 className="type-card-title mt-7 font-sans text-2xl text-white sm:font-bold">{title}</h3>
                 <p className="mt-3 font-body text-[0.95rem] leading-7 text-[#8E978E]">{desc}</p>
               </DimensionalCard>
             </ScrollReveal>

@@ -78,7 +78,7 @@ function ProfileModal({ user, open, onClose }: { user: SessionUser; open: boolea
         className="relative z-10 w-full max-w-md rounded-xl border border-white/10 bg-[#08080c] p-6 shadow-[0_24px_64px_rgba(0,0,0,0.65)]"
       >
         <div className="flex items-start justify-between gap-3">
-          <h2 id="profile-modal-title" className="font-sports text-xl tracking-tight text-white">
+          <h2 id="profile-modal-title" className="type-card-title font-sans text-xl text-white sm:font-bold">
             Profile
           </h2>
           <button

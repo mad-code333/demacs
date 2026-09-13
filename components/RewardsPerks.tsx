@@ -58,7 +58,7 @@ export function RewardsPerks() {
       <div className="relative mx-auto w-full max-w-7xl">
         <ScrollReveal className="mx-auto max-w-2xl text-center">
           <SectionLabel icon={GiSparkles}>Rewards & VIP</SectionLabel>
-          <h2 className="mt-6 font-sports text-[clamp(2.3rem,5vw,3.8rem)] uppercase leading-none tracking-tight text-white">
+          <h2 className="type-section-uppercase mt-6 font-sans text-[clamp(2.3rem,5vw,3.8rem)] uppercase leading-none text-white">
             Perks that <span className="text-primary">scale</span> with you
           </h2>
           <p className="mt-5 font-golos text-base leading-7 text-secondary/75">
@@ -73,7 +73,7 @@ export function RewardsPerks() {
                 <div className="demacs-icon-plate flex size-12 items-center justify-center rounded-2xl text-primary transition-transform duration-300 group-hover:scale-105 sm:size-[52px]">
                   <Icon className="size-6 sm:size-7" aria-hidden />
                 </div>
-                <h3 className="mt-7 font-golos text-2xl font-semibold tracking-tight text-white">{title}</h3>
+                <h3 className="type-card-title mt-7 font-sans text-2xl text-white sm:font-bold">{title}</h3>
                 <p className="mt-3 flex-1 text-[0.98rem] leading-7 text-secondary/70">{description}</p>
                 {native ? (
                   <a
@@ -104,7 +104,7 @@ export function RewardsPerks() {
                 <p className="font-golos text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-primary">
                   VIP snapshot
                 </p>
-                <h3 className="mt-2 font-sports text-2xl uppercase tracking-tight text-white sm:text-3xl">
+                <h3 className="type-section-uppercase mt-2 font-sans text-2xl uppercase text-white sm:text-3xl">
                   Climb the published ladder
                 </h3>
               </div>

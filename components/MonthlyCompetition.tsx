@@ -43,7 +43,7 @@ export function MonthlyCompetition() {
       <div className="relative mx-auto w-full max-w-7xl">
         <ScrollReveal className="flex flex-col items-center text-center">
           <SectionLabel icon={IoTimeOutline}>Monthly competition</SectionLabel>
-          <h2 className="mt-6 font-sports text-[clamp(2.4rem,6.5vw,4.4rem)] uppercase leading-none tracking-tight text-white">
+          <h2 className="type-section-uppercase mt-6 font-sans text-[clamp(2.4rem,6.5vw,4.4rem)] uppercase leading-none text-white">
             Fight for the{" "}
             <span className="text-primary">${formatCurrency(MONTHLY_PRIZE_POOL)}</span>
           </h2>
@@ -59,7 +59,7 @@ export function MonthlyCompetition() {
               <p className="font-golos text-[0.65rem] uppercase tracking-[0.16em] text-secondary/55">
                 Prize pool
               </p>
-              <p className="mt-3 font-golos text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
+              <p className="type-hero mt-3 font-sans text-3xl text-primary sm:text-4xl">
                 ${formatCurrency(MONTHLY_PRIZE_POOL)}
               </p>
             </DimensionalCard>

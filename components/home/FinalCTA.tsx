@@ -25,7 +25,7 @@ export function FinalCTA() {
                   Ready to compete
                 </SectionLabel>
               </div>
-              <h2 className="font-sports text-[clamp(2.2rem,5vw,3.8rem)] uppercase leading-none tracking-tight text-white">
+              <h2 className="type-section-uppercase font-sans text-[clamp(2.2rem,5vw,3.8rem)] uppercase leading-none text-white">
                 Start your next <span className="text-primary">rank push</span>
               </h2>
               <p className="mt-5 max-w-xl font-golos text-base leading-7 text-[#D8DDD8]/78 sm:text-lg">

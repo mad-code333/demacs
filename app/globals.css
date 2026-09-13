@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -7,13 +7,13 @@
   --primary: #78ff00;
   --secondary: #8e978e;
   --bright: #fafafa;
-  /* Body / UI — Outfit */
-  --font-body-stack: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  /* Display / headings — Space Grotesk */
-  --font-display-stack: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  /* Legacy aliases → new stacks (updates font-golos / font-sports site-wide) */
-  --font-golos-stack: var(--font-body-stack);
-  --font-sports-stack: var(--font-display-stack);
+  /* Primary system — Plus Jakarta Sans (body + display) */
+  --font-jakarta-stack: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body-stack: var(--font-jakarta-stack);
+  --font-display-stack: var(--font-jakarta-stack);
+  /* Legacy aliases */
+  --font-golos-stack: var(--font-jakarta-stack);
+  --font-sports-stack: var(--font-jakarta-stack);
 }
 
 @theme inline {
@@ -22,12 +22,12 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-bright: var(--bright);
-  --font-sans: var(--font-body-stack);
-  --font-body: var(--font-body-stack);
-  --font-display: var(--font-display-stack);
+  --font-sans: var(--font-jakarta-stack);
+  --font-body: var(--font-jakarta-stack);
+  --font-display: var(--font-jakarta-stack);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-golos: var(--font-body-stack);
-  --font-sports: var(--font-display-stack);
+  --font-golos: var(--font-jakarta-stack);
+  --font-sports: var(--font-jakarta-stack);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,6 +35,52 @@
     --background: #030504;
     --foreground: #fafafa;
   }
+}
+
+/* Plus Jakarta Sans type roles */
+.type-hero {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.type-hero-uppercase {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.type-section {
+  font-weight: 800;
+  letter-spacing: -0.028em;
+}
+
+.type-section-uppercase {
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+.type-card-title {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.type-nav {
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.type-btn {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.type-body {
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.type-label {
+  font-weight: 500;
+  letter-spacing: 0.14em;
 }
 
 @keyframes demacs-float {

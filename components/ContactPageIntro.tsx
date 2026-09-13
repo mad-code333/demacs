@@ -15,7 +15,7 @@ export function ContactPageIntro() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: reduceMotion ? 0 : 0.55, ease }}
     >
-      <h1 className="flex items-center gap-3 font-golos text-2xl font-semibold uppercase tracking-wide text-white sm:text-3xl">
+      <h1 className="type-section-uppercase flex items-center gap-3 font-sans text-2xl uppercase text-white sm:text-3xl">
         <IoMail className="size-8 shrink-0 text-primary sm:size-9" aria-hidden />
         Contact
       </h1>

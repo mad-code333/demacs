@@ -48,10 +48,10 @@ export default function VipRewardsPage() {
       >
 
         <header className="mt-8">
-          <h1 className="font-sports text-3xl uppercase tracking-wide text-white sm:text-4xl">
+          <h1 className="type-section-uppercase font-sans text-3xl uppercase text-white sm:text-4xl">
             VIP rewards
           </h1>
-          <p className="mt-3 font-golos text-sm leading-relaxed text-secondary/75">
+          <p className="type-body mt-3 font-sans text-sm leading-relaxed text-secondary/75 sm:font-medium">
             Each tier unlocks after the listed lifetime wager. Amounts match the published VIP ladder.
           </p>
         </header>

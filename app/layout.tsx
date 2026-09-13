@@ -72,9 +72,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="relative h-full overflow-x-hidden antialiased font-display"
+      className="relative h-full overflow-x-hidden antialiased font-sans"
     >
-      <body className="relative flex min-h-full flex-col bg-transparent font-body">
+      <body className="relative flex min-h-full flex-col bg-transparent font-sans font-normal antialiased">
         <SiteAtmosphere />
         <div className="relative z-10 flex min-h-full flex-1 flex-col">
           <SiteHeader />

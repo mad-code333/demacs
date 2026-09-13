@@ -57,10 +57,10 @@ export function FeatureCards() {
               />
             </div>
             <div className="min-w-0">
-              <h2 className="font-display text-lg font-semibold tracking-tight text-white sm:text-xl">
+              <h2 className="type-card-title font-sans text-lg text-white sm:text-xl sm:font-bold">
                 {title}
               </h2>
-              <p className="mt-2 font-body text-[0.92rem] leading-6 text-[#8E978E]">{description}</p>
+              <p className="type-body mt-2 font-sans text-[0.92rem] leading-6 text-[#8E978E]">{description}</p>
             </div>
           </DimensionalCard>
         );

@@ -70,7 +70,7 @@ export function HomeLeaderboardPreview() {
         <ScrollReveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
             <SectionLabel icon={IoTrendingUp}>Live leaderboard</SectionLabel>
-            <h2 className="mt-6 font-sports text-[clamp(2.2rem,5vw,3.8rem)] uppercase leading-none tracking-tight text-white">
+            <h2 className="type-section-uppercase mt-6 font-sans text-[clamp(2.2rem,5vw,3.8rem)] uppercase leading-none text-white">
               Current <span className="text-primary">standings</span>
             </h2>
             <p className="mt-5 font-golos text-base leading-7 text-secondary/75">

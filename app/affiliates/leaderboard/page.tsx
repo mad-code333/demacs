@@ -173,7 +173,7 @@ export default function AffiliatesLeaderboardPage() {
             <IoTrendingUp className="size-3.5" aria-hidden />
             Monthly competition
           </span>
-          <h1 className="mt-5 font-sports text-[clamp(2.25rem,7vw,4.5rem)] uppercase leading-none tracking-tight text-white">
+          <h1 className="type-section-uppercase mt-5 font-sans text-[clamp(2.25rem,7vw,4.5rem)] uppercase leading-none text-white">
             Leader<span className="text-primary">board</span>
           </h1>
           <p className="mt-4 max-w-xl font-golos text-sm text-secondary/75 sm:text-base">
