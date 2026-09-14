@@ -1127,18 +1127,23 @@ button {
 
 .champ-crown {
   position: absolute;
-  top: -0.15rem;
+  top: -0.55rem;
   left: 50%;
   z-index: 4;
-  width: 3.35rem;
+  width: 5.1rem;
   height: auto;
+  max-width: none;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
   transform: translateX(-50%);
+  filter: drop-shadow(0 0 12px rgba(232, 197, 71, 0.55));
   animation: champ-crown-float 3.8s ease-in-out infinite;
 }
 
 .champ-card--1 .champ-crown {
-  width: 3.85rem;
-  top: -0.35rem;
+  width: 5.85rem;
+  top: -0.75rem;
 }
 
 .champ-medallion {
@@ -1154,11 +1159,34 @@ button {
 
 .champ-laurel {
   position: absolute;
-  inset: -18% -22%;
+  left: 50%;
+  top: 52%;
   z-index: 0;
+  width: 145%;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
   pointer-events: none;
-  opacity: 0.95;
-  filter: drop-shadow(0 0 8px var(--glow));
+  user-select: none;
+  opacity: 0.98;
+  transform: translate(-50%, -42%);
+  filter: drop-shadow(0 0 10px var(--glow));
+}
+
+.champ-laurel--silver {
+  filter:
+    grayscale(1) brightness(1.18) contrast(1.05)
+    drop-shadow(0 0 10px rgba(184, 196, 210, 0.45));
+}
+
+.champ-laurel--bronze {
+  filter:
+    sepia(0.85) saturate(1.35) hue-rotate(-10deg) brightness(0.95)
+    drop-shadow(0 0 10px rgba(198, 123, 58, 0.45));
+}
+
+.champ-laurel--gold {
+  filter: drop-shadow(0 0 10px rgba(232, 197, 71, 0.5));
 }
 
 .champ-medallion__ring {
