@@ -74,7 +74,7 @@ export function DemacsWordmark({
   return (
     <span
       className={[
-        "inline-flex items-center gap-2 transition-transform duration-300 group-hover:scale-[1.03] sm:gap-2.5",
+        "inline-flex items-center gap-2 transition-transform duration-300 group-hover:scale-[1.03] sm:gap-0.5",
         className,
       ]
         .filter(Boolean)
