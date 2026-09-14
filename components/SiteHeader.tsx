@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FaDiscord } from "react-icons/fa";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { DemacsWordmark } from "./DemacsLogo";
-import { KickAuthControls } from "./KickAuthControls";
 
 const HEADER_H = "h-16";
+const DISCORD_URL = "https://discord.gg/demacs";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -30,22 +31,23 @@ function navLinkClass(active: boolean) {
   ].join(" ");
 }
 
-function LivePill({ className }: { className?: string }) {
+function DiscordButton({ className }: { className?: string }) {
   return (
     <a
-      href="https://kick.com/demacs"
+      href={DISCORD_URL}
+      target="_blank"
+      rel="noopener noreferrer"
       className={[
-        "type-label inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1.5 font-sans text-[0.65rem] uppercase text-primary transition-colors hover:border-primary/45 hover:bg-primary/15",
+        "type-btn inline-flex items-center justify-center gap-2 rounded-full border border-primary/45 bg-primary/15 px-4 py-2 font-sans text-[0.72rem] uppercase text-primary transition-all",
+        "hover:border-primary/70 hover:bg-primary/25 hover:text-white",
+        "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504]",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
     >
-      <span className="relative flex size-2">
-        <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-60 motion-reduce:animate-none" />
-        <span className="relative inline-flex size-2 rounded-full bg-primary" />
-      </span>
-      Live
+      <FaDiscord className="size-4 shrink-0" aria-hidden />
+      Discord
     </a>
   );
 }
@@ -107,9 +109,8 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <LivePill />
-          <KickAuthControls variant="toolbar" />
+        <div className="hidden items-center lg:flex">
+          <DiscordButton />
         </div>
 
         <button
@@ -147,9 +148,8 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <div className="mt-3 flex w-full flex-col gap-3 border-t border-white/5 pt-3">
-            <LivePill className="w-fit" />
-            <KickAuthControls variant="drawer" className="w-full" onNavigateAction={() => setOpen(false)} />
+          <div className="mt-3 border-t border-white/5 pt-3">
+            <DiscordButton className="w-full" />
           </div>
         </nav>
       </div>
