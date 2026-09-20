@@ -28,7 +28,7 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-[#030305]/55 backdrop-blur-md font-golos text-secondary/70">
+    <footer className="relative overflow-hidden border-t border-white/5 bg-[#050507]/70 backdrop-blur-md font-golos text-secondary/70">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"
         aria-hidden
@@ -41,7 +41,7 @@ export function SiteFooter() {
               className="inline-flex items-center gap-2 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030305]"
               aria-label="DEMACS home"
             >
-              <DemacsWordmark logoClassName="h-full w-full object-contain drop-shadow-[0_0_14px_rgba(120,255,0,0.32)]" />
+              <DemacsWordmark logoClassName="h-full w-auto object-contain" />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-secondary/65">
               Rewards, leaderboard, and VIP perks when you play with code{" "}

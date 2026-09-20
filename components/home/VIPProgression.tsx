@@ -18,7 +18,7 @@ export function VIPProgression() {
       id="vip-progression"
       className="relative isolate border-t border-white/5 px-4 py-20 sm:px-6 lg:py-28"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(120,255,0,0.06),transparent_52%)]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(168,85,247,0.06),transparent_52%)]" aria-hidden />
       <div className="relative mx-auto w-full max-w-7xl">
         <ScrollReveal className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
@@ -26,7 +26,7 @@ export function VIPProgression() {
             <h2 className="type-section-uppercase mt-6 font-sans text-[clamp(2.2rem,5vw,3.6rem)] uppercase leading-none text-white">
               Climb the <span className="text-primary">published ladder</span>
             </h2>
-            <p className="mt-5 font-sans text-base leading-7 text-[#8E978E]">
+            <p className="mt-5 font-sans text-base leading-7 text-[#A1A1AA]">
               Real lifetime-wager thresholds. Higher tiers unlock stronger perks.
             </p>
           </div>
@@ -67,10 +67,10 @@ export function VIPProgression() {
                   loading="lazy"
                   fetchPriority="low"
                   frameClassName="inline-flex h-14 max-w-[130px] items-center justify-center"
-                  className="h-14 w-auto max-w-[130px] object-contain drop-shadow-[0_0_18px_rgba(120,255,0,0.18)]"
+                  className="h-14 w-auto max-w-[130px] object-contain drop-shadow-[0_0_18px_rgba(168,85,247,0.18)]"
                 />
                 <p className="type-card-title mt-5 font-sans text-xl text-white sm:font-bold">{tier.name}</p>
-                <p className="type-label mt-2 font-sans text-sm uppercase text-[#8E978E]">
+                <p className="type-label mt-2 font-sans text-sm uppercase text-[#A1A1AA]">
                   {formatVipWager(tier.wagerUsd)}+
                 </p>
                 <p className="mt-4 font-sans text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-primary">

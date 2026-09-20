@@ -30,7 +30,7 @@ export function PrimaryButton({
   variant = "primary",
 }: PrimaryButtonProps) {
   const base =
-    "type-btn relative isolate flex h-fit cursor-pointer select-none items-center justify-center gap-2.5 overflow-hidden rounded-full text-center font-sans uppercase antialiased focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504] motion-reduce:transition-colors motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0";
+    "type-btn relative isolate flex h-fit cursor-pointer select-none items-center justify-center gap-2.5 overflow-hidden rounded-full text-center font-sans uppercase antialiased focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050507] motion-reduce:transition-colors motion-reduce:hover:translate-y-0 motion-reduce:active:translate-y-0";
 
   const variantClass = variant === "primary" ? "demacs-btn-primary" : "demacs-btn-secondary";
 

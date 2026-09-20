@@ -26,8 +26,10 @@ function linkActive(href: string, pathname: string) {
 
 function navLinkClass(active: boolean) {
   return [
-    "type-nav rounded-md px-2.5 py-2 font-sans text-[0.72rem] uppercase transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504]",
-    active ? "text-primary" : "text-[#D8DDD8]/80 hover:text-white",
+    "type-nav relative rounded-md px-2.5 py-2 font-sans text-[0.72rem] uppercase transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050507]",
+    active
+      ? "text-primary after:absolute after:inset-x-2.5 after:bottom-0.5 after:h-px after:bg-primary after:shadow-[0_0_8px_rgba(168,85,247,0.55)]"
+      : "text-[#A1A1AA] hover:bg-white/[0.03] hover:text-white",
   ].join(" ");
 }
 
@@ -39,8 +41,8 @@ function DiscordButton({ className }: { className?: string }) {
       rel="noopener noreferrer"
       className={[
         "type-btn inline-flex items-center justify-center gap-2 rounded-full border border-primary/45 bg-primary/15 px-4 py-2 font-sans text-[0.72rem] uppercase text-primary transition-all",
-        "hover:border-primary/70 hover:bg-primary/25 hover:text-white",
-        "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504]",
+        "hover:border-primary/70 hover:bg-primary/25 hover:text-white hover:shadow-[0_0_20px_rgba(168,85,247,0.25)]",
+        "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050507]",
         className,
       ]
         .filter(Boolean)
@@ -86,18 +88,18 @@ export function SiteHeader() {
         `sticky top-0 z-50 w-full backdrop-blur-xl backdrop-saturate-150 transition-[background-color,border-color,box-shadow] duration-300 ${HEADER_H}`,
         pathname === "/" && !scrolled
           ? "border-b border-transparent bg-transparent"
-          : "border-b border-primary/15 bg-[#030504]/72 shadow-[0_10px_32px_rgba(0,0,0,0.35),0_1px_0_rgba(120,255,0,0.08)]",
+          : "border-b border-white/[0.06] bg-[rgba(5,5,8,0.70)] shadow-[0_10px_32px_rgba(0,0,0,0.4)] backdrop-blur-[20px]",
       ].join(" ")}
     >
       <div className={`mx-auto flex ${HEADER_H} w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6`}>
         <Link
           href="/"
-          className="group shrink-0 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504]"
+          className="group shrink-0 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050507]"
           aria-label="DEMACS home"
         >
           <DemacsWordmark
             priority
-            logoClassName="h-full w-full object-contain drop-shadow-[0_0_16px_rgba(120,255,0,0.4)]"
+            logoClassName="h-full w-auto object-contain"
           />
         </Link>
 
@@ -128,7 +130,7 @@ export function SiteHeader() {
       <div
         id="site-header-drawer"
         className={[
-          "fixed inset-x-0 top-16 z-40 border-b border-white/5 bg-[#030504]/96 backdrop-blur-xl lg:hidden",
+          "fixed inset-x-0 top-16 z-40 border-b border-white/5 bg-[#050507]/96 backdrop-blur-xl lg:hidden",
           "transition-[opacity,visibility] duration-200",
           open ? "visible opacity-100" : "invisible pointer-events-none opacity-0",
         ].join(" ")}
@@ -142,7 +144,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="type-nav rounded-lg px-4 py-3.5 text-sm uppercase text-[#D8DDD8] transition-colors hover:bg-white/5 hover:text-white"
+              className="type-nav rounded-lg px-4 py-3.5 text-sm uppercase text-[#A1A1AA] transition-colors hover:bg-white/5 hover:text-white"
               onClick={() => setOpen(false)}
             >
               {item.label}

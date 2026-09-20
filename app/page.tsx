@@ -9,17 +9,16 @@ import { LeaderboardDataProvider } from "../components/LeaderboardDataProvider";
 import { LiveStream } from "../components/LiveStream";
 import { MonthlyCompetition } from "../components/MonthlyCompetition";
 import { RewardsPerks } from "../components/RewardsPerks";
-import { HERO_WORDMARK_SRC_960 } from "../lib/hero-assets";
+import { HERO_WORDMARK_SRC } from "../lib/hero-assets";
 
 export default function Home() {
   return (
     <div className="relative flex min-h-full flex-1 flex-col overflow-x-hidden text-white">
-      {/* Single-URL preload — starts LCP fetch in <head> before body parse. */}
       <link
         rel="preload"
         as="image"
-        href={HERO_WORDMARK_SRC_960}
-        type="image/webp"
+        href={HERO_WORDMARK_SRC}
+        type="image/png"
         fetchPriority="high"
       />
 

@@ -39,7 +39,7 @@ export function HeroStats() {
             <p className="type-hero font-sans text-[1.35rem] text-primary sm:text-[1.65rem]">
               {value}
             </p>
-            <p className="type-label mt-2 font-sans text-[0.62rem] uppercase text-[#8E978E] sm:text-[0.7rem]">
+            <p className="type-label mt-2 font-sans text-[0.62rem] uppercase text-[#A1A1AA] sm:text-[0.7rem]">
               {label}
             </p>
           </DimensionalCard>

@@ -15,7 +15,7 @@ export function LiveStream() {
       className="relative isolate scroll-mt-24 overflow-hidden border-t border-white/5 px-4 py-20 sm:px-6 lg:py-28"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(120,255,0,0.06),transparent_52%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_50%,rgba(168,85,247,0.1),transparent_52%),radial-gradient(circle_at_20%_30%,rgba(139,92,246,0.06),transparent_40%)]"
         aria-hidden
       />
 
@@ -27,7 +27,7 @@ export function LiveStream() {
                 Live now
               </SectionLabel>
               <h2 className="type-section-uppercase mt-6 font-sans text-[clamp(2.2rem,5vw,3.8rem)] uppercase leading-[0.92] text-white">
-                Join the <span className="text-primary">action</span>
+                Watch <span className="text-primary">DEMACS</span>
               </h2>
               <p className="mt-5 max-w-md font-golos text-base leading-7 text-secondary/75">
                 Watch DEMACS live on Kick — sessions, hunts, and community energy in the official player.
@@ -47,17 +47,20 @@ export function LiveStream() {
               </div>
             </div>
 
-            <DimensionalCard className="overflow-hidden rounded-[28px]" interactive={false}>
-              <div className="flex items-center justify-between border-b border-primary/15 bg-[rgba(5,12,8,0.35)] px-5 py-4 backdrop-blur-md">
+            <DimensionalCard
+              className="overflow-hidden rounded-[28px] shadow-[0_0_0_1px_rgba(168,85,247,0.18),0_24px_60px_rgba(0,0,0,0.45),0_0_40px_rgba(168,85,247,0.12)]"
+              interactive={false}
+            >
+              <div className="flex items-center justify-between border-b border-primary/20 bg-[rgba(12,9,20,0.65)] px-5 py-4 backdrop-blur-md">
                 <div className="flex items-center gap-2.5 font-golos text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-white">
                   <span className="relative flex size-2.5">
                     <span className="absolute inline-flex size-full animate-ping rounded-full bg-red-500 opacity-60 motion-reduce:animate-none" />
                     <span className="relative inline-flex size-2.5 rounded-full bg-red-500" />
                   </span>
-                  Live
+                  Live now
                 </div>
                 <span className="font-golos text-[0.65rem] uppercase tracking-[0.16em] text-secondary/50">
-                  Kick player
+                  Kick · demacs
                 </span>
               </div>
               <div className="relative aspect-video w-full bg-[#050508]">
@@ -103,7 +106,7 @@ export function LiveStream() {
               </div>
               <a
                 href="https://kick.com/demacs"
-                className="mt-6 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-colors hover:text-[#9dff4a]"
+                className="mt-6 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-colors hover:text-[#C084FC]"
               >
                 Open Kick
                 <IoArrowForward className="size-3.5" aria-hidden />

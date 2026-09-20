@@ -71,7 +71,7 @@ export function ChampionshipArenaFx() {
         if (s.x < -4) s.x = w + 4;
         if (s.x > w + 4) s.x = -4;
         ctx.beginPath();
-        ctx.fillStyle = `rgba(120,255,0,${s.a})`;
+        ctx.fillStyle = `rgba(168,85,247,${s.a})`;
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fill();
       }

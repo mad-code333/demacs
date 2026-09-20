@@ -147,7 +147,7 @@ export function HomeCanvas() {
         height * 0.28,
         Math.max(width, height) * 0.55,
       );
-      g1.addColorStop(0, `rgba(120,255,0,${0.06 + pulse * 0.03})`);
+      g1.addColorStop(0, `rgba(168,85,247,${0.06 + pulse * 0.03})`);
       g1.addColorStop(0.4, "rgba(40,90,16,0.03)");
       g1.addColorStop(1, "rgba(3,5,4,0)");
       ctx.fillStyle = g1;
@@ -157,7 +157,7 @@ export function HomeCanvas() {
       for (const ln of lines) {
         if (animate) ln.phase += ln.speed * dt;
         const t = (Math.sin(ln.phase) + 1) * 0.5;
-        ctx.strokeStyle = `rgba(120,255,0,${ln.a * (0.5 + t * 0.5)})`;
+        ctx.strokeStyle = `rgba(168,85,247,${ln.a * (0.5 + t * 0.5)})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(ln.x1 + px * 0.15, ln.y1 + py * 0.15);
@@ -183,7 +183,7 @@ export function HomeCanvas() {
         }
         const x = p.x + px * p.z;
         const y = p.y + py * p.z;
-        const rgb = p.gold ? "245,197,66" : "180,240,140";
+        const rgb = p.gold ? "192,132,252" : "168,85,247";
         if (p.r > 1.2) {
           const glow = ctx.createRadialGradient(x, y, 0, x, y, p.r * 5);
           glow.addColorStop(0, `rgba(${rgb},${p.a * 0.55})`);

@@ -84,7 +84,7 @@ export function InstantImage({
   return (
     <span
       ref={frameRef}
-      className={["demacs-img relative inline-block overflow-hidden align-middle", frameClassName]
+      className={["demacs-img relative inline-block align-middle", frameClassName]
         .filter(Boolean)
         .join(" ")}
       data-ready={ready ? "true" : "false"}

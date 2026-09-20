@@ -39,14 +39,14 @@ export function MonthlyCompetition() {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
         <ScrollReveal className="flex flex-col items-center text-center">
-          <p className="type-label font-sans text-[0.72rem] uppercase text-[#8E978E]">
+          <p className="type-label font-sans text-[0.72rem] uppercase text-[#A1A1AA]">
             DEMACS Championship
           </p>
           <h2 className="type-section-uppercase mt-4 font-sans text-[clamp(2.2rem,6vw,4rem)] uppercase leading-none text-white">
             Fight for the{" "}
             <span className="text-primary">${formatCurrency(MONTHLY_PRIZE_POOL)}</span>
           </h2>
-          <p className="mt-4 max-w-xl font-sans text-sm leading-7 text-[#D8DDD8]/72 sm:text-base">
+          <p className="mt-4 max-w-xl font-sans text-sm leading-7 text-[#A1A1AA] sm:text-base">
             Wager under{" "}
             <span className="font-semibold text-primary">demacskick</span>. Top{" "}
             {TOP_MONTHLY_PRIZES.length} finishers share the pool — 1st takes $
@@ -65,7 +65,7 @@ export function MonthlyCompetition() {
 
         <div className="mt-12 sm:mt-14">
           {noRealUsers ? (
-            <p className="mb-8 text-center font-sans text-sm text-[#8E978E]">
+            <p className="mb-8 text-center font-sans text-sm text-[#A1A1AA]">
               No qualifying players yet — showing the empty podium at $0.00.
             </p>
           ) : null}
@@ -81,7 +81,7 @@ export function MonthlyCompetition() {
           <ChampionshipCTA />
           <Link
             href="#leaderboard"
-            className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#8E978E] transition-colors hover:text-primary"
+            className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#A1A1AA] transition-colors hover:text-primary"
           >
             Preview live ranks
             <IoArrowForward className="size-3.5" aria-hidden />

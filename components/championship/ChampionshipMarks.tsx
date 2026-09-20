@@ -8,9 +8,9 @@ const METAL: Record<
   MetalTone,
   { hi: string; mid: string; lo: string; deep: string }
 > = {
-  gold: { hi: "#fff6c8", mid: "#e8c547", lo: "#b8860b", deep: "#6d4b00" },
+  gold: { hi: "#f3e8ff", mid: "#C084FC", lo: "#9333EA", deep: "#5b21b6" },
   silver: { hi: "#ffffff", mid: "#c8d0dc", lo: "#7a8494", deep: "#3a424c" },
-  bronze: { hi: "#f5d0a8", mid: "#c67b3a", lo: "#8b4513", deep: "#4a2408" },
+  bronze: { hi: "#e9d5ff", mid: "#a78bfa", lo: "#7c3aed", deep: "#4c1d95" },
 };
 
 export function metalToneForRank(rank: 1 | 2 | 3): MetalTone {

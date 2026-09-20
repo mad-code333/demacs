@@ -7,7 +7,7 @@ export function ChampionshipCTA({
   href?: string;
 }) {
   return (
-    <Link href={href} className="champ-cta font-sans focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#030504]">
+    <Link href={href} className="champ-cta font-sans focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050507]">
       <span className="champ-cta__shine motion-reduce:hidden" aria-hidden>
         <span />
       </span>

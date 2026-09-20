@@ -51,7 +51,7 @@ export function RewardsPerks() {
       className="relative isolate overflow-hidden border-t border-white/5 px-4 py-24 sm:px-6 lg:py-32"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(120,255,0,0.1),transparent_38%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(168,85,247,0.1),transparent_38%)]"
         aria-hidden
       />
 
@@ -78,7 +78,7 @@ export function RewardsPerks() {
                 {native ? (
                   <a
                     href={href}
-                    className="mt-7 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-all group-hover:gap-2.5 group-hover:text-[#9dff4a]"
+                    className="mt-7 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-all group-hover:gap-2.5 group-hover:text-[#C084FC]"
                   >
                     {cta}
                     <IoArrowForward className="size-3.5" aria-hidden />
@@ -86,7 +86,7 @@ export function RewardsPerks() {
                 ) : (
                   <Link
                     href={href}
-                    className="mt-7 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-all group-hover:gap-2.5 group-hover:text-[#9dff4a]"
+                    className="mt-7 inline-flex items-center gap-2 font-golos text-xs font-semibold uppercase tracking-[0.14em] text-primary transition-all group-hover:gap-2.5 group-hover:text-[#C084FC]"
                   >
                     {cta}
                     <IoArrowForward className="size-3.5" aria-hidden />

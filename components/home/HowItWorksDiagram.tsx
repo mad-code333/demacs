@@ -22,7 +22,7 @@
 //       id="how-it-works"
 //       className="relative isolate scroll-mt-24 border-t border-white/5 px-4 py-24 sm:px-6 lg:py-32"
 //     >
-//       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(120,255,0,0.07),transparent_55%)]" aria-hidden />
+//       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(168,85,247,0.07),transparent_55%)]" aria-hidden />
 //       <div className="relative mx-auto w-full max-w-7xl">
 //         <ScrollReveal className="mx-auto max-w-2xl text-center">
 //           <SectionLabel>How it works</SectionLabel>
@@ -50,7 +50,7 @@
 //                     style={!reduce ? { animationDelay: `${0.15 + index * 0.12}s` } : undefined}
 //                   />
 //                   {!reduce ? (
-//                     <span className="absolute top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-primary/80 shadow-[0_0_8px_rgba(120,255,0,0.45)] demacs-pulse-dot" />
+//                     <span className="absolute top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-primary/80 shadow-[0_0_8px_rgba(168,85,247,0.45)] demacs-pulse-dot" />
 //                   ) : null}
 //                 </div>
 //               ) : null}

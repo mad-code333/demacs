@@ -75,8 +75,8 @@ export default function RootLayout({
       className="relative h-full overflow-x-hidden antialiased font-sans"
     >
       <head>
-        {/* Early brand mark for the sticky header (every page). */}
-        <link rel="preload" as="image" href="/images/hero/logo.webp" type="image/webp" />
+        {/* Early brand wordmark for the sticky header (every page). */}
+        <link rel="preload" as="image" href="/images/hero/username.png?v=noplate3" type="image/png" />
       </head>
       <body className="relative flex min-h-full flex-col bg-transparent font-sans font-normal antialiased">
         <SiteAtmosphere />

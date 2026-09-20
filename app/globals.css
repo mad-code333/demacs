@@ -2,11 +2,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030504;
-  --foreground: #fafafa;
-  --primary: #78ff00;
-  --secondary: #8e978e;
+  --background: #050507;
+  --surface: #0B0910;
+  --surface-2: #100C17;
+  --surface-3: #160C24;
+  --foreground: #FFFFFF;
+  --primary: #A855F7;
+  --secondary: #A1A1AA;
+  --muted: #71717A;
   --bright: #fafafa;
+  --purple-400: #C084FC;
+  --purple-500: #A855F7;
+  --purple-600: #9333EA;
+  --violet: #8B5CF6;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --border: rgba(255, 255, 255, 0.07);
+  --glass: rgba(255, 255, 255, 0.025);
   /* Primary system — Plus Jakarta Sans (body + display) */
   --font-jakarta-stack: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-body-stack: var(--font-jakarta-stack);
@@ -32,7 +45,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #030504;
+    --background: #050507;
     --foreground: #fafafa;
   }
 }
@@ -93,7 +106,7 @@
   border-radius: inherit;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 42%),
-    rgba(8, 16, 12, 0.55);
+    rgba(14, 10, 22, 0.55);
   transition: opacity 0.35s ease;
 }
 
@@ -131,7 +144,7 @@
 .demacs-skeleton-row {
   height: 4.25rem;
   background:
-    linear-gradient(90deg, transparent, rgba(120, 255, 0, 0.04), transparent),
+    linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.04), transparent),
     rgba(255, 255, 255, 0.03);
   background-size: 200% 100%, 100% 100%;
   animation: demacs-shimmer 1.6s ease-in-out infinite;
@@ -142,8 +155,8 @@
   border-radius: 1.5rem;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 40%),
-    rgba(5, 12, 8, 0.28);
-  border: 1px solid rgba(120, 255, 0, 0.14);
+    rgba(12, 8, 18, 0.28);
+  border: 1px solid rgba(168, 85, 247, 0.14);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
 }
@@ -218,8 +231,26 @@
 }
 
 .demacs-hero-logo {
+  /* Soft float only — avoid parent filter:drop-shadow (causes rectangular plate). */
   animation: demacs-float 7.5s ease-in-out infinite;
-  filter: drop-shadow(0 18px 48px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 42px rgba(120, 255, 0, 0.22));
+}
+
+.hero-wordmark-gem {
+  --gem-rot: 0deg;
+  filter: drop-shadow(0 0 14px rgba(245, 197, 66, 0.42))
+    drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
+  animation: hero-wordmark-gem-float 10s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes hero-wordmark-gem-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--gem-rot));
+  }
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(var(--gem-rot));
+  }
 }
 
 .demacs-pulse-dot {
@@ -240,24 +271,24 @@
   --mouse-y: 40%;
   --card-rx: 0deg;
   --card-ry: 0deg;
-  --card-bg: rgba(5, 12, 8, 0.2);
-  --card-border: rgba(120, 255, 0, 0.18);
-  --card-glow: rgba(120, 255, 0, 0.04);
+  --card-bg: rgba(255, 255, 255, 0.025);
+  --card-border: rgba(255, 255, 255, 0.07);
+  --card-glow: rgba(168, 85, 247, 0.04);
   --card-blur: 18px;
   position: relative;
   isolation: isolate;
   overflow: hidden;
   border: 1px solid var(--card-border);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.07), transparent 38%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 45%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, transparent 45%),
     var(--card-bg);
-  -webkit-backdrop-filter: blur(var(--card-blur)) saturate(1.2);
-  backdrop-filter: blur(var(--card-blur)) saturate(1.2);
+  -webkit-backdrop-filter: blur(var(--card-blur)) saturate(1.15);
+  backdrop-filter: blur(var(--card-blur)) saturate(1.15);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.1) inset,
-    0 -1px 0 rgba(0, 0, 0, 0.2) inset,
-    0 10px 28px rgba(0, 0, 0, 0.28),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.25) inset,
+    0 10px 28px rgba(0, 0, 0, 0.32),
     0 0 24px var(--card-glow);
   transition:
     transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
@@ -268,16 +299,16 @@
 }
 
 .demacs-card--secondary {
-  --card-bg: rgba(5, 12, 8, 0.2);
-  --card-border: rgba(120, 255, 0, 0.14);
-  --card-glow: rgba(120, 255, 0, 0.03);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-glow: rgba(168, 85, 247, 0.03);
   --card-blur: 14px;
 }
 
 .demacs-card--featured {
-  --card-bg: rgba(30, 60, 15, 0.14);
-  --card-border: rgba(120, 255, 0, 0.28);
-  --card-glow: rgba(120, 255, 0, 0.08);
+  --card-bg: rgba(168, 85, 247, 0.06);
+  --card-border: rgba(168, 85, 247, 0.28);
+  --card-glow: rgba(168, 85, 247, 0.08);
 }
 
 .demacs-card--static:hover {
@@ -303,7 +334,7 @@
   z-index: 0;
   background: radial-gradient(
     420px circle at var(--mouse-x) var(--mouse-y),
-    rgba(120, 255, 0, 0.1),
+    rgba(168, 85, 247, 0.1),
     transparent 48%
   );
   opacity: 0;
@@ -332,16 +363,16 @@
 
 .demacs-card:hover {
   transform: translateY(-4px) perspective(900px) rotateX(var(--card-rx)) rotateY(var(--card-ry));
-  border-color: rgba(120, 255, 0, 0.55);
+  border-color: rgba(168, 85, 247, 0.55);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.09), transparent 38%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 45%),
-    rgba(8, 18, 12, 0.4);
+    rgba(16, 12, 24, 0.4);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.14) inset,
     0 -1px 0 rgba(0, 0, 0, 0.18) inset,
     0 16px 36px rgba(0, 0, 0, 0.32),
-    0 0 32px rgba(120, 255, 0, 0.12);
+    0 0 32px rgba(168, 85, 247, 0.12);
 }
 
 .demacs-card-light:hover::before {
@@ -349,46 +380,46 @@
 }
 
 .demacs-icon-plate {
-  border: 1px solid rgba(120, 255, 0, 0.24);
+  border: 1px solid rgba(168, 85, 247, 0.24);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 45%),
-    rgba(8, 22, 12, 0.22);
+    rgba(18, 12, 28, 0.22);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.12) inset,
     0 8px 18px rgba(0, 0, 0, 0.16),
-    0 0 14px rgba(120, 255, 0, 0.07);
+    0 0 14px rgba(168, 85, 247, 0.07);
 }
 
 /* Glass control surfaces (modals / forms / dropdowns) */
 .demacs-glass-panel {
-  border: 1px solid rgba(120, 255, 0, 0.18);
+  border: 1px solid rgba(168, 85, 247, 0.18);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.07), transparent 35%),
-    rgba(5, 12, 8, 0.38);
+    rgba(12, 8, 18, 0.38);
   -webkit-backdrop-filter: blur(20px) saturate(1.18);
   backdrop-filter: blur(20px) saturate(1.18);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.1) inset,
     0 14px 40px rgba(0, 0, 0, 0.32),
-    0 0 24px rgba(120, 255, 0, 0.05);
+    0 0 24px rgba(168, 85, 247, 0.05);
 }
 
-/* Glass buttons */
+/* Glass buttons — purple DEMACS system */
 .demacs-btn-primary {
-  border: 1px solid rgba(184, 255, 106, 0.45);
+  border: 1px solid rgba(192, 132, 252, 0.55);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.26), transparent 42%),
-    rgba(120, 255, 0, 0.52);
-  color: #061000;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 42%),
+    linear-gradient(135deg, #8B5CF6, #A855F7);
+  color: #ffffff;
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.38) inset,
-    0 -1px 0 rgba(0, 0, 0, 0.14) inset,
-    0 3px 0 rgba(42, 98, 0, 0.32),
-    0 12px 28px rgba(120, 255, 0, 0.2);
+    0 1px 0 rgba(255, 255, 255, 0.28) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+    0 3px 0 rgba(76, 29, 149, 0.45),
+    0 12px 28px rgba(168, 85, 247, 0.28);
   transition:
     transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.2s ease,
@@ -397,31 +428,31 @@
 }
 
 .demacs-btn-primary:hover {
-  border-color: rgba(212, 255, 154, 0.75);
+  border-color: rgba(216, 180, 254, 0.8);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 42%),
-    rgba(154, 255, 50, 0.74);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent 42%),
+    linear-gradient(135deg, #A855F7, #C084FC);
   transform: translateY(-2px);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.45) inset,
-    0 -1px 0 rgba(0, 0, 0, 0.12) inset,
-    0 5px 0 rgba(52, 120, 0, 0.3),
-    0 16px 36px rgba(120, 255, 0, 0.28);
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.16) inset,
+    0 5px 0 rgba(91, 33, 182, 0.4),
+    0 16px 36px rgba(168, 85, 247, 0.38);
 }
 
 .demacs-btn-primary:active {
   transform: translateY(0);
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 42%),
-    rgba(100, 210, 0, 0.58);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 42%),
+    linear-gradient(135deg, #7C3AED, #9333EA);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.28) inset,
-    0 2px 0 rgba(36, 82, 0, 0.35),
-    0 8px 16px rgba(120, 255, 0, 0.14);
+    0 1px 0 rgba(255, 255, 255, 0.22) inset,
+    0 2px 0 rgba(59, 20, 110, 0.45),
+    0 8px 16px rgba(168, 85, 247, 0.2);
 }
 
 .demacs-btn-secondary {
-  border: 1px solid rgba(120, 255, 0, 0.28);
+  border: 1px solid rgba(168, 85, 247, 0.28);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 40%),
     rgba(8, 18, 10, 0.22);
@@ -433,7 +464,7 @@
     0 -1px 0 rgba(0, 0, 0, 0.22) inset,
     0 3px 0 rgba(0, 0, 0, 0.25),
     0 12px 28px rgba(0, 0, 0, 0.24),
-    0 0 18px rgba(120, 255, 0, 0.05);
+    0 0 18px rgba(168, 85, 247, 0.05);
   transition:
     transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.2s ease,
@@ -442,7 +473,7 @@
 }
 
 .demacs-btn-secondary:hover {
-  border-color: rgba(120, 255, 0, 0.6);
+  border-color: rgba(168, 85, 247, 0.6);
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.11), transparent 40%),
     rgba(12, 28, 16, 0.38);
@@ -452,7 +483,7 @@
     0 -1px 0 rgba(0, 0, 0, 0.2) inset,
     0 5px 0 rgba(0, 0, 0, 0.28),
     0 16px 36px rgba(0, 0, 0, 0.28),
-    0 0 26px rgba(120, 255, 0, 0.1);
+    0 0 26px rgba(168, 85, 247, 0.1);
 }
 
 .demacs-btn-secondary:active {
@@ -467,18 +498,18 @@
 @media (max-width: 768px) {
   .demacs-card {
     --card-blur: 14px;
-    --card-bg: rgba(5, 12, 8, 0.28);
+    --card-bg: rgba(255, 255, 255, 0.035);
   }
 
   .demacs-card--secondary {
     --card-blur: 12px;
-    --card-bg: rgba(5, 12, 8, 0.24);
+    --card-bg: rgba(255, 255, 255, 0.028);
   }
 
   .demacs-glass-panel {
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.07), transparent 35%),
-      rgba(5, 12, 8, 0.45);
+      rgba(12, 9, 20, 0.55);
     -webkit-backdrop-filter: blur(14px) saturate(1.1);
     backdrop-filter: blur(14px) saturate(1.1);
   }
@@ -490,7 +521,7 @@ body {
 }
 
 html {
-  background: #02040a;
+  background: #050507;
 }
 
 button {
@@ -500,22 +531,22 @@ button {
 .shadow-btn-primary {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.35) inset,
-    0 4px 0 rgba(42, 98, 0, 0.45),
-    0 14px 32px rgba(120, 255, 0, 0.22);
+    0 4px 0 rgba(76, 29, 149, 0.45),
+    0 14px 32px rgba(168, 85, 247, 0.22);
 }
 
 .shadow-btn-hover {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.42) inset,
     0 6px 0 rgba(52, 120, 0, 0.4),
-    0 18px 40px rgba(120, 255, 0, 0.3);
+    0 18px 40px rgba(168, 85, 247, 0.3);
 }
 
 .shadow-btn-active {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.25) inset,
     0 2px 0 rgba(36, 82, 0, 0.45),
-    0 8px 18px rgba(120, 255, 0, 0.14);
+    0 8px 18px rgba(168, 85, 247, 0.14);
 }
 
 @keyframes button-shine {
@@ -602,8 +633,8 @@ button {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(120, 255, 0, 0.16) 0%,
-    rgba(80, 255, 0, 0.05) 45%,
+    rgba(245, 197, 66, 0.18) 0%,
+    rgba(232, 197, 71, 0.06) 45%,
     transparent 70%
   );
   pointer-events: none;
@@ -614,8 +645,8 @@ button {
 .orbit-jewel--ring .orbit-jewel__bloom {
   background: radial-gradient(
     circle,
-    rgba(245, 197, 66, 0.14) 0%,
-    rgba(120, 255, 0, 0.03) 48%,
+    rgba(255, 214, 102, 0.2) 0%,
+    rgba(232, 197, 71, 0.06) 48%,
     transparent 70%
   );
 }
@@ -625,8 +656,8 @@ button {
 .orbit-jewel--crown .orbit-jewel__bloom {
   background: radial-gradient(
     circle,
-    rgba(120, 255, 0, 0.16) 0%,
-    rgba(80, 255, 0, 0.05) 50%,
+    rgba(245, 197, 66, 0.2) 0%,
+    rgba(232, 197, 71, 0.06) 50%,
     transparent 70%
   );
 }
@@ -669,29 +700,31 @@ button {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 0 12px rgba(120, 255, 0, 0.16))
-    drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(0 0 14px rgba(245, 197, 66, 0.28))
+    drop-shadow(0 10px 20px rgba(0, 0, 0, 0.55));
 }
 
 .orbit-jewel__img--screen {
-  mix-blend-mode: screen;
+  /* Kept for compatibility; gold jewels use normal blend. */
+  mix-blend-mode: normal;
 }
 
 .orbit-jewel--bg .orbit-jewel__img {
-  filter: blur(1.2px) drop-shadow(0 0 6px rgba(120, 255, 0, 0.1))
-    drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+  filter: blur(1px) drop-shadow(0 0 8px rgba(245, 197, 66, 0.16))
+    drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+  opacity: 0.85;
 }
 
 .orbit-jewel--mid .orbit-jewel__img {
-  filter: drop-shadow(0 0 14px rgba(120, 255, 0, 0.18))
-    drop-shadow(0 0 32px rgba(80, 255, 0, 0.06))
-    drop-shadow(0 10px 18px rgba(0, 0, 0, 0.42));
+  filter: drop-shadow(0 0 16px rgba(245, 197, 66, 0.32))
+    drop-shadow(0 0 36px rgba(232, 197, 71, 0.14))
+    drop-shadow(0 10px 18px rgba(0, 0, 0, 0.5));
 }
 
 .orbit-jewel--fg .orbit-jewel__img {
-  filter: drop-shadow(0 0 16px rgba(120, 255, 0, 0.2))
-    drop-shadow(0 0 40px rgba(80, 255, 0, 0.07))
-    drop-shadow(0 12px 22px rgba(0, 0, 0, 0.48));
+  filter: drop-shadow(0 0 18px rgba(255, 214, 102, 0.35))
+    drop-shadow(0 0 42px rgba(245, 197, 66, 0.16))
+    drop-shadow(0 12px 22px rgba(0, 0, 0, 0.55));
 }
 
 .orbit-jewel__sparkle {
@@ -741,7 +774,7 @@ button {
 
   .orbit-jewel--mid .orbit-jewel__img,
   .orbit-jewel--fg .orbit-jewel__img {
-    filter: drop-shadow(0 0 12px rgba(120, 255, 0, 0.22))
+    filter: drop-shadow(0 0 12px rgba(245, 197, 66, 0.24))
       drop-shadow(0 8px 14px rgba(0, 0, 0, 0.45));
   }
 }
@@ -749,24 +782,24 @@ button {
 /* ── Championship podium / arena ─────────────────────────────────────────── */
 
 .champ-arena {
-  --champ-gold-hi: #fff1a8;
-  --champ-gold: #e8c547;
-  --champ-gold-lo: #9a6b12;
+  --champ-gold-hi: #f3e8ff;
+  --champ-gold: #C084FC;
+  --champ-gold-lo: #6b21a8;
   --champ-silver-hi: #f4f7fb;
   --champ-silver: #b8c0cc;
   --champ-silver-lo: #6a7380;
-  --champ-bronze-hi: #f0c090;
-  --champ-bronze: #c67b3a;
-  --champ-bronze-lo: #6e3a14;
-  --champ-glass: rgba(6, 14, 10, 0.42);
-  --champ-edge: rgba(120, 255, 0, 0.35);
+  --champ-bronze-hi: #e9d5ff;
+  --champ-bronze: #a78bfa;
+  --champ-bronze-lo: #5b21b6;
+  --champ-glass: rgba(12, 9, 20, 0.42);
+  --champ-edge: rgba(168, 85, 247, 0.35);
   position: relative;
   isolation: isolate;
   overflow: hidden;
   /* Keep translucent so NightSky / site canvas shows through. */
   background:
-    radial-gradient(ellipse 55% 48% at 50% 42%, rgba(120, 255, 0, 0.12), transparent 62%),
-    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(120, 255, 0, 0.05), transparent 55%),
+    radial-gradient(ellipse 55% 48% at 50% 42%, rgba(168, 85, 247, 0.12), transparent 62%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(168, 85, 247, 0.05), transparent 55%),
     linear-gradient(
       180deg,
       rgba(2, 4, 10, 0.18) 0%,
@@ -782,13 +815,13 @@ button {
     conic-gradient(
       from 200deg at 50% 78%,
       transparent 0deg,
-      rgba(120, 255, 0, 0.1) 14deg,
+      rgba(168, 85, 247, 0.1) 14deg,
       transparent 30deg,
-      rgba(120, 255, 0, 0.08) 46deg,
+      rgba(168, 85, 247, 0.08) 46deg,
       transparent 64deg,
-      rgba(120, 255, 0, 0.12) 90deg,
+      rgba(168, 85, 247, 0.12) 90deg,
       transparent 112deg,
-      rgba(120, 255, 0, 0.07) 138deg,
+      rgba(168, 85, 247, 0.07) 138deg,
       transparent 170deg
     );
   filter: blur(16px);
@@ -801,7 +834,7 @@ button {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 40% at 50% 55%, rgba(120, 255, 0, 0.07), transparent 70%),
+    radial-gradient(ellipse 70% 40% at 50% 55%, rgba(168, 85, 247, 0.07), transparent 70%),
     radial-gradient(ellipse 100% 70% at 50% 0%, transparent 45%, rgba(0, 0, 0, 0.22) 100%);
   pointer-events: none;
 }
@@ -814,8 +847,8 @@ button {
   height: 28%;
   transform: translateX(-50%);
   background:
-    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(120, 255, 0, 0.14), transparent 70%),
-    linear-gradient(180deg, rgba(120, 255, 0, 0.04), transparent 60%);
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(168, 85, 247, 0.14), transparent 70%),
+    linear-gradient(180deg, rgba(168, 85, 247, 0.04), transparent 60%);
   filter: blur(2px);
   pointer-events: none;
   mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent);
@@ -829,10 +862,10 @@ button {
   pointer-events: none;
   opacity: 0.42;
   background:
-    linear-gradient(160deg, transparent 20%, rgba(120, 255, 0, 0.08) 45%, transparent 70%),
-    linear-gradient(20deg, rgba(8, 16, 12, 0.45), transparent 60%);
+    linear-gradient(160deg, transparent 20%, rgba(168, 85, 247, 0.08) 45%, transparent 70%),
+    linear-gradient(20deg, rgba(14, 10, 22, 0.45), transparent 60%);
   clip-path: polygon(18% 100%, 0% 48%, 22% 22%, 38% 58%, 52% 8%, 68% 42%, 88% 18%, 100% 100%);
-  filter: drop-shadow(0 0 24px rgba(120, 255, 0, 0.12));
+  filter: drop-shadow(0 0 24px rgba(168, 85, 247, 0.12));
 }
 
 .champ-crystal--left {
@@ -848,8 +881,8 @@ button {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(115deg, transparent 30%, rgba(120, 255, 0, 0.35) 48%, transparent 52%),
-    linear-gradient(155deg, transparent 40%, rgba(120, 255, 0, 0.22) 55%, transparent 62%);
+    linear-gradient(115deg, transparent 30%, rgba(168, 85, 247, 0.35) 48%, transparent 52%),
+    linear-gradient(155deg, transparent 40%, rgba(168, 85, 247, 0.22) 55%, transparent 62%);
   opacity: 0.55;
   mix-blend-mode: screen;
   animation: champ-vein 7s ease-in-out infinite;
@@ -866,11 +899,11 @@ button {
   /* No clip-path — it disables backdrop-filter in Chromium. */
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 42%),
-    rgba(4, 12, 8, 0.22);
-  border: 1px solid rgba(120, 255, 0, 0.4);
+    rgba(12, 9, 20, 0.22);
+  border: 1px solid rgba(168, 85, 247, 0.4);
   box-shadow:
-    0 0 0 1px rgba(120, 255, 0, 0.08) inset,
-    0 0 28px rgba(120, 255, 0, 0.12),
+    0 0 0 1px rgba(168, 85, 247, 0.08) inset,
+    0 0 28px rgba(168, 85, 247, 0.12),
     0 14px 32px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(22px) saturate(1.25);
   -webkit-backdrop-filter: blur(22px) saturate(1.25);
@@ -899,17 +932,17 @@ button {
   top: 12%;
   bottom: 18%;
   width: 1px;
-  background: linear-gradient(180deg, transparent, rgba(120, 255, 0, 0.35), transparent);
+  background: linear-gradient(180deg, transparent, rgba(168, 85, 247, 0.35), transparent);
 }
 
 .champ-countdown__value {
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
-  color: #f4ffe8;
+  color: #faf5ff;
   text-shadow:
-    0 0 12px rgba(120, 255, 0, 0.55),
-    0 0 28px rgba(120, 255, 0, 0.25);
+    0 0 12px rgba(168, 85, 247, 0.55),
+    0 0 28px rgba(168, 85, 247, 0.25);
   line-height: 1;
   font-size: clamp(1.55rem, 4.2vw, 2.15rem);
 }
@@ -951,11 +984,11 @@ button {
   transform: translateX(-50%);
   pointer-events: none;
   background:
-    linear-gradient(90deg, transparent 4%, rgba(184, 196, 210, 0.22) 18%, rgba(232, 197, 71, 0.4) 50%, rgba(198, 123, 58, 0.22) 82%, transparent 96%),
+    linear-gradient(90deg, transparent 4%, rgba(184, 196, 210, 0.22) 18%, rgba(192, 132, 252, 0.4) 50%, rgba(167, 139, 250, 0.22) 82%, transparent 96%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.55));
   clip-path: polygon(6% 0, 94% 0, 100% 100%, 0 100%);
   box-shadow:
-    0 0 40px rgba(120, 255, 0, 0.18),
+    0 0 40px rgba(168, 85, 247, 0.18),
     0 18px 36px rgba(0, 0, 0, 0.55);
   opacity: 0.9;
 }
@@ -965,7 +998,7 @@ button {
   position: absolute;
   inset: 18% 10% auto;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(120, 255, 0, 0.55), transparent);
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.55), transparent);
 }
 
 /* Premium championship podium cards (reference medallion system) */
@@ -997,11 +1030,11 @@ button {
   --metal: var(--champ-gold);
   --metal-lo: var(--champ-gold-lo);
   --metal-deep: #6d4b00;
-  --glow: rgba(232, 197, 71, 0.55);
+  --glow: rgba(192, 132, 252, 0.55);
   --card-scale: 1;
   z-index: 2;
   filter:
-    drop-shadow(0 0 28px rgba(232, 197, 71, 0.28))
+    drop-shadow(0 0 28px rgba(192, 132, 252, 0.28))
     drop-shadow(0 26px 42px rgba(0, 0, 0, 0.5));
 }
 
@@ -1018,7 +1051,7 @@ button {
   --metal: var(--champ-bronze);
   --metal-lo: var(--champ-bronze-lo);
   --metal-deep: #4a2408;
-  --glow: rgba(198, 123, 58, 0.42);
+  --glow: rgba(167, 139, 250, 0.42);
 }
 
 @media (min-width: 640px) {
@@ -1085,9 +1118,9 @@ button {
   clip-path: polygon(6.6% 0, 93.4% 0, 100% 4.2%, 100% 95.8%, 93.4% 100%, 6.6% 100%, 0 95.8%, 0 4.2%);
   padding: 1.1rem 0.95rem 0.95rem;
   background:
-    radial-gradient(ellipse 70% 45% at 50% 22%, rgba(120, 255, 0, 0.14), transparent 62%),
+    radial-gradient(ellipse 70% 45% at 50% 22%, rgba(168, 85, 247, 0.14), transparent 62%),
     radial-gradient(ellipse 55% 35% at 50% 88%, color-mix(in srgb, var(--metal) 18%, transparent), transparent 70%),
-    linear-gradient(180deg, #0a1510 0%, #061008 42%, #020704 100%);
+    linear-gradient(180deg, #120c1c 0%, #0a0812 42%, #050507 100%);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.06) inset,
     0 0 0 1px rgba(0, 0, 0, 0.55) inset;
@@ -1096,15 +1129,15 @@ button {
 .champ-card__aura {
   position: absolute;
   inset: 8% 12% 45%;
-  background: radial-gradient(circle at 50% 55%, rgba(120, 255, 0, 0.16), transparent 65%);
+  background: radial-gradient(circle at 50% 55%, rgba(168, 85, 247, 0.16), transparent 65%);
   pointer-events: none;
   filter: blur(8px);
 }
 
 .champ-card--1 .champ-card__aura {
   background:
-    radial-gradient(circle at 50% 50%, rgba(232, 197, 71, 0.18), transparent 55%),
-    radial-gradient(circle at 50% 60%, rgba(120, 255, 0, 0.12), transparent 70%);
+    radial-gradient(circle at 50% 50%, rgba(192, 132, 252, 0.18), transparent 55%),
+    radial-gradient(circle at 50% 60%, rgba(168, 85, 247, 0.12), transparent 70%);
 }
 
 .champ-card__grain {
@@ -1137,7 +1170,7 @@ button {
   pointer-events: none;
   user-select: none;
   transform: translateX(-50%);
-  filter: drop-shadow(0 0 12px rgba(232, 197, 71, 0.55));
+  filter: drop-shadow(0 0 12px rgba(192, 132, 252, 0.55));
   animation: champ-crown-float 3.8s ease-in-out infinite;
 }
 
@@ -1182,11 +1215,11 @@ button {
 .champ-laurel--bronze {
   filter:
     sepia(0.85) saturate(1.35) hue-rotate(-10deg) brightness(0.95)
-    drop-shadow(0 0 10px rgba(198, 123, 58, 0.45));
+    drop-shadow(0 0 10px rgba(167, 139, 250, 0.45));
 }
 
 .champ-laurel--gold {
-  filter: drop-shadow(0 0 10px rgba(232, 197, 71, 0.5));
+  filter: drop-shadow(0 0 10px rgba(192, 132, 252, 0.5));
 }
 
 .champ-medallion__ring {
@@ -1200,15 +1233,15 @@ button {
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.45) inset,
     0 0 22px var(--glow),
-    0 0 36px rgba(120, 255, 0, 0.1);
+    0 0 36px rgba(168, 85, 247, 0.1);
 }
 
 .champ-card--1 .champ-medallion__ring {
   padding: 4px;
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.4) inset,
-    0 0 28px rgba(232, 197, 71, 0.55),
-    0 0 42px rgba(120, 255, 0, 0.14);
+    0 0 28px rgba(192, 132, 252, 0.55),
+    0 0 42px rgba(168, 85, 247, 0.14);
 }
 
 .champ-medallion__core {
@@ -1219,7 +1252,7 @@ button {
   border-radius: 9999px;
   background:
     radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.1), transparent 48%),
-    radial-gradient(circle at 50% 55%, rgba(120, 255, 0, 0.12), transparent 60%),
+    radial-gradient(circle at 50% 55%, rgba(168, 85, 247, 0.12), transparent 60%),
     #070b09;
   border: 1px solid rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--metal) 35%, transparent) inset;
@@ -1244,16 +1277,16 @@ button {
   width: 100%;
   height: 100%;
   background:
-    radial-gradient(circle at 40% 30%, rgba(120, 255, 0, 0.22), transparent 55%),
+    radial-gradient(circle at 40% 30%, rgba(168, 85, 247, 0.22), transparent 55%),
     linear-gradient(160deg, #0c1410, #050807);
 }
 
 .champ-medallion__fallback span {
-  color: #78ff00;
+  color: #A855F7;
   font-weight: 800;
   font-size: 2rem;
   letter-spacing: 0.04em;
-  text-shadow: 0 0 20px rgba(120, 255, 0, 0.55);
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.55);
 }
 
 .champ-card--1 .champ-medallion__fallback span {
@@ -1289,7 +1322,7 @@ button {
   font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #f4f7f3;
+  color: #f4f4f5;
 }
 
 .champ-card--1 .champ-card__name {
@@ -1326,12 +1359,12 @@ button {
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.01em;
-  color: #78ff00;
-  text-shadow: 0 0 18px rgba(120, 255, 0, 0.35);
+  color: #A855F7;
+  text-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
 }
 
 .champ-card__wager--muted {
-  color: rgba(120, 255, 0, 0.55);
+  color: rgba(168, 85, 247, 0.55);
   text-shadow: none;
 }
 
@@ -1420,10 +1453,10 @@ button {
   aspect-ratio: 280 / 400;
   clip-path: polygon(7% 0, 93% 0, 100% 4.5%, 100% 95.5%, 93% 100%, 7% 100%, 0 95.5%, 0 4.5%);
   background:
-    linear-gradient(90deg, transparent, rgba(120, 255, 0, 0.05), transparent),
-    rgba(6, 14, 10, 0.55);
+    linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.05), transparent),
+    rgba(12, 9, 20, 0.55);
   background-size: 200% 100%, 100% 100%;
-  border: 1px solid rgba(120, 255, 0, 0.16);
+  border: 1px solid rgba(168, 85, 247, 0.16);
   animation: demacs-shimmer 1.6s ease-in-out infinite;
 }
 
@@ -1444,10 +1477,10 @@ button {
 @keyframes champ-breath {
   0%,
   100% {
-    filter: drop-shadow(0 0 18px rgba(232, 197, 71, 0.25));
+    filter: drop-shadow(0 0 18px rgba(192, 132, 252, 0.25));
   }
   50% {
-    filter: drop-shadow(0 0 28px rgba(232, 197, 71, 0.5));
+    filter: drop-shadow(0 0 28px rgba(192, 132, 252, 0.5));
   }
 }
 
@@ -1476,8 +1509,28 @@ button {
   }
 }
 
+/* Hero mascot — calm organic float (inner layer only) */
+@keyframes hero-mascot-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1.2deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(1deg);
+  }
+}
+
+.hero-mascot__float {
+  animation: hero-mascot-float 11s ease-in-out infinite;
+}
+
+.hero-mascot__bloom {
+  animation: demacs-glow-pulse 8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .demacs-hero-logo,
+  .hero-wordmark-gem,
   .demacs-pulse-dot,
   .demacs-glow-pulse,
   .demacs-line-draw,
@@ -1490,7 +1543,9 @@ button {
   .champ-card__shell::before,
   .champ-crystal__vein,
   .champ-cta__shine > span,
-  .champ-skeleton {
+  .champ-skeleton,
+  .hero-mascot__float,
+  .hero-mascot__bloom {
     animation: none !important;
   }
 

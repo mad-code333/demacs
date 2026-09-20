@@ -16,7 +16,7 @@ export function HeroContent({ onLogoReady }: HeroContentProps) {
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-      <p className="type-label font-sans text-[0.72rem] uppercase text-[#8E978E]">
+      <p className="type-label font-sans text-[0.72rem] uppercase text-[#A1A1AA]">
         Welcome to
       </p>
 
@@ -30,7 +30,7 @@ export function HeroContent({ onLogoReady }: HeroContentProps) {
           fetchPriority="high"
           width={860}
           frameClassName="demacs-img--hero relative z-[1] mx-auto block h-full w-full"
-          className="h-full w-full object-contain drop-shadow-[0_0_28px_rgba(120,255,0,0.28)]"
+          className="h-full w-full object-contain drop-shadow-[0_0_28px_rgba(168,85,247,0.28)]"
           onReady={onLogoReady}
         />
         <span
@@ -42,7 +42,7 @@ export function HeroContent({ onLogoReady }: HeroContentProps) {
       <p className="type-hero-uppercase mt-6 font-sans text-[clamp(1.15rem,2.7vw,1.85rem)] uppercase text-white sm:mt-7">
         Play. <span className="text-primary">Earn.</span> Climb.
       </p>
-      <p className="type-body mt-4 max-w-xl font-sans text-[0.95rem] leading-7 text-[#D8DDD8]/78 sm:mt-5 sm:text-[1.05rem] sm:leading-8 sm:font-medium">
+      <p className="type-body mt-4 max-w-xl font-sans text-[0.95rem] leading-7 text-[#A1A1AA] sm:mt-5 sm:text-[1.05rem] sm:leading-8 sm:font-medium">
         Compete, climb the rankings, unlock VIP rewards,
         <br className="hidden sm:block" /> and chase the monthly prize pool.
       </p>

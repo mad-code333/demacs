@@ -23,14 +23,14 @@ export function CompetitionFlow() {
       id="competition-flow"
       className="relative isolate border-t border-white/5 px-4 py-24 sm:px-6 lg:py-32"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(245,197,66,0.06),transparent_45%)]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(168,85,247,0.08),transparent_45%)]" aria-hidden />
       <div className="relative mx-auto w-full max-w-7xl">
         <ScrollReveal className="mx-auto max-w-2xl text-center">
           <SectionLabel>Competition flow</SectionLabel>
           <h2 className="type-section-uppercase mt-6 font-sans text-[clamp(2.2rem,5vw,3.6rem)] uppercase leading-none text-white">
             Play → Leaderboard → Top {TOP_MONTHLY_PRIZES.length} → <span className="text-primary">Rewards</span>
           </h2>
-          <p className="mt-5 font-golos text-base leading-7 text-[#8E978E]">
+          <p className="mt-5 font-golos text-base leading-7 text-[#A1A1AA]">
             How DEMACS turns play into ranking, VIP progress, and rewards.
           </p>
         </ScrollReveal>
@@ -64,7 +64,7 @@ export function CompetitionFlow() {
                 <h3 className="type-card-title mt-7 font-sans text-xl text-white sm:text-2xl sm:font-bold">
                   {title}
                 </h3>
-                <p className="mt-3 text-[0.95rem] leading-7 text-[#8E978E]">{desc}</p>
+                <p className="mt-3 text-[0.95rem] leading-7 text-[#A1A1AA]">{desc}</p>
               </DimensionalCard>
             </ScrollReveal>
           ))}

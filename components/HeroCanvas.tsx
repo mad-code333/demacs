@@ -101,9 +101,9 @@ export function HeroCanvas() {
       ctx.translate(cx, cy);
       ctx.rotate(orbit.rot);
 
-      ctx.shadowColor = "rgba(120,255,0,0.18)";
+      ctx.shadowColor = "rgba(168,85,247,0.18)";
       ctx.shadowBlur = mobile ? 6 : 12;
-      ctx.strokeStyle = "rgba(120,255,0,0.1)";
+      ctx.strokeStyle = "rgba(168,85,247,0.1)";
       ctx.lineWidth = 1.1;
       ctx.beginPath();
       ctx.ellipse(0, 0, orbit.rx, orbit.ry, 0, 0, Math.PI * 2);
@@ -116,7 +116,7 @@ export function HeroCanvas() {
       ctx.ellipse(0, 0, orbit.rx, orbit.ry, 0, 0, Math.PI * 2);
       ctx.stroke();
 
-      ctx.strokeStyle = "rgba(120,255,0,0.035)";
+      ctx.strokeStyle = "rgba(168,85,247,0.035)";
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.ellipse(0, 0, orbit.rx * 0.74, orbit.ry * 0.74, 0, 0, Math.PI * 2);
@@ -141,7 +141,7 @@ export function HeroCanvas() {
       const head = time * 0.32;
       ctx.strokeStyle = "rgba(180,255,90,0.55)";
       ctx.lineWidth = 1.7;
-      ctx.shadowColor = "rgba(120,255,0,0.65)";
+      ctx.shadowColor = "rgba(168,85,247,0.65)";
       ctx.shadowBlur = 12;
       ctx.beginPath();
       ctx.ellipse(0, 0, orbit.rx, orbit.ry, 0, head, head + 0.5);
@@ -151,8 +151,8 @@ export function HeroCanvas() {
       const hy = Math.sin(head + 0.5) * orbit.ry;
       const spark = ctx.createRadialGradient(hx, hy, 0, hx, hy, mobile ? 8 : 14);
       spark.addColorStop(0, "rgba(230,255,180,0.8)");
-      spark.addColorStop(0.35, "rgba(120,255,0,0.28)");
-      spark.addColorStop(1, "rgba(120,255,0,0)");
+      spark.addColorStop(0.35, "rgba(168,85,247,0.28)");
+      spark.addColorStop(1, "rgba(168,85,247,0)");
       ctx.shadowBlur = 0;
       ctx.fillStyle = spark;
       ctx.beginPath();
@@ -161,7 +161,7 @@ export function HeroCanvas() {
 
       for (let i = 1; i <= 5; i += 1) {
         const a = head + 0.5 - i * 0.08;
-        ctx.fillStyle = `rgba(120,255,0,${0.12 - i * 0.018})`;
+        ctx.fillStyle = `rgba(168,85,247,${0.12 - i * 0.018})`;
         ctx.beginPath();
         ctx.arc(Math.cos(a) * orbit.rx, Math.sin(a) * orbit.ry, Math.max(0.5, 2.1 - i * 0.28), 0, Math.PI * 2);
         ctx.fill();
@@ -183,7 +183,7 @@ export function HeroCanvas() {
         const x = p.x + px * p.z;
         const y = p.y + py * p.z;
         if (inClearZone(x, y)) continue;
-        const rgb = p.gold ? "245,197,66" : "200,245,170";
+        const rgb = p.gold ? "192,132,252" : "168,85,247";
         if (p.r > 1.2) {
           const g = ctx.createRadialGradient(x, y, 0, x, y, p.r * 5);
           g.addColorStop(0, `rgba(${rgb},${p.a * 0.5})`);

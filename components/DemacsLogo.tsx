@@ -2,10 +2,7 @@
 
 import { InstantImage } from "./InstantImage";
 import {
-  HERO_LOGO_MARK_SRC,
   HERO_WORDMARK_SRC,
-  HERO_WORDMARK_SRC_640,
-  HERO_WORDMARK_SRC_960,
   USERNAME_LOGO_H,
   USERNAME_LOGO_W,
 } from "../lib/hero-assets";
@@ -13,8 +10,6 @@ import {
 export {
   HERO_LOGO_MARK_SRC,
   HERO_WORDMARK_SRC,
-  HERO_WORDMARK_SRC_640,
-  HERO_WORDMARK_SRC_960,
   USERNAME_LOGO_H,
   USERNAME_LOGO_W,
 } from "../lib/hero-assets";
@@ -42,12 +37,10 @@ export function DemacsLogo({
   onReady,
 }: DemacsLogoProps) {
   const h = height ?? Math.round((width * USERNAME_LOGO_H) / USERNAME_LOGO_W);
-  const src =
-    width <= 480 ? HERO_WORDMARK_SRC_640 : width <= 800 ? HERO_WORDMARK_SRC_960 : HERO_WORDMARK_SRC;
 
   return (
     <InstantImage
-      src={src}
+      src={HERO_WORDMARK_SRC}
       alt="DEMACS"
       width={width}
       height={h}
@@ -61,7 +54,7 @@ export function DemacsLogo({
   );
 }
 
-/** Nav/footer brand: compact logo mark beside EMACS text. */
+/** Nav/footer brand: `username.png` wordmark. */
 export function DemacsWordmark({
   className,
   logoClassName,
@@ -71,37 +64,32 @@ export function DemacsWordmark({
   logoClassName?: string;
   priority?: boolean;
 }) {
+  const navW = 168;
+  const navH = Math.round((navW * USERNAME_LOGO_H) / USERNAME_LOGO_W);
+
   return (
     <span
       className={[
-        "inline-flex items-center gap-2 transition-transform duration-300 group-hover:scale-[1.03] sm:gap-0.5",
+        "inline-flex items-center transition-transform duration-300 group-hover:scale-[1.03]",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
     >
       <InstantImage
-        src={HERO_LOGO_MARK_SRC}
-        alt=""
-        width={72}
-        height={72}
+        src={HERO_WORDMARK_SRC}
+        alt="DEMACS"
+        width={navW}
+        height={navH}
         loading={priority ? "eager" : "lazy"}
-        // Keep "auto" so the hero wordmark stays the true high-priority LCP fetch.
         fetchPriority={priority ? "auto" : "low"}
-        aria-hidden
-        frameClassName="inline-flex size-8 shrink-0 sm:size-9"
+        frameClassName="inline-flex h-8 w-auto max-w-[min(42vw,168px)] overflow-visible sm:h-9"
         className={
           logoClassName ??
-          "h-full w-full object-contain drop-shadow-[0_0_14px_rgba(120,255,0,0.35)]"
+          "h-full w-auto object-contain object-left"
         }
         showPlaceholder={false}
       />
-      <span className="type-card-title font-sans text-[1.05rem] tracking-[0.04em] text-white sm:text-[1.15rem] sm:font-bold">
-        <span className="sr-only">DEMACS</span>
-        <span aria-hidden className="text-white/95 drop-shadow-[0_0_12px_rgba(120,255,0,0.18)]">
-          EMACS
-        </span>
-      </span>
     </span>
   );
 }

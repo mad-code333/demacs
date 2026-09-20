@@ -79,7 +79,7 @@ export function AmbientParticles() {
             width: p.size,
             height: p.size,
             opacity: p.opacity,
-            boxShadow: `0 0 ${p.size * 4}px rgba(120,255,0,0.45)`,
+            boxShadow: `0 0 ${p.size * 4}px rgba(168,85,247,0.45)`,
             ["--p-dur" as string]: `${p.duration}s`,
             ["--p-delay" as string]: `${p.delay}s`,
             ["--p-opacity" as string]: String(p.opacity),

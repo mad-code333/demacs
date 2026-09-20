@@ -178,7 +178,7 @@ export function NightSkyCanvas() {
         ctx.fillRect(0, 0, width, height);
       }
 
-      // Soft green brand aurora + secondary band
+      // Soft purple brand aurora + secondary band
       const pulse = 0.5 + Math.sin(time * 0.35) * 0.5;
       const aurora = ctx.createRadialGradient(
         width * 0.5 + px * 0.15,
@@ -188,7 +188,7 @@ export function NightSkyCanvas() {
         height * 0.35,
         Math.max(width, height) * 0.48,
       );
-      aurora.addColorStop(0, `rgba(120,255,0,${0.055 + pulse * 0.035})`);
+      aurora.addColorStop(0, `rgba(168,85,247,${0.055 + pulse * 0.035})`);
       aurora.addColorStop(0.45, "rgba(40,100,30,0.03)");
       aurora.addColorStop(1, "rgba(2,4,8,0)");
       ctx.fillStyle = aurora;
@@ -196,9 +196,9 @@ export function NightSkyCanvas() {
 
       const bandY = height * (0.22 + Math.sin(time * 0.18) * 0.03);
       const band = ctx.createLinearGradient(0, bandY - 40, 0, bandY + 80);
-      band.addColorStop(0, "rgba(120,255,0,0)");
+      band.addColorStop(0, "rgba(168,85,247,0)");
       band.addColorStop(0.45, `rgba(90,200,40,${0.03 + pulse * 0.02})`);
-      band.addColorStop(1, "rgba(120,255,0,0)");
+      band.addColorStop(1, "rgba(168,85,247,0)");
       ctx.fillStyle = band;
       ctx.fillRect(0, 0, width, height);
     };
