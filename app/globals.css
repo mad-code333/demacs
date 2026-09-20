@@ -235,6 +235,50 @@
   animation: demacs-float 7.5s ease-in-out infinite;
 }
 
+/* Jewel clusters flanking the wordmark. Offsets are multiples of --jw, so one
+   variable controls both the jewel size and the spacing inside each group. */
+.hero-wordmark-arc {
+  --jw: clamp(42px, 9.2vw, 100px);
+}
+
+.hero-wordmark-arc__side--left {
+  --cx: 9%;
+  --cy: 48%;
+}
+
+.hero-wordmark-arc__side--right {
+  --cx: 91%;
+  --cy: 50%;
+}
+
+@media (max-width: 1023px) {
+  .hero-wordmark-arc {
+    --jw: clamp(34px, 8vw, 76px);
+  }
+
+  .hero-wordmark-arc__side--left {
+    --cx: 10%;
+  }
+
+  .hero-wordmark-arc__side--right {
+    --cx: 90%;
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-wordmark-arc {
+    --jw: clamp(28px, 7.6vw, 52px);
+  }
+
+  .hero-wordmark-arc__side--left {
+    --cx: 11%;
+  }
+
+  .hero-wordmark-arc__side--right {
+    --cx: 89%;
+  }
+}
+
 .hero-wordmark-gem {
   --gem-rot: 0deg;
   filter: drop-shadow(0 0 14px rgba(245, 197, 66, 0.42))
