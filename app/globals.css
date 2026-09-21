@@ -436,6 +436,88 @@
     0 0 14px rgba(168, 85, 247, 0.07);
 }
 
+.demacs-rewards-strip {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 72%),
+    rgba(10, 8, 16, 0.42);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  backdrop-filter: blur(16px) saturate(1.1);
+  border-radius: 1.1rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.demacs-action-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045) 0%, transparent 38%),
+    linear-gradient(155deg, rgba(139, 92, 246, 0.05), transparent 52%),
+    rgba(8, 6, 14, 0.64);
+  -webkit-backdrop-filter: blur(14px) saturate(1.08);
+  backdrop-filter: blur(14px) saturate(1.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.07) inset,
+    0 10px 22px rgba(0, 0, 0, 0.26);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.demacs-action-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 26%);
+}
+
+.demacs-action-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.demacs-action-card--featured {
+  border-color: rgba(168, 85, 247, 0.3);
+  background:
+    linear-gradient(180deg, rgba(168, 85, 247, 0.11) 0%, transparent 46%),
+    linear-gradient(155deg, rgba(139, 92, 246, 0.08), transparent 55%),
+    rgba(11, 8, 18, 0.68);
+  box-shadow:
+    0 1px 0 rgba(216, 180, 254, 0.1) inset,
+    0 10px 22px rgba(0, 0, 0, 0.26),
+    0 0 20px rgba(168, 85, 247, 0.07);
+}
+
+.demacs-action-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(168, 85, 247, 0.42);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, transparent 38%),
+    linear-gradient(155deg, rgba(139, 92, 246, 0.08), transparent 52%),
+    rgba(12, 9, 20, 0.7);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 14px 28px rgba(0, 0, 0, 0.3),
+    0 0 22px rgba(168, 85, 247, 0.1);
+}
+
+.demacs-action-card--featured:hover {
+  border-color: rgba(192, 132, 252, 0.48);
+  box-shadow:
+    0 1px 0 rgba(216, 180, 254, 0.14) inset,
+    0 14px 28px rgba(0, 0, 0, 0.3),
+    0 0 26px rgba(168, 85, 247, 0.13);
+}
+
 /* Glass control surfaces (modals / forms / dropdowns) */
 .demacs-glass-panel {
   border: 1px solid rgba(168, 85, 247, 0.18);
@@ -1610,7 +1692,9 @@ button {
     will-change: auto;
   }
 
-  .demacs-card:hover {
+  .demacs-card:hover,
+  .demacs-action-card:hover,
+  .demacs-action-card--featured:hover {
     transform: none;
   }
 

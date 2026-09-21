@@ -81,17 +81,19 @@ export function Hero({ wordmark }: HeroProps) {
               <br className="hidden sm:block" /> and chase the monthly prize pool.
             </p>
             <HeroActions />
-            <HeroStats />
+            <div className="mt-8 w-full sm:mt-9">
+              <HeroStats />
+            </div>
           </div>
         </div>
 
-        <div className="relative z-20 mt-8 w-full sm:mt-10 lg:mt-12">
+        <div className="relative z-20 mt-9 w-full sm:mt-11">
           <FeatureCards />
         </div>
 
         <a
           href="#live-stream"
-          className="group relative z-20 mx-auto mt-8 inline-flex flex-col items-center gap-1.5 rounded-full px-3 py-2 font-body text-[#71717A] transition-colors hover:text-primary sm:mt-9"
+          className="group relative z-20 mx-auto mt-12 inline-flex flex-col items-center gap-1.5 rounded-full px-3 py-2 font-body text-[#71717A] transition-colors hover:text-primary sm:mt-14"
           aria-label="Scroll to live stream"
         >
           <span className="flex size-10 items-center justify-center rounded-full border border-white/[0.08] bg-black/40 shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all duration-300 group-hover:border-primary/40 group-hover:shadow-[0_8px_24px_rgba(168,85,247,0.15)]">
