@@ -27,7 +27,7 @@ export default function ContactPage() {
     <div className="min-h-screen bg-transparent px-4 py-12 font-golos text-bright sm:px-6 sm:py-16">
       <div className="mx-auto max-w-6xl">
 
-        <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-start">
+        <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16 lg:items-stretch">
           <ContactPageIntro />
 
           <div className="space-y-8">

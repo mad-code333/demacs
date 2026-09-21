@@ -11,6 +11,7 @@ export function ContactPageIntro() {
 
   return (
     <motion.div
+      className="flex h-full flex-col"
       initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: reduceMotion ? 0 : 0.55, ease }}
@@ -23,7 +24,23 @@ export function ContactPageIntro() {
         Questions about rewards, partnerships, or the site? Use the form, or join us on Discord and Kick — we are happy
         to help.
       </p>
-      <Image src="/images/logo.png" alt="Contact" width={1000} height={1000} />
+
+      {/* Fills the rest of the column so it ends flush with the form card. */}
+      <div className="demacs-glass-panel relative mt-8 min-h-[300px] w-full flex-1 overflow-hidden rounded-xl">
+        <Image
+          src="/logo.png"
+          alt=""
+          fill
+          sizes="(max-width: 1024px) 92vw, 44vw"
+          className="object-cover"
+          aria-hidden
+        />
+        {/* Blend the artwork's black backdrop into the page */}
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,transparent_35%,rgba(5,5,7,0.55)_100%)]"
+          aria-hidden
+        />
+      </div>
     </motion.div>
   );
 }
