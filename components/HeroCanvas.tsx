@@ -33,7 +33,7 @@ function seedParticles(width: number, height: number, mobile: boolean): Particle
   return out;
 }
 
-/** Hero orbital energy + ambient particles. Jewels live in OrbitJewels. */
+/** Hero ambient particles. Jewels live in OrbitJewels. */
 export function HeroCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduceMotion = useReducedMotion();
@@ -53,14 +53,12 @@ export function HeroCanvas() {
     let mobile = false;
     let raf = 0;
     let last = performance.now();
-    let time = 0;
     let mx = 0;
     let my = 0;
     let tx = 0;
     let ty = 0;
     let visible = true;
     let particles: Particle[] = [];
-    let orbit = { rx: 0, ry: 0, rot: -0.3 };
 
     const inClearZone = (x: number, y: number) => {
       const dx = (x - width * 0.5) / (width * 0.32);
@@ -82,11 +80,6 @@ export function HeroCanvas() {
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = "high";
       particles = seedParticles(width, height, mobile);
-      orbit = {
-        rx: Math.min(width * 0.34, height * 0.48),
-        ry: Math.min(width, height) * (mobile ? 0.155 : 0.175),
-        rot: -0.3,
-      };
     };
 
     const onPointer = (event: PointerEvent) => {
@@ -94,80 +87,6 @@ export function HeroCanvas() {
       const rect = parent.getBoundingClientRect();
       tx = (event.clientX - rect.left) / rect.width - 0.5;
       ty = (event.clientY - rect.top) / rect.height - 0.5;
-    };
-
-    const drawOrbit = (cx: number, cy: number) => {
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate(orbit.rot);
-
-      ctx.shadowColor = "rgba(168,85,247,0.18)";
-      ctx.shadowBlur = mobile ? 6 : 12;
-      ctx.strokeStyle = "rgba(168,85,247,0.1)";
-      ctx.lineWidth = 1.1;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, orbit.rx, orbit.ry, 0, 0, Math.PI * 2);
-      ctx.stroke();
-
-      ctx.shadowBlur = 0;
-      ctx.strokeStyle = "rgba(156,255,56,0.05)";
-      ctx.lineWidth = 6;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, orbit.rx, orbit.ry, 0, 0, Math.PI * 2);
-      ctx.stroke();
-
-      ctx.strokeStyle = "rgba(168,85,247,0.035)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, orbit.rx * 0.74, orbit.ry * 0.74, 0, 0, Math.PI * 2);
-      ctx.stroke();
-
-      const beads = mobile ? 18 : 30;
-      for (let i = 0; i < beads; i += 1) {
-        const t = (i / beads) * Math.PI * 2 + time * 0.07;
-        const x = Math.cos(t) * orbit.rx;
-        const y = Math.sin(t) * orbit.ry;
-        if (inClearZone(cx + x, cy + y)) continue;
-        const tw = 0.35 + 0.65 * Math.abs(Math.sin(time * 1.15 + i * 0.7));
-        const bright = i % 8 === 0;
-        ctx.fillStyle = bright
-          ? `rgba(210,255,140,${0.18 + tw * 0.42})`
-          : `rgba(170,255,90,${0.08 + tw * 0.28})`;
-        ctx.beginPath();
-        ctx.arc(x, y, mobile ? (bright ? 1.15 : 0.75) : bright ? 1.5 : 1, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      const head = time * 0.32;
-      ctx.strokeStyle = "rgba(180,255,90,0.55)";
-      ctx.lineWidth = 1.7;
-      ctx.shadowColor = "rgba(168,85,247,0.65)";
-      ctx.shadowBlur = 12;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, orbit.rx, orbit.ry, 0, head, head + 0.5);
-      ctx.stroke();
-
-      const hx = Math.cos(head + 0.5) * orbit.rx;
-      const hy = Math.sin(head + 0.5) * orbit.ry;
-      const spark = ctx.createRadialGradient(hx, hy, 0, hx, hy, mobile ? 8 : 14);
-      spark.addColorStop(0, "rgba(230,255,180,0.8)");
-      spark.addColorStop(0.35, "rgba(168,85,247,0.28)");
-      spark.addColorStop(1, "rgba(168,85,247,0)");
-      ctx.shadowBlur = 0;
-      ctx.fillStyle = spark;
-      ctx.beginPath();
-      ctx.arc(hx, hy, mobile ? 8 : 14, 0, Math.PI * 2);
-      ctx.fill();
-
-      for (let i = 1; i <= 5; i += 1) {
-        const a = head + 0.5 - i * 0.08;
-        ctx.fillStyle = `rgba(168,85,247,${0.12 - i * 0.018})`;
-        ctx.beginPath();
-        ctx.arc(Math.cos(a) * orbit.rx, Math.sin(a) * orbit.ry, Math.max(0.5, 2.1 - i * 0.28), 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      ctx.restore();
     };
 
     const drawParticles = (px: number, py: number, animate: boolean, dt: number) => {
@@ -204,16 +123,12 @@ export function HeroCanvas() {
       if (animate) {
         mx += (tx - mx) * 0.04;
         my += (ty - my) * 0.04;
-        time += dt * 0.001;
       }
       const px = mx * (mobile ? 3 : 8);
       const py = my * (mobile ? 2 : 6);
-      const cx = width * 0.5 + px * 0.2;
-      const cy = height * 0.3 + py * 0.16;
 
       ctx.clearRect(0, 0, width, height);
       drawParticles(px, py, animate, dt);
-      drawOrbit(cx, cy);
     };
 
     const tick = (now: number) => {
