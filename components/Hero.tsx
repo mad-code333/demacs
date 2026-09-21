@@ -4,7 +4,6 @@ import { useEffect, useState, type ReactNode } from "react";
 import { IoChevronDown } from "react-icons/io5";
 import { FeatureCards } from "./FeatureCards";
 import { HeroActions } from "./HeroActions";
-import { HeroCanvas } from "./HeroCanvas";
 import { HeroStats } from "./HeroStats";
 import { FloatingOrbitJewels } from "./hero/FloatingOrbitJewels";
 
@@ -48,23 +47,8 @@ export function Hero({ wordmark }: HeroProps) {
   }, []);
 
   return (
-    <section className="relative isolate overflow-hidden text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[#050507]" aria-hidden />
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(139,92,246,0.22),transparent_45%),radial-gradient(circle_at_20%_80%,rgba(168,85,247,0.12),transparent_40%),radial-gradient(ellipse_at_50%_0%,rgba(16,12,23,0.9),transparent_55%)]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#09070D_0%,transparent_28%,transparent_72%,#050507_100%)]"
-        aria-hidden
-      />
-      {showFx ? <HeroCanvas /> : null}
+    <section className="relative isolate overflow-hidden bg-transparent text-white">
       {showFx ? <FloatingOrbitJewels /> : null}
-
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 bg-gradient-to-t from-[#050507]/95 to-transparent"
-        aria-hidden
-      />
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-7xl flex-col px-4 pb-10 pt-6 sm:px-6 sm:pb-12 lg:px-8 lg:pt-8">
         <div className="flex flex-1 flex-col items-center justify-center">
